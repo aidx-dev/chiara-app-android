@@ -28,11 +28,15 @@ android {
             // The Android emulator reaches the host's local Supabase through 10.0.2.2.
             buildConfigField("String", "SUPABASE_URL", "\"${secret("SUPABASE_URL_DEBUG", "http://10.0.2.2:54321")}\"")
             buildConfigField("String", "SUPABASE_ANON_KEY", "\"${secret("SUPABASE_ANON_KEY_DEBUG")}\"")
+            // Fake backend with invented data (DemoBackend). On unless DEMO_BACKEND=false in local.properties.
+            buildConfigField("boolean", "DEMO_BACKEND", secret("DEMO_BACKEND", "true"))
         }
         release {
             isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "SUPABASE_URL", "\"${secret("SUPABASE_URL")}\"")
             buildConfigField("String", "SUPABASE_ANON_KEY", "\"${secret("SUPABASE_ANON_KEY")}\"")
+            buildConfigField("boolean", "DEMO_BACKEND", "false")
         }
     }
     buildFeatures { compose = true; buildConfig = true }
@@ -40,10 +44,11 @@ android {
     kotlinOptions { jvmTarget = "17" }
 }
 dependencies {
-    implementation(project(":core:domain"))
+    implementation(project(":core:data"))
     implementation(project(":core:designsystem"))
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.ui)
-    implementation(libs.compose.material3)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.biometric)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
 }

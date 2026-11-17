@@ -11,7 +11,9 @@ android {
     kotlinOptions { jvmTarget = "17" }
 }
 dependencies {
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.ui)
-    implementation(libs.compose.material3)
+    api(project(":core:model"))
+    api(platform(libs.compose.bom))
+    api(libs.compose.ui)
+    api(libs.compose.material3)
+    api(libs.compose.material.icons)
 }
