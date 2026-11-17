@@ -32,10 +32,11 @@ Leyenda: `[x]` hecho · `[ ]` pendiente.
 - [x] Claims JWT (`app_metadata.clinic_id/clinic_role`)
 - [x] `FileResponseCache` (SHA-256 de `clinic|rpc|body`, atómica, limpiar al salir) con `ByteCodec` · [ ] codec AES-GCM con Keystore (capa `app`)
 - [x] Interfaz `SecureStore` · [ ] implementación Keystore/EncryptedSharedPreferences (capa `app`)
-- [ ] RPCs: `list_patients`, `get_patient`, `create_patient`, `update_patient`, `list_appointments_in_range`, `create_appointment_with_patient`, `update_appointment`, `archive_appointment`, `patient_appointment_history`, `list_consultations_with_latest_report`, `get_clinic_branding`, `get_my_ai_config`; REST `profiles`, `clinics`
-- [ ] JSON: snake_case, `explicitNulls=true`, `ignoreUnknownKeys`
-- [ ] Stores: Auth (+biometría), Patients (paginación 100, búsqueda 300 ms), Appointments (`revision`, undo), Reports (concurrencia 6), Settings (DataStore), Router/Toast
-- [ ] `DemoBackend` (debug) / MockWebServer con los mismos datos
+- [x] RPCs (contrato verificado con MockWebServer): `list_patients`, `get_patient`, `create_patient`, `update_patient`, `list_appointments_in_range`, `create_appointment_with_patient`, `update_appointment`, `archive_appointment`, `patient_appointment_history`, `list_consultations_with_latest_report`, `get_clinic_branding`; REST `profiles`, `clinics` · [ ] `get_my_ai_config` (Fase 5)
+- [x] JSON: `@SerialName` snake_case, nulls explícitos en RPC (`rpcParams`), `ignoreUnknownKeys`
+- [x] Stores en `core:data` (18 tests): `AuthStore` (+ `BiometricOutcome`), `PatientsStore` (paginación 100, búsqueda 300 ms, DNI duplicado, UUIDv7), `AppointmentsStore` (`revision`, undo), `ReportsStore` (concurrencia 6)
+- [ ] Stores pendientes: Settings (DataStore: idioma, apariencia), Router/Toast (con la capa UI, Fase 3)
+- [x] `TestEnv` (MockWebServer) para tests · [ ] `DemoBackend` de debug con los datos de iOS (`-demoBackend`)
 
 ## Fase 3 – Design system + shell
 - [x] Palette claro/oscuro base (resto de roles pendiente)
