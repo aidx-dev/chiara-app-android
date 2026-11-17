@@ -82,6 +82,12 @@ class DemoBackend(private val today: () -> LocalDate = { LocalDate.now() }) : In
                 put("start_time", "${str(body, "p_start_time").orEmpty()}:00"); put("end_time", "${str(body, "p_end_time").orEmpty()}:00")
                 put("status", "Scheduled"); put("notes", body["p_notes"] ?: JsonNull)
             }
+            "update_appointment" -> 200 to buildJsonObject {
+                put("id", str(body, "p_id").orEmpty()); put("patient_id", str(body, "p_patient_id").orEmpty()); put("date", str(body, "p_date").orEmpty())
+                put("start_time", "${str(body, "p_start_time").orEmpty()}:00"); put("end_time", "${str(body, "p_end_time").orEmpty()}:00")
+                put("status", str(body, "p_status") ?: "Scheduled"); put("notes", body["p_notes"] ?: JsonNull)
+            }
+            "archive_appointment" -> 200 to JsonNull
             "list_consultations_with_latest_report" -> {
                 val pid = str(body, "p_patient_id")?.lowercase()
                 200 to JsonArray(consultations.filter { str(it, "patient_id")?.lowercase() == pid })

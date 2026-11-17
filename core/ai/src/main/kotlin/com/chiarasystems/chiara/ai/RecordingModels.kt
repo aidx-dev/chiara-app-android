@@ -101,6 +101,15 @@ class Recording(
         segments.map { s -> (s.speaker?.let { speakerLabel(it + 1) + ": " } ?: "") + s.text }
 }
 
+/**
+ * Recordings are mutated in place, so a list of the same instances is `equals` to the previous one and a StateFlow would not
+ * emit. This wrapper is never equal to anything: every save publishes, and the UI redraws.
+ */
+class FreshList<T>(private val items: List<T>) : List<T> by items {
+    override fun equals(other: Any?) = false
+    override fun hashCode() = System.identityHashCode(this)
+}
+
 /** The local database of recorded consultations plus the audio files beside it. Implemented with Room in the app. */
 interface RecordingStore {
     /** The signed-in user's recordings, newest first. */
@@ -138,7 +147,7 @@ class InMemoryRecordingStore(private val directory: File, private val idGenerato
         reload()
     }
 
-    private fun reload() { _recordings.value = rows.filter { ownerId != null && it.ownerId == ownerId }.sortedByDescending { it.startedAtMillis } }
+    private fun reload() { _recordings.value = FreshList(rows.filter { ownerId != null && it.ownerId == ownerId }.sortedByDescending { it.startedAtMillis }) }
     override fun recording(id: String) = _recordings.value.firstOrNull { it.id == id }
 
     override fun create(patientId: String?, patientName: String): Recording =

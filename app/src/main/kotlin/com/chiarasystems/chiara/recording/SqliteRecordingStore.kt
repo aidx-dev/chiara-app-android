@@ -92,7 +92,7 @@ class SqliteRecordingStore(context: Context, root: File = File(context.noBackupF
         put("report_language", r.reportLanguage); put("report_sex", r.reportPatientSex); put("report_problem", r.reportProblem)
     }
 
-    private fun reload() { _recordings.value = all.filter { ownerId != null && it.ownerId == ownerId }.sortedByDescending { it.startedAtMillis } }
+    private fun reload() { _recordings.value = com.chiarasystems.chiara.ai.FreshList(all.filter { ownerId != null && it.ownerId == ownerId }.sortedByDescending { it.startedAtMillis }) }
 
     /** Recordings made before ownership existed belong to the first user who signs in. */
     @Synchronized override fun setOwner(id: String?) {
