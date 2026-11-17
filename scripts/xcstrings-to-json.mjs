@@ -31,6 +31,9 @@ for (const [key, entry] of Object.entries(catalog.strings)) {
   const javaKey = toJava(key);
   if (javaKey !== key) for (const l of langs) if (key in out[l]) { out[l][javaKey] = out[l][key]; delete out[l][key]; }
 }
+// Strings that only exist on Android (iOS gets them from system buttons).
+const extras = JSON.parse(readFileSync(new URL("./android-extra-strings.json", import.meta.url), "utf8"));
+for (const [key, tr] of Object.entries(extras)) for (const l of langs) out[l][key] = tr[l] ?? key;
 mkdirSync(outDir, { recursive: true });
 for (const l of langs) writeFileSync(`${outDir}/${l}.json`, JSON.stringify(out[l], null, 1) + '\n', 'utf8');
 console.log(`keys: ${Object.keys(out.es).length}; missing translations (non-es): ${missing}`);

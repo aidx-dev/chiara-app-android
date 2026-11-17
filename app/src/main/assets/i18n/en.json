@@ -264,5 +264,9 @@
  "Voy a marcar la cita como confirmada. ¿Lo confirmas?": "I'm about to mark the appointment as confirmed. Do you confirm?",
  "Voy a mover la cita. ¿Lo confirmas?": "I'm about to move the appointment. Do you confirm?",
  "Ya existe un paciente con ese DNI.": "A patient with that ID already exists.",
- "Ya tiene ese dato.": "It already has that value."
+ "Ya tiene ese dato.": "It already has that value.",
+ "Guardar": "Save",
+ "Cerrar": "Close",
+ "Aceptar": "OK",
+ "Atrás": "Back"
 }

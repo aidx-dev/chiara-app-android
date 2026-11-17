@@ -264,5 +264,9 @@
  "Voy a marcar la cita como confirmada. ¿Lo confirmas?": "Ich markiere den Termin als bestätigt. Bestätigst du?",
  "Voy a mover la cita. ¿Lo confirmas?": "Ich verschiebe den Termin. Bestätigst du?",
  "Ya existe un paciente con ese DNI.": "Ein Patient mit dieser Ausweisnummer existiert bereits.",
- "Ya tiene ese dato.": "Diese Angabe ist bereits eingetragen."
+ "Ya tiene ese dato.": "Diese Angabe ist bereits eingetragen.",
+ "Guardar": "Sichern",
+ "Cerrar": "Schließen",
+ "Aceptar": "OK",
+ "Atrás": "Zurück"
 }

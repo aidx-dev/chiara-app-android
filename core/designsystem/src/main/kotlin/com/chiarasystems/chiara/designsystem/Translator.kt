@@ -21,3 +21,8 @@ fun tr(key: String): String = LocalTranslator.current.tr(key)
 
 @Composable
 fun tr(key: String, vararg args: Any?): String = LocalTranslator.current.tr(key, *args)
+
+val LocalCalFormat = staticCompositionLocalOf { CalFormat("es") }
+
+@Composable
+fun calFormat(): CalFormat = LocalCalFormat.current

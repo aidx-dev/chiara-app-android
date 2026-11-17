@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.chiarasystems.chiara.AppContainer
+import com.chiarasystems.chiara.data.ActiveSheet
 import com.chiarasystems.chiara.data.AppTab
 import com.chiarasystems.chiara.data.Route
 import com.chiarasystems.chiara.designsystem.Palette
@@ -18,12 +19,12 @@ import com.chiarasystems.chiara.designsystem.Palette
 fun TabContent(app: AppContainer, tab: AppTab) {
     val path by app.router.path(tab).collectAsState()
     when (val top = path.lastOrNull()) {
-        is Route.Patient -> Placeholder("Paciente ${top.id}")
-        is Route.Report -> Placeholder("Informe ${top.id}")
+        is Route.Patient -> PatientDetailScreen(app, top.id)
+        is Route.Report -> ReportDetailScreen(app, top.id)
         null -> when (tab) {
-            AppTab.Agenda -> Placeholder("Agenda")
-            AppTab.Patients -> Placeholder("Pacientes")
-            AppTab.Reports -> Placeholder("Informes")
+            AppTab.Agenda -> AgendaScreen(app)
+            AppTab.Patients -> PatientsScreen(app)
+            AppTab.Reports -> ReportsScreen(app)
             AppTab.Settings -> Placeholder("Ajustes")
         }
     }
@@ -31,7 +32,12 @@ fun TabContent(app: AppContainer, tab: AppTab) {
 
 @Composable
 fun Sheets(app: AppContainer) {
-    // Booking, NewPatient and Assistant sheets arrive with their screens.
+    val sheet by app.router.sheet.collectAsState()
+    when (sheet) {
+        ActiveSheet.NewPatient -> NewPatientSheet(app)
+        // Booking and Assistant sheets arrive with their screens.
+        else -> Unit
+    }
 }
 
 @Composable

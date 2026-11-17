@@ -269,5 +269,9 @@
  "Voy a marcar la cita como confirmada. ¿Lo confirmas?": "Voy a marcar la cita como confirmada. ¿Lo confirmas?",
  "Voy a mover la cita. ¿Lo confirmas?": "Voy a mover la cita. ¿Lo confirmas?",
  "Ya existe un paciente con ese DNI.": "Ya existe un paciente con ese DNI.",
- "Ya tiene ese dato.": "Ya tiene ese dato."
+ "Ya tiene ese dato.": "Ya tiene ese dato.",
+ "Guardar": "Guardar",
+ "Cerrar": "Cerrar",
+ "Aceptar": "Aceptar",
+ "Atrás": "Atrás"
 }

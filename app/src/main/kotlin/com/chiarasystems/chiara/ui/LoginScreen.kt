@@ -41,7 +41,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.platform.LocalContext
@@ -187,12 +188,17 @@ private fun CredentialRow(
     }
 }
 
-/** `#f3f3f6` with three blurred blobs. */
+/** `#f3f3f6` with three soft blobs (radial fades: a blur modifier would clip them to squares). */
 @Composable
 fun LoginBackground() {
-    Box(Modifier.fillMaxSize()) {
-        Box(Modifier.offset((-150).dp, (-200).dp).size(340.dp).blur(70.dp).background(Palette.chart3, CircleShape))
-        Box(Modifier.offset(170.dp, 140.dp).size(380.dp).blur(80.dp).background(Palette.chart2.copy(alpha = 0.18f), CircleShape))
-        Box(Modifier.offset((-120).dp, 560.dp).size(320.dp).blur(70.dp).background(Palette.infoBg, CircleShape))
+    val p = Palette
+    androidx.compose.foundation.Canvas(Modifier.fillMaxSize()) {
+        fun blob(color: androidx.compose.ui.graphics.Color, cx: Float, cy: Float, r: Float) {
+            val c = Offset(cx.dp.toPx(), cy.dp.toPx())
+            drawCircle(Brush.radialGradient(listOf(color, color.copy(alpha = 0f)), center = c, radius = r.dp.toPx()), r.dp.toPx(), c)
+        }
+        blob(p.chart3, 20f, 60f, 230f)
+        blob(p.chart2.copy(alpha = 0.18f), 360f, 300f, 250f)
+        blob(p.infoBg, 60f, 700f, 220f)
     }
 }

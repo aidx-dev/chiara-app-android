@@ -314,3 +314,36 @@ fun GlassSearchField(text: String, onTextChange: (String) -> Unit, prompt: Strin
         }
     }
 }
+
+// --- Screen header & toolbar buttons ---------------------------------------------------------------------------------
+
+/** iOS large navigation title with optional subtitle and trailing toolbar actions; scrolls with the content. */
+@Composable
+fun LargeTitle(title: String, modifier: Modifier = Modifier, subtitle: String? = null, actions: @Composable androidx.compose.foundation.layout.RowScope.() -> Unit = {}) {
+    Row(modifier.fillMaxWidth().padding(top = 8.dp, bottom = 12.dp), verticalAlignment = Alignment.Bottom) {
+        Column(Modifier.weight(1f)) {
+            Text(title, fontSize = 34.sp, fontWeight = FontWeight.Bold, color = Palette.text, modifier = Modifier.semantics { heading() })
+            if (subtitle != null) Text(subtitle, fontSize = 15.sp, color = Palette.textMuted)
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically, content = actions)
+    }
+}
+
+/** Round glass toolbar button with an icon ("+", back…). */
+@Composable
+fun GlassIconButton(icon: ImageVector, description: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true) {
+    Box(
+        modifier.size(44.dp).glass(CircleShape).clip(CircleShape).alpha(if (enabled) 1f else 0.5f)
+            .clickable(enabled = enabled, onClick = onClick).semantics { contentDescription = description },
+        contentAlignment = Alignment.Center,
+    ) { Icon(icon, null, tint = Palette.primary, modifier = Modifier.size(22.dp)) }
+}
+
+/** Glass capsule text button ("Hoy"). */
+@Composable
+fun GlassTextButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true) {
+    Box(
+        modifier.height(44.dp).glass(CircleShape).clip(CircleShape).alpha(if (enabled) 1f else 0.5f).clickable(enabled = enabled, onClick = onClick).padding(horizontal = 18.dp),
+        contentAlignment = Alignment.Center,
+    ) { Text(text, fontSize = 17.sp, fontWeight = FontWeight.Medium, color = Palette.primary) }
+}

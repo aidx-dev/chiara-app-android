@@ -264,5 +264,9 @@
  "Voy a marcar la cita como confirmada. ¿Lo confirmas?": "Je vais marquer le rendez-vous comme confirmé. Tu confirmes ?",
  "Voy a mover la cita. ¿Lo confirmas?": "Je vais déplacer le rendez-vous. Tu confirmes ?",
  "Ya existe un paciente con ese DNI.": "Un patient avec cette pièce d’identité existe déjà.",
- "Ya tiene ese dato.": "Cette information est déjà enregistrée."
+ "Ya tiene ese dato.": "Cette information est déjà enregistrée.",
+ "Guardar": "Enregistrer",
+ "Cerrar": "Fermer",
+ "Aceptar": "OK",
+ "Atrás": "Retour"
 }

@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentActivity
 import com.chiarasystems.chiara.data.AppearanceMode
 import com.chiarasystems.chiara.designsystem.ChiaraTheme
 import com.chiarasystems.chiara.designsystem.LocalTranslator
+import com.chiarasystems.chiara.designsystem.LocalCalFormat
 import com.chiarasystems.chiara.ui.RootScreen
 
 class ChiaraApplication : Application() {
@@ -39,7 +40,7 @@ class MainActivity : FragmentActivity() {
                 AppearanceMode.Dark -> true
             }
             val translator = app.translator(app.settings.code.also { language })
-            CompositionLocalProvider(LocalTranslator provides translator) {
+            CompositionLocalProvider(LocalTranslator provides translator, LocalCalFormat provides androidx.compose.runtime.remember(translator.code) { app.calFormat(translator.code) }) {
                 ChiaraTheme(dark) { RootScreen(app) }
             }
         }

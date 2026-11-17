@@ -27,7 +27,8 @@ import okhttp3.OkHttpClient
 class AppContainer(context: Context) {
     val appScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
-    val settings = SettingsStore(SharedPreferencesStore(context))
+    val prefs = SharedPreferencesStore(context)
+    val settings = SettingsStore(prefs)
     val secureStore = KeystoreSecureStore(context)
 
     private val http = OkHttpClient.Builder()
@@ -59,6 +60,7 @@ class AppContainer(context: Context) {
     }
 
     fun translator(code: String) = Translator(code, tables[code].orEmpty())
+    fun calFormat(code: String) = com.chiarasystems.chiara.designsystem.CalFormat(code)
 
     /** Nothing clinical may outlive the session in memory. */
     fun clearSessionState() {
