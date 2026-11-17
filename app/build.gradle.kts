@@ -43,6 +43,7 @@ android {
         }
     }
     buildFeatures { compose = true; buildConfig = true }
+    testOptions { unitTests { isIncludeAndroidResources = true; isReturnDefaultValues = true } }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
     kotlinOptions { jvmTarget = "17"; freeCompilerArgs += "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api" }
 }
@@ -58,4 +59,14 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
+}
+
+dependencies {
+    // Compose UI tests on the JVM (Robolectric): no emulator needed.
+    testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(platform(libs.compose.bom))
+    testImplementation(libs.compose.ui.test.junit4)
+    debugImplementation(libs.compose.ui.test.manifest)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
