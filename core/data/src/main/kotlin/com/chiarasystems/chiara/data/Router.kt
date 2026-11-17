@@ -18,6 +18,8 @@ sealed interface Route {
     data class Recording(val id: String) : Route
     /** All the recorded consultations (Settings, experimental). */
     data object Recordings : Route
+    /** Third-party licences (Settings). */
+    data object Notices : Route
 }
 
 sealed interface ActiveSheet {

@@ -3,81 +3,81 @@
 Fuente: `aidx-dev/chiara-app-ios` (SwiftUI, iOS 26). Destino: Kotlin + Jetpack Compose, minSdk 31, `com.chiarasystems.chiara`.
 Regla: paridad funcional y visual con iOS. Los tests de iOS (`chiaraTests/*`) son los casos dorados.
 
-Leyenda: `[x]` hecho · `[ ]` pendiente.
+Leyenda: `[x]` hecho y verificado · `[~]` hecho pero sin verificar en dispositivo/modelo real · `[ ]` pendiente.
+
+Estado de la verificación: **174 tests unitarios en verde** (`./gradlew test`), APK debug y release (R8) compilan, y el flujo
+login → agenda → pacientes → ficha → informes/PDF → ajustes → grabar → asistente se ha ejecutado en un emulador con el backend demo.
+
+Compilar con JDK 17+, p. ej. el JBR de Android Studio: `JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"`.
+Strings: `node scripts/xcstrings-to-json.mjs ../chiara-app-ios/chiara/Localizable.xcstrings` regenera `app/src/main/assets/i18n/*.json`
+(catálogo iOS + `scripts/android-extra-*.json`); `node scripts/missing-strings.mjs` lista claves usadas sin traducir.
+
+## Módulos
+| Módulo | Contenido |
+|---|---|
+| `core:model` (JVM) | Modelos, fechas, normalizaciones (paciente, cita, informe, usuario) |
+| `core:domain` (JVM) | AgendaRules, UuidV7, PatientMatcher, guardas, RuleBasedEngine, DayBriefing, AudioLanguage |
+| `core:network` (JVM) | SupabaseClient (GoTrue + RPC, refresh serializado, caché offline), DemoBackend (interceptor) |
+| `core:data` (JVM) | Stores (Auth, Patients, Appointments, Reports, Settings, Router/Toast), AssistantStore, ClinicReader, agente JSON de herramientas |
+| `core:ai` (JVM) | Plantillas de informe + paridad con escritorio, ReportGenerator, OpenRouterChat, CloudTranscriber, pipeline, workflow |
+| `core:designsystem` | Paleta claro/oscuro, componentes, `tr()`/`CalFormat` por CompositionLocal |
+| `app` | Pantallas Compose, Keystore, SQLite de grabaciones, grabadora/importador de audio, servicios, MediaPipe |
 
 ## Fase 0 – Base
-- [x] Repo clonado, rama `migration/ios-port`
-- [x] Gradle + version catalog (AGP 8.7.3, Kotlin 2.0.21, Compose BOM)
-- [x] Módulos iniciales: `app`, `core:model`, `core:domain`, `core:designsystem`
-- [x] BuildConfig `SUPABASE_URL`/`SUPABASE_ANON_KEY` por buildType (desde `local.properties`/`secrets.properties`, no versionados)
-- [x] `./gradlew :app:assembleDebug` compila (APK debug) y `:core:*:test` en verde
-- [x] Manifest con permisos (INTERNET, RECORD_AUDIO, USE_BIOMETRIC, POST_NOTIFICATIONS, FGS microphone/dataSync), `allowBackup=false`
-- [x] Gradle wrapper 8.10.2 (compilar con JDK 17+, p. ej. el JBR de Android Studio: `JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"`)
-- [ ] Hilt, convention plugins (`build-logic`), CI
-- [x] `network_security_config` (cleartext solo debug, para `10.0.2.2:54321`)
-- [ ] Icono adaptativo (desde `docs/design_handoff_chiara_ios/assets/app-icon.svg`, capa monochrome)
-- [ ] Fuente Outfit SemiBold (wordmark)
+- [x] Repo clonado, rama `migration/ios-port`; Gradle + version catalog; wrapper 8.10.2; módulos
+- [x] BuildConfig `SUPABASE_URL`/`SUPABASE_ANON_KEY`/`DEMO_BACKEND` (de `local.properties`, no versionados); debug apunta a `10.0.2.2:54321`
+- [x] Manifest con permisos y servicios; `allowBackup=false`; `network_security_config` (cleartext solo debug, solo 10.0.2.2/localhost)
+- [x] Icono adaptativo (monograma, capa monochrome) · [x] CI (`.github/workflows/android.yml`) · [x] R8/ProGuard verificado (`assembleRelease`)
+- [ ] Hilt (se usa un contenedor manual `AppContainer`), convention plugins · [ ] Fuente Outfit (tampoco está en iOS: usa la del sistema)
 
-## Fase 1 – Dominio puro + tests (copiar casos de `chiaraTests`)
-- [x] `AgendaRules` (+ test) · [x] `UuidV7` (+ test) · [x] `AppointmentStatus.normalize`
-- [x] `Dates` (parseo ISO, lunes, minutos, `ServerTimestamp`) · [ ] formatos de visualización por idioma (capa UI)
-- [x] `Appointment` + notes `Tipo — motivo` (U+2014), `VisitType`, `PatientAppointment`
-- [x] `Patient` (edad 0–130, sexo, tint por bytes UUID), `PatientDraft`
-- [x] `Report`, `ReportBuilder`, `HtmlText.plain`, `IcdCode`, `UserProfile`, `ClinicBranding`
-- [x] `DayBriefing`, `PatientMatcher`, `ClinicalAdviceGuard`, `GroundingCheck`, `RuleBasedEngine`/`AssistantIntent`/`FallbackEngine`, `AudioLanguageResolver`, `DictationVocabulary` (tests de iOS portados: 37 en `core:domain`, 16 en `core:model`)
-- [ ] Pendiente de fase 1: `ReportText`, `ReportPrompts`/`ReportTemplates` (se hacen con la Fase 5)
+## Fase 1 – Dominio puro + tests
+- [x] AgendaRules, UuidV7, AppointmentStatus, Dates, Appointment (notes `Tipo — motivo`), Patient, PatientDraft, Report/ReportBuilder/HtmlText, UserProfile
+- [x] DayBriefing, PatientMatcher, ClinicalAdviceGuard, GroundingCheck, RuleBasedEngine/FallbackEngine, AudioLanguageResolver, DictationVocabulary
+- [x] ReportText (con los casos de `reports_service.rs`), ReportTemplates + ReportPrompts con **paridad byte a byte** con el JSON exportado del escritorio
 
-## Fase 2 – Red / Auth / Datos (`core:network`, `core:data`)
-- [x] `SupabaseClient` (módulo JVM `core:network`, OkHttp): GoTrue (password, refresh, recover, logout), RPC, refresh con `Mutex` (tokens rotan), margen 60 s, reintento tras 401, 400/401/422 ⇒ `InvalidCredentials`, offline ⇒ caché; 11 tests con MockWebServer
-- [x] Claims JWT (`app_metadata.clinic_id/clinic_role`)
-- [x] `FileResponseCache` (SHA-256 de `clinic|rpc|body`, atómica, limpiar al salir) con `ByteCodec` · [x] codec AES-GCM con Keystore (`AesGcmCodec`, capa `app`)
-- [x] Interfaz `SecureStore` · [x] `KeystoreSecureStore` (AES-GCM + SharedPreferences, capa `app`)
-- [x] RPCs (contrato verificado con MockWebServer): `list_patients`, `get_patient`, `create_patient`, `update_patient`, `list_appointments_in_range`, `create_appointment_with_patient`, `update_appointment`, `archive_appointment`, `patient_appointment_history`, `list_consultations_with_latest_report`, `get_clinic_branding`; REST `profiles`, `clinics` · [ ] `get_my_ai_config` (Fase 5)
-- [x] JSON: `@SerialName` snake_case, nulls explícitos en RPC (`rpcParams`), `ignoreUnknownKeys`
-- [x] Stores en `core:data` (18 tests): `AuthStore` (+ `BiometricOutcome`), `PatientsStore` (paginación 100, búsqueda 300 ms, DNI duplicado, UUIDv7), `AppointmentsStore` (`revision`, undo), `ReportsStore` (concurrencia 6)
-- [x] `SettingsStore` (SharedPreferences tras interfaz `Preferences`), `Router`, `ToastCenter` (con tests)
-- [x] `TestEnv` (MockWebServer) para tests · [x] `DemoBackend` (interceptor OkHttp; `DEMO_BACKEND=true` por defecto en debug, `local.properties` para apagarlo)
+## Fase 2 – Red / Auth / Datos
+- [x] SupabaseClient (headers, refresh con Mutex y persistencia inmediata, 400/401/422 = credenciales, offline→caché), `FileResponseCache` cifrada con `AesGcmCodec` (Keystore)
+- [x] RPCs de pacientes, citas, informes, branding; `profiles`/`clinics`; `get_my_ai_config`; explicit nulls
+- [x] Stores + `KeystoreSecureStore` + `SettingsStore` + Router/Toast; `DemoBackend` (debug)
 
 ## Fase 3 – Design system + shell
-- [x] Palette claro/oscuro base (resto de roles pendiente)
-- [x] Surface/Hairline, glass (tinte translúcido; blur real pendiente, ver nota), Avatar, StatusBadge, MenuPicker, GroupedList, FieldRow, OfflineBanner, ErrorNote, GlassSearchField, botones
-- [x] Monograma Chiara (Canvas)
-- [x] MainShell: 4 pestañas, pila por pestaña (Router), toast con "Deshacer" (2.8 s / 8 s), botón asistente (sin acción hasta Fase 6), RootScreen + reset de stores al cerrar sesión
+- [x] Paleta completa, Surface/Hairline, Avatar, StatusBadge, MenuPicker, GroupedList, FieldRow, OfflineBanner, ErrorNote, GlassSearchField, botones, monograma
+- [x] "Glass" = tinte translúcido + borde fino. [ ] Blur real del contenido de detrás (haze/RenderEffect): pendiente, solo estético
+- [x] MainShell (4 pestañas, pila por pestaña, toast con "Deshacer", botón asistente), RootScreen, reset de stores al cerrar sesión
 
 ## Fase 4 – Pantallas
-- [x] Login (validaciones, recuperar contraseña, BiometricPrompt)
-- [x] Agenda (semana/mes expandible, briefing, filas, pull-to-refresh) · BookingSheet · MonthCalendar
-- [x] Pacientes · NewPatientSheet · PatientDetail (sin resumen IA ni grabaciones: Fases 5/6)
-- [x] Informes (por mes) · ReportDetail · PDF A4 (`PdfDocument`) + compartir (`FileProvider`)
-- [x] Ajustes (idioma, apariencia, versión, cerrar sesión) · [ ] avisos legales, borrar grabaciones, sección experimental (Fases 5/7)
+- [x] Login (validaciones, recuperar contraseña, BiometricPrompt) · [x] Agenda (semana/mes, resumen del día, filas, refresco) · [x] BookingSheet + MonthCalendar
+- [x] Pacientes · NewPatientSheet · PatientDetail · [x] Informes por mes · ReportDetail · PDF A4 (`PdfDocument`) + compartir (FileProvider)
+- [x] Ajustes: idioma, apariencia, versión, licencias, modelo de IA, experimental (auto-transcribir, grabaciones), cerrar sesión
 
 ## Fase 5 – Grabación y pipeline
-- [ ] Servicio de grabación (`AudioRecord` 16 kHz mono → AAC/m4a, FGS microphone, pausa, audio focus, cambio de ruta, checkpoint 20 s)
-- [ ] Importador de audio (SAF → mono 16 kHz AAC)
-- [ ] Room `RecordingStore` (owner, adoptar huérfanas), audio en `noBackupFilesDir`
-- [ ] `ConsultationPipeline` (queued→transcribing→reviewing→writingReport→done, 3 intentos) con WorkManager + `ForegroundInfo`, notificaciones sin nombres
-- [ ] `CloudTranscriber` (OpenRouter MAI-Transcribe 2; FLAC/WAV, trozos por silencio, bisección, reintentos), `OpenRouterChat` (fallback de modelos, backoff), `UserAIConfig` (clave solo en memoria)
-- [ ] `ReportGenerator`/`RollingSummary`/`ReportText`/`ReportTemplate` + `ReportTemplates.json` y test de paridad byte a byte
-- [ ] UI: Record, Import, RecordingDetail, lista con swipe
+- [x] Grabadora (`AudioRecord` 16 kHz mono → AAC ADTS, pausa, audio focus, medidor) + servicio en primer plano `microphone`. ADTS en vez de m4a: lo grabado antes de un fallo sigue siendo reproducible
+- [x] Importador (cualquier audio/vídeo → AAC) · [x] Almacén SQLite con propietario, audio en `noBackupFilesDir`
+- [x] `ConsultationPipeline` (cola, reintentos, estados, notificaciones sin nombres, servicio `dataSync`) — 27 tests de iOS portados
+- [x] CloudTranscriber (MAI-Transcribe 2) con troceado por silencios, bisección y diarización — **WAV en vez de FLAC** (sin codificador FLAC en la plataforma; ~9 min por petición)
+- [x] OpenRouterChat (fallback de modelos, backoff), ReportGenerator (resumen rodante, 2 pasadas), UserAIConfig (clave solo en memoria)
+- [x] UI: grabar, importar, detalle (transcripción, plantilla, informe, compartir), lista, sección en la ficha
+- [ ] Verificado en emulador: grabar (AAC, servicio, UI). [~] Importar y la cadena completa con la nube necesitan una cuenta con clave de IA
 
-## Fase 6 – IA on-device (paridad con iOS)
-- [ ] `Transcriber`: sherpa-onnx + Parakeet TDT 0.6B v3 int8 (gating RAM, descarga ~500 MB)
-- [ ] Dictado streaming con hotwords (nombres de pacientes)
-- [ ] LLM local + extracción estructurada (JSON validado / GBNF) tras `AssistantEngine`; `FallbackEngine` con `RuleBasedEngine`
-- [ ] Agente + herramientas (`getAgenda`, `findPatients`, `getPatientSummary`, `getPatientReports`, `searchReports`, `proposeChange`), `ClinicReader`, `PatientSummarizer`
-- [ ] `AssistantStore` (proponer → confirmar → deshacer), `AssistantSheet`, `GlowBorder`
-- [ ] `AssistantBench` (19 casos) como test instrumentado
+## Fase 6 – IA en el dispositivo
+- [x] `AssistantStore` completo (órdenes, desambiguación, tarjeta de confirmación, deshacer, huecos, datos de contacto) — 28 tests
+- [x] `ClinicReader` + herramientas + agente por protocolo JSON (`ToolCallingAgent`) + `LlmIntentEngine` + resumidor — 9 tests con un LLM de mentira
+- [x] AssistantSheet (burbujas, tarjetas, dictado con `SpeechRecognizer` y vocabulario de pacientes), botón flotante, deshacer
+- [x] Con el reconocedor por reglas el asistente funciona hoy (verificado: "Show me tomorrow's agenda" abre el día siguiente)
+- [~] LLM local con MediaPipe LLM Inference (`MediaPipeLlm`): compila, R8 ok, instalación del modelo por selector de archivo en Ajustes. **Nunca ejecutado con un modelo real**: calidad del protocolo JSON sin validar
+- [ ] ASR en el dispositivo (sherpa-onnx + Parakeet TDT v3): sin integrar (el AAR no está en Maven Central y pesa ~500 MB). `LocalAsr` es la interfaz; hoy lanza `LocalModelUnavailable` y la transcripción usa la nube (MAI)
+- [ ] `AssistantBench` (19 casos) como test instrumentado con un modelo real · [ ] GlowBorder animado del campo del asistente
 
 ## Fase 7 – Localización y calidad
-- [x] `scripts/xcstrings-to-json.mjs` (271 claves × es/en/de/fr → `assets/i18n/*.json`; `%@`→`%s`, `%lld`→`%d`; "Face ID"→biometría; extras Android en `android-extra-strings.json`). Decisión: catálogo JSON + `tr()` como iOS en vez de `strings.xml`, para cambio de idioma inmediato y claves idénticas
-- [x] Idioma in-app (`SettingsStore` + `Translator`/`CalFormat` por CompositionLocal)
-- [ ] Tests: JUnit, MockK, Turbine, coroutines-test, MockWebServer, Room in-memory, Compose UI, capturas claro/oscuro
-- [ ] ThirdPartyNotices (Parakeet CC-BY-4.0, sherpa-onnx, ONNX Runtime, modelo LLM)
-- [ ] R8/ProGuard, accesibilidad, política Play (FGS), tablets (opcional)
+- [x] 426 claves × es/en/de/fr (catálogo iOS + extras Android: grabación, notificaciones, IA); cambio de idioma inmediato; "Face ID" → "biometría"
+- [x] Tests: 174 (model 16, domain 37, network 11, data 61, ai 49); R8 ok
+- [ ] Tests instrumentados de Compose y capturas claro/oscuro · [ ] Revisión de accesibilidad con TalkBack · [ ] Tablets/WindowSizeClass
+- [ ] Política Play: declaración de FGS `microphone`/`dataSync`, política de privacidad, firma de release
 
 ## Riesgos abiertos
-1. Sin tool-calling nativo en Android: protocolo JSON propio; validar con `AssistantBench`.
-2. Parakeet 0.6B en CPU: lento y pesado en gama media; decidir umbral de RAM y fallback a MAI cloud.
-3. Codificación FLAC con `MediaCodec` no garantizada: elegir WAV (≈8 min/trozo) o libFLAC.
-4. Datos clínicos en reposo: Room/ficheros cifrados, backups desactivados.
+1. Sin tool-calling nativo en Android: protocolo JSON propio; la calidad con un modelo pequeño (Gemma 1–3B) debe medirse con `AssistantBench` antes de fiarse.
+2. Parakeet 0.6B en CPU: lento y pesado en gama media; sin integrar. Mientras tanto, la nube (MAI) es el camino de transcripción.
+3. APK release de ~53 MB por las libs nativas de MediaPipe: valorar ABI splits / app bundle.
+4. Datos clínicos en reposo: caché y secretos cifrados con Keystore; las grabaciones y transcripciones locales están en `noBackupFilesDir` **sin cifrar** (como en iOS, protegidas por el sandbox).
 5. Diarización por trozos sin reconciliar entre peticiones (limitación heredada de iOS).
+6. El backend real no se ha probado: todo el flujo se ha ejecutado contra `DemoBackend`; falta una pasada contra Supabase con RLS.

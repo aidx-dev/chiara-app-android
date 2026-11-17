@@ -1,0 +1,42 @@
+AVISOS Y LICENCIAS DE TERCEROS
+
+Chiara se construye con el software de código abierto siguiente. Cada componente se distribuye bajo su propia licencia.
+
+1) Kotlin, kotlinx.coroutines y kotlinx.serialization (JetBrains)
+   https://kotlinlang.org · https://github.com/Kotlin/kotlinx.coroutines · https://github.com/Kotlin/kotlinx.serialization
+   Licencia Apache-2.0.
+
+2) Android Jetpack: Compose, Material 3, Activity, Biometric, Lifecycle (Google)
+   https://developer.android.com/jetpack
+   Licencia Apache-2.0. Los iconos proceden de Material Icons (Google), también Apache-2.0.
+
+3) OkHttp y Okio (Square)
+   https://square.github.io/okhttp/
+   Licencia Apache-2.0.
+
+4) MediaPipe LLM Inference (Google)
+   https://ai.google.dev/edge/mediapipe
+   Licencia Apache-2.0. Ejecuta en el propio dispositivo el modelo de lenguaje que elijas en Ajustes. Lo que lee el asistente no sale del teléfono.
+
+5) Modelo de lenguaje que instala quien usa la app (por ejemplo Gemma)
+   Chiara no incluye ningún modelo. Si instalas uno, sus condiciones de uso son las de su autor:
+   Gemma, de Google: https://ai.google.dev/gemma/terms
+   Revisa la licencia del modelo que instales antes de usarlo en tu clínica.
+
+6) Servicios en la nube que solo se usan si tu cuenta los tiene activados
+   Transcripción con MAI-Transcribe 2 (Microsoft) y redacción de informes, a través de OpenRouter, con retención cero de datos
+   solicitada (zdr) y sin recogida de datos. El audio o el texto de la consulta salen del dispositivo únicamente cuando la
+   persona que usa la app lo elige y el paciente lo ha consentido.
+
+------------------------------------------------------------------------------
+Apache License 2.0
+------------------------------------------------------------------------------
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use these components except in compliance with
+the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
+language governing permissions and limitations under the License.

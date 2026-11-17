@@ -123,6 +123,14 @@ fun SettingsScreen(app: AppContainer) {
 
         ExperimentalSection(app)
 
+        GroupedList(Modifier.padding(top = 24.dp)) {
+            row {
+                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable { app.router.push(com.chiarasystems.chiara.data.Route.Notices) }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
+                    Text(tr("Licencias de terceros"), fontSize = 17.sp, color = Palette.text)
+                }
+            }
+        }
+
         Box(
             Modifier.padding(top = 24.dp).fillMaxWidth().surface().clickable { confirmSignOut = true }.heightIn(min = 52.dp),
             contentAlignment = Alignment.Center,

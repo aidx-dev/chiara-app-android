@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Warning
@@ -156,5 +157,18 @@ fun LocalAiSection(app: AppContainer) {
             confirmButton = { TextButton({ confirmDelete = false; app.llm.release(); app.models.deleteLlm() }) { Text(tr("Borrar el modelo"), color = Palette.destructive) } },
             dismissButton = { TextButton({ confirmDelete = false }) { Text(tr("Cancelar")) } },
         )
+    }
+}
+
+/** Third-party licences (asset `third_party_notices.txt`). */
+@Composable
+fun NoticesScreen(app: AppContainer) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val text = remember { runCatching { context.assets.open("third_party_notices.txt").bufferedReader().use { it.readText() } }.getOrDefault("") }
+    Column(Modifier.fillMaxWidth()) {
+        DetailTopBar(tr("Licencias de terceros"), onBack = { app.router.pop() })
+        Column(Modifier.weight(1f).verticalScroll(androidx.compose.foundation.rememberScrollState()).padding(16.dp)) {
+            Text(text, fontSize = 13.sp, color = Palette.text, lineHeight = 19.sp)
+        }
     }
 }

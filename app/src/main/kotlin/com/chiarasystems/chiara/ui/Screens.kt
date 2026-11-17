@@ -23,6 +23,7 @@ fun TabContent(app: AppContainer, tab: AppTab) {
         is Route.Report -> ReportDetailScreen(app, top.id)
         is Route.Recording -> RecordingDetailScreen(app, top.id)
         Route.Recordings -> RecordingsListScreen(app)
+        Route.Notices -> NoticesScreen(app)
         null -> when (tab) {
             AppTab.Agenda -> AgendaScreen(app)
             AppTab.Patients -> PatientsScreen(app)
