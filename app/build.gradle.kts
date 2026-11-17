@@ -86,3 +86,6 @@ dependencies {
     debugImplementation(libs.compose.ui.test.manifest)
     testImplementation(libs.kotlinx.coroutines.test)
 }
+
+// The Compose tests need the debug-only test manifest (ComponentActivity); run them on the debug variant only.
+tasks.configureEach { if (name == "testReleaseUnitTest") enabled = false }
