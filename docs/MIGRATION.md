@@ -10,6 +10,7 @@ Leyenda: `[x]` hecho · `[ ]` pendiente.
 - [x] Gradle + version catalog (AGP 8.7.3, Kotlin 2.0.21, Compose BOM)
 - [x] Módulos iniciales: `app`, `core:model`, `core:domain`, `core:designsystem`
 - [x] BuildConfig `SUPABASE_URL`/`SUPABASE_ANON_KEY` por buildType (desde `local.properties`/`secrets.properties`, no versionados)
+- [x] `./gradlew :app:assembleDebug` compila (APK debug) y `:core:*:test` en verde
 - [x] Manifest con permisos (INTERNET, RECORD_AUDIO, USE_BIOMETRIC, POST_NOTIFICATIONS, FGS microphone/dataSync), `allowBackup=false`
 - [x] Gradle wrapper 8.10.2 (compilar con JDK 17+, p. ej. el JBR de Android Studio: `JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"`)
 - [ ] Hilt, convention plugins (`build-logic`), CI
@@ -23,7 +24,8 @@ Leyenda: `[x]` hecho · `[ ]` pendiente.
 - [x] `Appointment` + notes `Tipo — motivo` (U+2014), `VisitType`, `PatientAppointment`
 - [x] `Patient` (edad 0–130, sexo, tint por bytes UUID), `PatientDraft`
 - [x] `Report`, `ReportBuilder`, `HtmlText.plain`, `IcdCode`, `UserProfile`, `ClinicBranding`
-- [ ] `DayBriefing`, `PatientMatcher`, `ClinicalAdviceGuard`, `GroundingCheck`, `RuleBasedEngine`, `AudioLanguage`
+- [x] `DayBriefing`, `PatientMatcher`, `ClinicalAdviceGuard`, `GroundingCheck`, `RuleBasedEngine`/`AssistantIntent`/`FallbackEngine`, `AudioLanguageResolver`, `DictationVocabulary` (tests de iOS portados: 37 en `core:domain`, 16 en `core:model`)
+- [ ] Pendiente de fase 1: `ReportText`, `ReportPrompts`/`ReportTemplates` (se hacen con la Fase 5)
 
 ## Fase 2 – Red / Auth / Datos (`core:network`, `core:data`)
 - [ ] `SupabaseClient`: GoTrue (password, refresh, recover, logout), RPC `POST rest/v1/rpc/{name}`, refresh con `Mutex` (tokens rotan), margen 60 s, reintento tras 401, 400/401/422 ⇒ `invalidCredentials`, offline ⇒ caché
