@@ -15,6 +15,14 @@ fun interface Transcribers {
 /** Translates a catalog key (the Spanish text) with its arguments. */
 fun interface Translate { fun tr(key: String, args: List<Any>): String }
 
+/** An on-device recogniser (Phase 6: sherpa-onnx). */
+interface LocalAsr {
+    suspend fun transcribe(source: PcmSource, model: TranscriptionModel, languageCode: String, progress: (Double) -> Unit): List<TranscriptSegment>
+}
+
+/** The on-device recogniser asked for is not installed (or this device cannot run it). */
+class LocalModelUnavailable : Exception("local model unavailable")
+
 sealed class WorkflowError : Exception() {
     data object NoAudio : WorkflowError()
     data object NothingRecognised : WorkflowError()
@@ -157,6 +165,7 @@ class RecordingWorkflow(
     private fun describe(e: Throwable): String = when {
         e is WorkflowError.NoAudio -> tr("El audio de esta grabación ya no está.")
         e is WorkflowError.NothingRecognised -> tr("No se ha reconocido ninguna palabra en el audio.")
+        e is LocalModelUnavailable -> tr("El reconocimiento de voz del dispositivo no está disponible. Usa la transcripción en la nube.")
         e is CloudTranscriberError.NotAvailable -> tr("Tu cuenta no tiene transcripción en la nube. Pide a tu administrador una clave de IA o usa otro motor.")
         e is CloudTranscriberError.Rejected && (e.status == 401 || e.status == 403) -> tr("OpenRouter no ha aceptado tu clave de IA. Pide a tu administrador que la revise.")
         e is CloudTranscriberError.Rejected && e.status == 402 -> tr("Se ha agotado el saldo de IA de tu cuenta. Pide a tu administrador que lo amplíe.")

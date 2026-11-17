@@ -21,6 +21,8 @@ fun TabContent(app: AppContainer, tab: AppTab) {
     when (val top = path.lastOrNull()) {
         is Route.Patient -> PatientDetailScreen(app, top.id)
         is Route.Report -> ReportDetailScreen(app, top.id)
+        is Route.Recording -> RecordingDetailScreen(app, top.id)
+        Route.Recordings -> RecordingsListScreen(app)
         null -> when (tab) {
             AppTab.Agenda -> AgendaScreen(app)
             AppTab.Patients -> PatientsScreen(app)
@@ -35,6 +37,8 @@ fun Sheets(app: AppContainer) {
     val sheet by app.router.sheet.collectAsState()
     when (sheet) {
         ActiveSheet.NewPatient -> NewPatientSheet(app)
+        is ActiveSheet.Record -> RecordConsultationSheet(app, (sheet as ActiveSheet.Record).patientId?.let { id -> app.patients.patient(id) })
+        is ActiveSheet.ImportAudio -> ImportAudioSheet(app, (sheet as ActiveSheet.ImportAudio).patientId?.let { id -> app.patients.patient(id) })
         is ActiveSheet.Booking -> BookingSheet(app, sheet as ActiveSheet.Booking)
         // The assistant sheet arrives with the assistant (Phase 6).
         else -> Unit

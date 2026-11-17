@@ -22,6 +22,8 @@
             android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
         </provider>
+        <service android:name=".recording.RecordingService" android:exported="false" android:foregroundServiceType="microphone" />
+        <service android:name=".recording.PipelineService" android:exported="false" android:foregroundServiceType="dataSync" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

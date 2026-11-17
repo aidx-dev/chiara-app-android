@@ -1,0 +1,818 @@
+{
+  "Grabando consulta": {
+    "es": "Grabando consulta",
+    "en": "Recording consultation",
+    "de": "Konsultation wird aufgenommen",
+    "fr": "Enregistrement de la consultation"
+  },
+  "Procesando consultas": {
+    "es": "Procesando consultas",
+    "en": "Processing consultations",
+    "de": "Konsultationen werden verarbeitet",
+    "fr": "Traitement des consultations"
+  },
+  "Consultas": {
+    "es": "Consultas",
+    "en": "Consultations",
+    "de": "Konsultationen",
+    "fr": "Consultations"
+  },
+  "Toca para volver a Chiara.": {
+    "es": "Toca para volver a Chiara.",
+    "en": "Tap to go back to Chiara.",
+    "de": "Tippen, um zu Chiara zurückzukehren.",
+    "fr": "Touchez pour revenir à Chiara."
+  },
+  "Consulta lista": {
+    "es": "Consulta lista",
+    "en": "Consultation ready",
+    "de": "Konsultation fertig",
+    "fr": "Consultation prête"
+  },
+  "Ya puedes revisar la transcripción.": {
+    "es": "Ya puedes revisar la transcripción.",
+    "en": "You can now review the transcript.",
+    "de": "Sie können das Transkript jetzt prüfen.",
+    "fr": "Vous pouvez maintenant relire la transcription."
+  },
+  "Informe listo": {
+    "es": "Informe listo",
+    "en": "Report ready",
+    "de": "Bericht fertig",
+    "fr": "Compte rendu prêt"
+  },
+  "Ya puedes revisar el informe de la consulta.": {
+    "es": "Ya puedes revisar el informe de la consulta.",
+    "en": "You can now review the consultation report.",
+    "de": "Sie können den Konsultationsbericht jetzt prüfen.",
+    "fr": "Vous pouvez maintenant relire le compte rendu de la consultation."
+  },
+  "No se ha podido procesar una consulta": {
+    "es": "No se ha podido procesar una consulta",
+    "en": "A consultation could not be processed",
+    "de": "Eine Konsultation konnte nicht verarbeitet werden",
+    "fr": "Une consultation n'a pas pu être traitée"
+  },
+  "Se reintentará al abrir la app.": {
+    "es": "Se reintentará al abrir la app.",
+    "en": "It will be retried when the app is opened.",
+    "de": "Beim Öffnen der App wird es erneut versucht.",
+    "fr": "Une nouvelle tentative aura lieu à l'ouverture de l'app."
+  },
+  "Consulta pendiente": {
+    "es": "Consulta pendiente",
+    "en": "Consultation pending",
+    "de": "Konsultation ausstehend",
+    "fr": "Consultation en attente"
+  },
+  "Con la pantalla bloqueada no se ha podido terminar. Se terminará al abrir la app.": {
+    "es": "Con la pantalla bloqueada no se ha podido terminar. Se terminará al abrir la app.",
+    "en": "It could not be finished with the screen locked. It will be finished when the app is opened.",
+    "de": "Mit gesperrtem Bildschirm konnte es nicht abgeschlossen werden. Es wird beim Öffnen der App beendet.",
+    "fr": "Impossible de terminer avec l'écran verrouillé. Ce sera terminé à l'ouverture de l'app."
+  },
+  "Se terminará al abrir la app.": {
+    "es": "Se terminará al abrir la app.",
+    "en": "It will finish when the app is opened.",
+    "de": "Wird beim Öffnen der App beendet.",
+    "fr": "Ce sera terminé à l'ouverture de l'app."
+  },
+  "El audio de esta consulta ya no está.": {
+    "es": "El audio de esta consulta ya no está.",
+    "en": "The audio of this consultation is no longer there.",
+    "de": "Das Audio dieser Konsultation ist nicht mehr vorhanden.",
+    "fr": "L'audio de cette consultation n'existe plus."
+  },
+  "No se ha podido transcribir.": {
+    "es": "No se ha podido transcribir.",
+    "en": "It could not be transcribed.",
+    "de": "Es konnte nicht transkribiert werden.",
+    "fr": "La transcription n'a pas pu être faite."
+  },
+  "Consultas grabadas": {
+    "es": "Consultas grabadas",
+    "en": "Recorded consultations",
+    "de": "Aufgenommene Konsultationen",
+    "fr": "Consultations enregistrées"
+  },
+  "Grabar consulta": {
+    "es": "Grabar consulta",
+    "en": "Record consultation",
+    "de": "Konsultation aufnehmen",
+    "fr": "Enregistrer la consultation"
+  },
+  "Experimental": {
+    "es": "Experimental",
+    "en": "Experimental",
+    "de": "Experimentell",
+    "fr": "Expérimental"
+  },
+  "Importar audio": {
+    "es": "Importar audio",
+    "en": "Import audio",
+    "de": "Audio importieren",
+    "fr": "Importer un audio"
+  },
+  "Hablante %d": {
+    "es": "Hablante %d",
+    "en": "Speaker %d",
+    "de": "Sprecher %d",
+    "fr": "Intervenant %d"
+  },
+  "Función experimental": {
+    "es": "Función experimental",
+    "en": "Experimental feature",
+    "de": "Experimentelle Funktion",
+    "fr": "Fonction expérimentale"
+  },
+  "Idioma del audio": {
+    "es": "Idioma del audio",
+    "en": "Audio language",
+    "de": "Audiosprache",
+    "fr": "Langue de l'audio"
+  },
+  "Sin paciente": {
+    "es": "Sin paciente",
+    "en": "No patient",
+    "de": "Kein Patient",
+    "fr": "Sans patient"
+  },
+  "Consulta guardada.": {
+    "es": "Consulta guardada.",
+    "en": "Consultation saved.",
+    "de": "Konsultation gespeichert.",
+    "fr": "Consultation enregistrée."
+  },
+  "Consulta guardada. Se está transcribiendo…": {
+    "es": "Consulta guardada. Se está transcribiendo…",
+    "en": "Consultation saved. Transcribing…",
+    "de": "Konsultation gespeichert. Wird transkribiert…",
+    "fr": "Consultation enregistrée. Transcription en cours…"
+  },
+  "No se pudo abrir el micrófono. Comprueba el permiso de la app.": {
+    "es": "No se pudo abrir el micrófono. Comprueba el permiso de la app.",
+    "en": "The microphone could not be opened. Check the app's permission.",
+    "de": "Das Mikrofon konnte nicht geöffnet werden. Prüfen Sie die Berechtigung der App.",
+    "fr": "Impossible d'ouvrir le micro. Vérifiez l'autorisation de l'app."
+  },
+  "El paciente ha dado su consentimiento para grabar la consulta y transcribirla.": {
+    "es": "El paciente ha dado su consentimiento para grabar la consulta y transcribirla.",
+    "en": "The patient has consented to the consultation being recorded and transcribed.",
+    "de": "Der Patient hat der Aufnahme und Transkription der Konsultation zugestimmt.",
+    "fr": "Le patient a consenti à l'enregistrement et à la transcription de la consultation."
+  },
+  "Es el idioma de la ficha del paciente.": {
+    "es": "Es el idioma de la ficha del paciente.",
+    "en": "This is the language in the patient's record.",
+    "de": "Das ist die Sprache aus der Patientenakte.",
+    "fr": "C'est la langue du dossier du patient."
+  },
+  "Al terminar, el audio se transcribe y la transcripción se guarda solo aquí. Si tu cuenta tiene IA en la nube, el audio se envía a MAI-Transcribe 2 (Microsoft, a través de OpenRouter, sin que lo guarden). Puedes bloquear la pantalla: la grabación y el procesado continúan.": {
+    "es": "Al terminar, el audio se transcribe y la transcripción se guarda solo aquí. Si tu cuenta tiene IA en la nube, el audio se envía a MAI-Transcribe 2 (Microsoft, a través de OpenRouter, sin que lo guarden). Puedes bloquear la pantalla: la grabación y el procesado continúan.",
+    "en": "When you finish, the audio is transcribed and the transcript is kept only here. If your account has cloud AI, the audio is sent to MAI-Transcribe 2 (Microsoft, through OpenRouter, without being stored). You can lock the screen: recording and processing continue.",
+    "de": "Nach dem Beenden wird das Audio transkribiert und das Transkript nur hier gespeichert. Hat Ihr Konto Cloud-KI, wird das Audio an MAI-Transcribe 2 gesendet (Microsoft, über OpenRouter, ohne Speicherung). Sie können den Bildschirm sperren: Aufnahme und Verarbeitung laufen weiter.",
+    "fr": "À la fin, l'audio est transcrit et la transcription n'est conservée qu'ici. Si votre compte dispose de l'IA cloud, l'audio est envoyé à MAI-Transcribe 2 (Microsoft, via OpenRouter, sans conservation). Vous pouvez verrouiller l'écran : l'enregistrement et le traitement continuent."
+  },
+  "Grabando… El texto aparecerá al terminar.": {
+    "es": "Grabando… El texto aparecerá al terminar.",
+    "en": "Recording… The text will appear when you finish.",
+    "de": "Aufnahme läuft… Der Text erscheint nach dem Beenden.",
+    "fr": "Enregistrement… Le texte apparaîtra à la fin."
+  },
+  "La grabación se ha interrumpido.": {
+    "es": "La grabación se ha interrumpido.",
+    "en": "The recording was interrupted.",
+    "de": "Die Aufnahme wurde unterbrochen.",
+    "fr": "L'enregistrement a été interrompu."
+  },
+  "En pausa": {
+    "es": "En pausa",
+    "en": "Paused",
+    "de": "Pausiert",
+    "fr": "En pause"
+  },
+  "Reanudar": {
+    "es": "Reanudar",
+    "en": "Resume",
+    "de": "Fortsetzen",
+    "fr": "Reprendre"
+  },
+  "Pausar": {
+    "es": "Pausar",
+    "en": "Pause",
+    "de": "Pausieren",
+    "fr": "Pause"
+  },
+  "Terminar": {
+    "es": "Terminar",
+    "en": "Finish",
+    "de": "Beenden",
+    "fr": "Terminer"
+  },
+  "Empezar a grabar": {
+    "es": "Empezar a grabar",
+    "en": "Start recording",
+    "de": "Aufnahme starten",
+    "fr": "Commencer l'enregistrement"
+  },
+  "¿Descartar la grabación?": {
+    "es": "¿Descartar la grabación?",
+    "en": "Discard the recording?",
+    "de": "Aufnahme verwerfen?",
+    "fr": "Abandonner l'enregistrement ?"
+  },
+  "Descartar": {
+    "es": "Descartar",
+    "en": "Discard",
+    "de": "Verwerfen",
+    "fr": "Abandonner"
+  },
+  "Seguir grabando": {
+    "es": "Seguir grabando",
+    "en": "Keep recording",
+    "de": "Weiter aufnehmen",
+    "fr": "Continuer"
+  },
+  "Audio importado. Se está transcribiendo; te avisaremos al terminar.": {
+    "es": "Audio importado. Se está transcribiendo; te avisaremos al terminar.",
+    "en": "Audio imported. It is being transcribed; we'll let you know when done.",
+    "de": "Audio importiert. Es wird transkribiert; wir benachrichtigen Sie, wenn es fertig ist.",
+    "fr": "Audio importé. Transcription en cours ; nous vous préviendrons à la fin."
+  },
+  "Audio importado.": {
+    "es": "Audio importado.",
+    "en": "Audio imported.",
+    "de": "Audio importiert.",
+    "fr": "Audio importé."
+  },
+  "No he podido leer el audio de este archivo. Prueba con otro formato (m4a, mp3, wav).": {
+    "es": "No he podido leer el audio de este archivo. Prueba con otro formato (m4a, mp3, wav).",
+    "en": "I couldn't read the audio in this file. Try another format (m4a, mp3, wav).",
+    "de": "Das Audio dieser Datei konnte nicht gelesen werden. Versuchen Sie ein anderes Format (m4a, mp3, wav).",
+    "fr": "Impossible de lire l'audio de ce fichier. Essayez un autre format (m4a, mp3, wav)."
+  },
+  "Preparando el audio…": {
+    "es": "Preparando el audio…",
+    "en": "Preparing the audio…",
+    "de": "Audio wird vorbereitet…",
+    "fr": "Préparation de l'audio…"
+  },
+  "El paciente ha dado su consentimiento para que esta grabación se transcriba en la nube.": {
+    "es": "El paciente ha dado su consentimiento para que esta grabación se transcriba en la nube.",
+    "en": "The patient has consented to this recording being transcribed in the cloud.",
+    "de": "Der Patient hat zugestimmt, dass diese Aufnahme in der Cloud transkribiert wird.",
+    "fr": "Le patient a consenti à ce que cet enregistrement soit transcrit dans le cloud."
+  },
+  "El paciente ha dado su consentimiento para procesar esta grabación.": {
+    "es": "El paciente ha dado su consentimiento para procesar esta grabación.",
+    "en": "The patient has consented to this recording being processed.",
+    "de": "Der Patient hat der Verarbeitung dieser Aufnahme zugestimmt.",
+    "fr": "Le patient a consenti au traitement de cet enregistrement."
+  },
+  "El audio de esta consulta saldrá del dispositivo para transcribirse.": {
+    "es": "El audio de esta consulta saldrá del dispositivo para transcribirse.",
+    "en": "The audio of this consultation will leave the device to be transcribed.",
+    "de": "Das Audio dieser Konsultation verlässt das Gerät zur Transkription.",
+    "fr": "L'audio de cette consultation quittera l'appareil pour être transcrit."
+  },
+  "Se admiten archivos de audio y de vídeo (solo se usa el sonido). La conversión se hace en este dispositivo; el audio convertido se envía para transcribirlo y el resultado se guarda solo aquí.": {
+    "es": "Se admiten archivos de audio y de vídeo (solo se usa el sonido). La conversión se hace en este dispositivo; el audio convertido se envía para transcribirlo y el resultado se guarda solo aquí.",
+    "en": "Audio and video files are supported (only the sound is used). Conversion happens on this device; the converted audio is sent to be transcribed and the result is kept only here.",
+    "de": "Audio- und Videodateien werden unterstützt (nur der Ton wird verwendet). Die Konvertierung erfolgt auf diesem Gerät; das konvertierte Audio wird zur Transkription gesendet und das Ergebnis nur hier gespeichert.",
+    "fr": "Les fichiers audio et vidéo sont acceptés (seul le son est utilisé). La conversion se fait sur cet appareil ; l'audio converti est envoyé pour être transcrit et le résultat n'est conservé qu'ici."
+  },
+  "Se admiten archivos de audio y de vídeo (solo se usa el sonido). La conversión y la transcripción se hacen en este dispositivo; nada se envía a ningún servidor.": {
+    "es": "Se admiten archivos de audio y de vídeo (solo se usa el sonido). La conversión y la transcripción se hacen en este dispositivo; nada se envía a ningún servidor.",
+    "en": "Audio and video files are supported (only the sound is used). Conversion and transcription happen on this device; nothing is sent to any server.",
+    "de": "Audio- und Videodateien werden unterstützt (nur der Ton wird verwendet). Konvertierung und Transkription erfolgen auf diesem Gerät; nichts wird an einen Server gesendet.",
+    "fr": "Les fichiers audio et vidéo sont acceptés (seul le son est utilisé). La conversion et la transcription se font sur cet appareil ; rien n'est envoyé à un serveur."
+  },
+  "Elegir archivo de audio": {
+    "es": "Elegir archivo de audio",
+    "en": "Choose audio file",
+    "de": "Audiodatei wählen",
+    "fr": "Choisir un fichier audio"
+  },
+  "Reconocedor": {
+    "es": "Reconocedor",
+    "en": "Recogniser",
+    "de": "Erkennung",
+    "fr": "Reconnaissance"
+  },
+  "%s (nube)": {
+    "es": "%s (nube)",
+    "en": "%s (cloud)",
+    "de": "%s (Cloud)",
+    "fr": "%s (cloud)"
+  },
+  "Rápido": {
+    "es": "Rápido",
+    "en": "Fast",
+    "de": "Schnell",
+    "fr": "Rapide"
+  },
+  "Rápido. Reconocedor ligero del dispositivo.": {
+    "es": "Rápido. Reconocedor ligero del dispositivo.",
+    "en": "Fast. Light on-device recogniser.",
+    "de": "Schnell. Leichte Erkennung auf dem Gerät.",
+    "fr": "Rapide. Reconnaissance légère sur l'appareil."
+  },
+  "Más preciso. La primera vez descarga unos 500 MB.": {
+    "es": "Más preciso. La primera vez descarga unos 500 MB.",
+    "en": "More accurate. The first time it downloads about 500 MB.",
+    "de": "Genauer. Beim ersten Mal werden etwa 500 MB geladen.",
+    "fr": "Plus précis. La première fois, il télécharge environ 500 Mo."
+  },
+  "En la nube: el audio se envía a Microsoft (Azure) a través de OpenRouter, sin que lo guarden. Necesita conexión.": {
+    "es": "En la nube: el audio se envía a Microsoft (Azure) a través de OpenRouter, sin que lo guarden. Necesita conexión.",
+    "en": "In the cloud: the audio is sent to Microsoft (Azure) through OpenRouter, without being stored. Needs a connection.",
+    "de": "In der Cloud: Das Audio wird über OpenRouter an Microsoft (Azure) gesendet, ohne gespeichert zu werden. Benötigt eine Verbindung.",
+    "fr": "Dans le cloud : l'audio est envoyé à Microsoft (Azure) via OpenRouter, sans conservation. Nécessite une connexion."
+  },
+  "Distinguir quién habla": {
+    "es": "Distinguir quién habla",
+    "en": "Tell speakers apart",
+    "de": "Sprecher unterscheiden",
+    "fr": "Distinguer les intervenants"
+  },
+  "Etiqueta cada frase con su hablante (Hablante 1, Hablante 2…). Los números pueden cambiar entre tramos de una grabación larga.": {
+    "es": "Etiqueta cada frase con su hablante (Hablante 1, Hablante 2…). Los números pueden cambiar entre tramos de una grabación larga.",
+    "en": "Labels each sentence with its speaker (Speaker 1, Speaker 2…). Numbers may change between stretches of a long recording.",
+    "de": "Kennzeichnet jeden Satz mit dem Sprecher (Sprecher 1, Sprecher 2…). Die Nummern können zwischen Abschnitten einer langen Aufnahme wechseln.",
+    "fr": "Étiquette chaque phrase avec son intervenant (Intervenant 1, Intervenant 2…). Les numéros peuvent changer entre les tronçons d'un long enregistrement."
+  },
+  "%d s": {
+    "es": "%d s",
+    "en": "%d s",
+    "de": "%d s",
+    "fr": "%d s"
+  },
+  "Todavía no hay consultas grabadas.": {
+    "es": "Todavía no hay consultas grabadas.",
+    "en": "There are no recorded consultations yet.",
+    "de": "Es gibt noch keine aufgenommenen Konsultationen.",
+    "fr": "Il n'y a pas encore de consultations enregistrées."
+  },
+  "Grabación": {
+    "es": "Grabación",
+    "en": "Recording",
+    "de": "Aufnahme",
+    "fr": "Enregistrement"
+  },
+  "Duración %s": {
+    "es": "Duración %s",
+    "en": "Duration %s",
+    "de": "Dauer %s",
+    "fr": "Durée %s"
+  },
+  "Importada de %s": {
+    "es": "Importada de %s",
+    "en": "Imported from %s",
+    "de": "Importiert aus %s",
+    "fr": "Importé depuis %s"
+  },
+  "Transcrita con %s": {
+    "es": "Transcrita con %s",
+    "en": "Transcribed with %s",
+    "de": "Transkribiert mit %s",
+    "fr": "Transcrit avec %s"
+  },
+  "Se transcribe sola. Puedes salir de esta pantalla; te avisaremos al terminar.": {
+    "es": "Se transcribe sola. Puedes salir de esta pantalla; te avisaremos al terminar.",
+    "en": "It transcribes by itself. You can leave this screen; we'll let you know when done.",
+    "de": "Es wird automatisch transkribiert. Sie können diesen Bildschirm verlassen; wir benachrichtigen Sie.",
+    "fr": "La transcription se fait toute seule. Vous pouvez quitter cet écran ; nous vous préviendrons."
+  },
+  "No se reintentará sola. Puedes transcribirla desde aquí abajo.": {
+    "es": "No se reintentará sola. Puedes transcribirla desde aquí abajo.",
+    "en": "It won't be retried by itself. You can transcribe it from below.",
+    "de": "Es wird nicht automatisch erneut versucht. Sie können es unten transkribieren.",
+    "fr": "Il n'y aura pas de nouvelle tentative automatique. Vous pouvez la transcrire ci-dessous."
+  },
+  "Pendiente de transcribir. Usa «Transcribir desde el audio».": {
+    "es": "Pendiente de transcribir. Usa «Transcribir desde el audio».",
+    "en": "Waiting to be transcribed. Use “Transcribe from audio”.",
+    "de": "Wartet auf Transkription. Nutzen Sie „Aus dem Audio transkribieren“.",
+    "fr": "En attente de transcription. Utilisez « Transcrire depuis l'audio »."
+  },
+  "La grabación se interrumpió. Puedes transcribir el audio guardado.": {
+    "es": "La grabación se interrumpió. Puedes transcribir el audio guardado.",
+    "en": "The recording was interrupted. You can transcribe the saved audio.",
+    "de": "Die Aufnahme wurde unterbrochen. Sie können das gespeicherte Audio transkribieren.",
+    "fr": "L'enregistrement a été interrompu. Vous pouvez transcrire l'audio conservé."
+  },
+  "Transcripción": {
+    "es": "Transcripción",
+    "en": "Transcript",
+    "de": "Transkript",
+    "fr": "Transcription"
+  },
+  "Si el idioma no era el correcto, cámbialo y usa «Transcribir de nuevo desde el audio».": {
+    "es": "Si el idioma no era el correcto, cámbialo y usa «Transcribir de nuevo desde el audio».",
+    "en": "If the language was wrong, change it and use “Transcribe again from audio”.",
+    "de": "War die Sprache falsch, ändern Sie sie und nutzen Sie „Erneut aus dem Audio transkribieren“.",
+    "fr": "Si la langue n'était pas la bonne, changez-la et utilisez « Transcrire à nouveau depuis l'audio »."
+  },
+  "Sin transcripción": {
+    "es": "Sin transcripción",
+    "en": "No transcript",
+    "de": "Kein Transkript",
+    "fr": "Pas de transcription"
+  },
+  "Copiar o compartir transcripción": {
+    "es": "Copiar o compartir transcripción",
+    "en": "Copy or share transcript",
+    "de": "Transkript kopieren oder teilen",
+    "fr": "Copier ou partager la transcription"
+  },
+  "Plantilla": {
+    "es": "Plantilla",
+    "en": "Template",
+    "de": "Vorlage",
+    "fr": "Modèle"
+  },
+  "Generar informe": {
+    "es": "Generar informe",
+    "en": "Generate report",
+    "de": "Bericht erstellen",
+    "fr": "Générer le compte rendu"
+  },
+  "Generar de nuevo": {
+    "es": "Generar de nuevo",
+    "en": "Generate again",
+    "de": "Neu erstellen",
+    "fr": "Générer à nouveau"
+  },
+  "Hace falta la transcripción para redactar el informe.": {
+    "es": "Hace falta la transcripción para redactar el informe.",
+    "en": "The transcript is needed to write the report.",
+    "de": "Für den Bericht wird das Transkript benötigt.",
+    "fr": "La transcription est nécessaire pour rédiger le compte rendu."
+  },
+  "Redactando el informe…": {
+    "es": "Redactando el informe…",
+    "en": "Writing the report…",
+    "de": "Bericht wird verfasst…",
+    "fr": "Rédaction du compte rendu…"
+  },
+  "Se redactará al terminar la revisión de la transcripción.": {
+    "es": "Se redactará al terminar la revisión de la transcripción.",
+    "en": "It will be written once the transcript review finishes.",
+    "de": "Er wird nach Abschluss der Transkriptprüfung verfasst.",
+    "fr": "Il sera rédigé une fois la relecture de la transcription terminée."
+  },
+  "En cola…": {
+    "es": "En cola…",
+    "en": "Queued…",
+    "de": "In der Warteschlange…",
+    "fr": "En file d'attente…"
+  },
+  "Se redacta sola, también con la pantalla bloqueada. Te avisaremos al terminar.": {
+    "es": "Se redacta sola, también con la pantalla bloqueada. Te avisaremos al terminar.",
+    "en": "It is written by itself, also with the screen locked. We'll let you know when done.",
+    "de": "Er wird automatisch verfasst, auch bei gesperrtem Bildschirm. Wir benachrichtigen Sie.",
+    "fr": "Il se rédige tout seul, même écran verrouillé. Nous vous préviendrons."
+  },
+  "Redactado por IA (%s). Revísalo con la transcripción antes de usarlo.": {
+    "es": "Redactado por IA (%s). Revísalo con la transcripción antes de usarlo.",
+    "en": "Written by AI (%s). Review it against the transcript before using it.",
+    "de": "Von KI verfasst (%s). Prüfen Sie ihn vor der Verwendung anhand des Transkripts.",
+    "fr": "Rédigé par IA (%s). Relisez-le avec la transcription avant de l'utiliser."
+  },
+  "Copiar o compartir informe": {
+    "es": "Copiar o compartir informe",
+    "en": "Copy or share report",
+    "de": "Bericht kopieren oder teilen",
+    "fr": "Copier ou partager le compte rendu"
+  },
+  "Transcribir desde el audio": {
+    "es": "Transcribir desde el audio",
+    "en": "Transcribe from audio",
+    "de": "Aus dem Audio transkribieren",
+    "fr": "Transcrire depuis l'audio"
+  },
+  "Transcribir de nuevo desde el audio": {
+    "es": "Transcribir de nuevo desde el audio",
+    "en": "Transcribe again from audio",
+    "de": "Erneut aus dem Audio transkribieren",
+    "fr": "Transcrire à nouveau depuis l'audio"
+  },
+  "%s (la actual)": {
+    "es": "%s (la actual)",
+    "en": "%s (current)",
+    "de": "%s (aktuell)",
+    "fr": "%s (actuelle)"
+  },
+  "%s con hablantes (nube)": {
+    "es": "%s con hablantes (nube)",
+    "en": "%s with speakers (cloud)",
+    "de": "%s mit Sprechern (Cloud)",
+    "fr": "%s avec intervenants (cloud)"
+  },
+  "Borrar solo el audio": {
+    "es": "Borrar solo el audio",
+    "en": "Delete audio only",
+    "de": "Nur das Audio löschen",
+    "fr": "Supprimer seulement l'audio"
+  },
+  "Eliminar grabación": {
+    "es": "Eliminar grabación",
+    "en": "Delete recording",
+    "de": "Aufnahme löschen",
+    "fr": "Supprimer l'enregistrement"
+  },
+  "¿Eliminar esta grabación?": {
+    "es": "¿Eliminar esta grabación?",
+    "en": "Delete this recording?",
+    "de": "Diese Aufnahme löschen?",
+    "fr": "Supprimer cet enregistrement ?"
+  },
+  "Se borran el audio y la transcripción de este dispositivo.": {
+    "es": "Se borran el audio y la transcripción de este dispositivo.",
+    "en": "The audio and transcript are deleted from this device.",
+    "de": "Audio und Transkript werden von diesem Gerät gelöscht.",
+    "fr": "L'audio et la transcription sont supprimés de cet appareil."
+  },
+  "Eliminar": {
+    "es": "Eliminar",
+    "en": "Delete",
+    "de": "Löschen",
+    "fr": "Supprimer"
+  },
+  "¿Redactar el informe en la nube?": {
+    "es": "¿Redactar el informe en la nube?",
+    "en": "Write the report in the cloud?",
+    "de": "Bericht in der Cloud verfassen?",
+    "fr": "Rédiger le compte rendu dans le cloud ?"
+  },
+  "El texto de la consulta se enviará a OpenRouter para redactar el informe, sin que lo guarden. Hazlo solo si el paciente lo ha consentido.": {
+    "es": "El texto de la consulta se enviará a OpenRouter para redactar el informe, sin que lo guarden. Hazlo solo si el paciente lo ha consentido.",
+    "en": "The consultation text will be sent to OpenRouter to write the report, without being stored. Do this only if the patient has consented.",
+    "de": "Der Text der Konsultation wird zur Berichterstellung an OpenRouter gesendet, ohne gespeichert zu werden. Tun Sie dies nur mit Einwilligung des Patienten.",
+    "fr": "Le texte de la consultation sera envoyé à OpenRouter pour rédiger le compte rendu, sans conservation. Ne le faites qu'avec le consentement du patient."
+  },
+  "Enviar y redactar": {
+    "es": "Enviar y redactar",
+    "en": "Send and write",
+    "de": "Senden und verfassen",
+    "fr": "Envoyer et rédiger"
+  },
+  "¿Transcribir en la nube?": {
+    "es": "¿Transcribir en la nube?",
+    "en": "Transcribe in the cloud?",
+    "de": "In der Cloud transkribieren?",
+    "fr": "Transcrire dans le cloud ?"
+  },
+  "El audio de esta consulta se enviará a %s para transcribirlo y distinguir quién habla. Hazlo solo si el paciente lo ha consentido.": {
+    "es": "El audio de esta consulta se enviará a %s para transcribirlo y distinguir quién habla. Hazlo solo si el paciente lo ha consentido.",
+    "en": "The audio of this consultation will be sent to %s to transcribe it and tell who speaks. Do this only if the patient has consented.",
+    "de": "Das Audio dieser Konsultation wird an %s gesendet, um es zu transkribieren und die Sprecher zu unterscheiden. Tun Sie dies nur mit Einwilligung des Patienten.",
+    "fr": "L'audio de cette consultation sera envoyé à %s pour le transcrire et distinguer les intervenants. Ne le faites qu'avec le consentement du patient."
+  },
+  "El audio de esta consulta se enviará a %s para transcribirlo. Hazlo solo si el paciente lo ha consentido.": {
+    "es": "El audio de esta consulta se enviará a %s para transcribirlo. Hazlo solo si el paciente lo ha consentido.",
+    "en": "The audio of this consultation will be sent to %s to transcribe it. Do this only if the patient has consented.",
+    "de": "Das Audio dieser Konsultation wird zur Transkription an %s gesendet. Tun Sie dies nur mit Einwilligung des Patienten.",
+    "fr": "L'audio de cette consultation sera envoyé à %s pour le transcrire. Ne le faites qu'avec le consentement du patient."
+  },
+  "Enviar y transcribir": {
+    "es": "Enviar y transcribir",
+    "en": "Send and transcribe",
+    "de": "Senden und transkribieren",
+    "fr": "Envoyer et transcrire"
+  },
+  "Experimental · guardado solo en este dispositivo": {
+    "es": "Experimental · guardado solo en este dispositivo",
+    "en": "Experimental · kept only on this device",
+    "de": "Experimentell · nur auf diesem Gerät gespeichert",
+    "fr": "Expérimental · conservé uniquement sur cet appareil"
+  },
+  "Medicina general": {
+    "es": "Medicina general",
+    "en": "General medicine",
+    "de": "Allgemeinmedizin",
+    "fr": "Médecine générale"
+  },
+  "Medicina interna": {
+    "es": "Medicina interna",
+    "en": "Internal medicine",
+    "de": "Innere Medizin",
+    "fr": "Médecine interne"
+  },
+  "Nutrición": {
+    "es": "Nutrición",
+    "en": "Nutrition",
+    "de": "Ernährung",
+    "fr": "Nutrition"
+  },
+  "EXPERIMENTAL": {
+    "es": "EXPERIMENTAL",
+    "en": "EXPERIMENTAL",
+    "de": "EXPERIMENTELL",
+    "fr": "EXPÉRIMENTAL"
+  },
+  "Transcribir consultas automáticamente": {
+    "es": "Transcribir consultas automáticamente",
+    "en": "Transcribe consultations automatically",
+    "de": "Konsultationen automatisch transkribieren",
+    "fr": "Transcrire les consultations automatiquement"
+  },
+  "Transcribe el audio al terminar de grabar o importar.": {
+    "es": "Transcribe el audio al terminar de grabar o importar.",
+    "en": "Transcribes the audio when recording or importing ends.",
+    "de": "Transkribiert das Audio nach Aufnahme oder Import.",
+    "fr": "Transcrit l'audio à la fin de l'enregistrement ou de l'import."
+  },
+  "%d en este dispositivo": {
+    "es": "%d en este dispositivo",
+    "en": "%d on this device",
+    "de": "%d auf diesem Gerät",
+    "fr": "%d sur cet appareil"
+  },
+  "Borrar todas las consultas grabadas": {
+    "es": "Borrar todas las consultas grabadas",
+    "en": "Delete all recorded consultations",
+    "de": "Alle aufgenommenen Konsultationen löschen",
+    "fr": "Supprimer toutes les consultations enregistrées"
+  },
+  "Las grabaciones se guardan solo en este dispositivo y las ve únicamente quien las hizo. Cerrar sesión no las borra.": {
+    "es": "Las grabaciones se guardan solo en este dispositivo y las ve únicamente quien las hizo. Cerrar sesión no las borra.",
+    "en": "Recordings are kept only on this device and seen only by whoever made them. Signing out does not delete them.",
+    "de": "Aufnahmen werden nur auf diesem Gerät gespeichert und nur von den Aufnehmenden gesehen. Abmelden löscht sie nicht.",
+    "fr": "Les enregistrements ne sont conservés que sur cet appareil et ne sont vus que par leur auteur. Se déconnecter ne les supprime pas."
+  },
+  "¿Borrar todas las consultas grabadas?": {
+    "es": "¿Borrar todas las consultas grabadas?",
+    "en": "Delete all recorded consultations?",
+    "de": "Alle aufgenommenen Konsultationen löschen?",
+    "fr": "Supprimer toutes les consultations enregistrées ?"
+  },
+  "Se borran de este dispositivo el audio y las transcripciones. No se puede deshacer.": {
+    "es": "Se borran de este dispositivo el audio y las transcripciones. No se puede deshacer.",
+    "en": "The audio and transcripts are deleted from this device. This cannot be undone.",
+    "de": "Audio und Transkripte werden von diesem Gerät gelöscht. Das lässt sich nicht rückgängig machen.",
+    "fr": "L'audio et les transcriptions sont supprimés de cet appareil. Action irréversible."
+  },
+  "Borrar 1 consulta": {
+    "es": "Borrar 1 consulta",
+    "en": "Delete 1 consultation",
+    "de": "1 Konsultation löschen",
+    "fr": "Supprimer 1 consultation"
+  },
+  "Borrar %d consultas": {
+    "es": "Borrar %d consultas",
+    "en": "Delete %d consultations",
+    "de": "%d Konsultationen löschen",
+    "fr": "Supprimer %d consultations"
+  },
+  "No se ha reconocido ninguna palabra en el audio.": {
+    "es": "No se ha reconocido ninguna palabra en el audio.",
+    "en": "No words were recognised in the audio.",
+    "de": "Im Audio wurden keine Wörter erkannt.",
+    "fr": "Aucun mot n'a été reconnu dans l'audio."
+  },
+  "Transcribiendo el audio con %s…": {
+    "es": "Transcribiendo el audio con %s…",
+    "en": "Transcribing the audio with %s…",
+    "de": "Audio wird mit %s transkribiert…",
+    "fr": "Transcription de l'audio avec %s…"
+  },
+  "Transcribiendo el audio… %d min": {
+    "es": "Transcribiendo el audio… %d min",
+    "en": "Transcribing the audio… %d min",
+    "de": "Audio wird transkribiert… %d Min.",
+    "fr": "Transcription de l'audio… %d min"
+  },
+  "No he podido revisar la transcripción.": {
+    "es": "No he podido revisar la transcripción.",
+    "en": "I couldn't review the transcript.",
+    "de": "Das Transkript konnte nicht geprüft werden.",
+    "fr": "Je n'ai pas pu relire la transcription."
+  },
+  "Revisando la transcripción…": {
+    "es": "Revisando la transcripción…",
+    "en": "Reviewing the transcript…",
+    "de": "Transkript wird geprüft…",
+    "fr": "Relecture de la transcription…"
+  },
+  "Transcribiendo…": {
+    "es": "Transcribiendo…",
+    "en": "Transcribing…",
+    "de": "Transkription läuft…",
+    "fr": "Transcription en cours…"
+  },
+  "No he podido redactar el informe.": {
+    "es": "No he podido redactar el informe.",
+    "en": "I couldn't write the report.",
+    "de": "Der Bericht konnte nicht verfasst werden.",
+    "fr": "Je n'ai pas pu rédiger le compte rendu."
+  },
+  "Preparando el informe…": {
+    "es": "Preparando el informe…",
+    "en": "Preparing the report…",
+    "de": "Bericht wird vorbereitet…",
+    "fr": "Préparation du compte rendu…"
+  },
+  "Resumiendo la consulta… (%d de %d)": {
+    "es": "Resumiendo la consulta… (%d de %d)",
+    "en": "Summarising the consultation… (%d of %d)",
+    "de": "Konsultation wird zusammengefasst… (%d von %d)",
+    "fr": "Résumé de la consultation… (%d sur %d)"
+  },
+  "Resumiendo la consulta…": {
+    "es": "Resumiendo la consulta…",
+    "en": "Summarising the consultation…",
+    "de": "Konsultation wird zusammengefasst…",
+    "fr": "Résumé de la consultation…"
+  },
+  "Redactando el informe… (%d de %d)": {
+    "es": "Redactando el informe… (%d de %d)",
+    "en": "Writing the report… (%d of %d)",
+    "de": "Bericht wird verfasst… (%d von %d)",
+    "fr": "Rédaction du compte rendu… (%d sur %d)"
+  },
+  "Revisando el informe… (%d de %d)": {
+    "es": "Revisando el informe… (%d de %d)",
+    "en": "Reviewing the report… (%d of %d)",
+    "de": "Bericht wird geprüft… (%d von %d)",
+    "fr": "Relecture du compte rendu… (%d sur %d)"
+  },
+  "El audio de esta grabación ya no está.": {
+    "es": "El audio de esta grabación ya no está.",
+    "en": "The audio of this recording is no longer there.",
+    "de": "Das Audio dieser Aufnahme ist nicht mehr vorhanden.",
+    "fr": "L'audio de cet enregistrement n'existe plus."
+  },
+  "El reconocimiento de voz del dispositivo no está disponible. Usa la transcripción en la nube.": {
+    "es": "El reconocimiento de voz del dispositivo no está disponible. Usa la transcripción en la nube.",
+    "en": "On-device speech recognition is not available. Use cloud transcription.",
+    "de": "Die Spracherkennung auf dem Gerät ist nicht verfügbar. Nutzen Sie die Cloud-Transkription.",
+    "fr": "La reconnaissance vocale sur l'appareil n'est pas disponible. Utilisez la transcription cloud."
+  },
+  "Tu cuenta no tiene transcripción en la nube. Pide a tu administrador una clave de IA o usa otro motor.": {
+    "es": "Tu cuenta no tiene transcripción en la nube. Pide a tu administrador una clave de IA o usa otro motor.",
+    "en": "Your account has no cloud transcription. Ask your administrator for an AI key or use another engine.",
+    "de": "Ihr Konto hat keine Cloud-Transkription. Bitten Sie Ihre Administration um einen KI-Schlüssel oder nutzen Sie eine andere Erkennung.",
+    "fr": "Votre compte n'a pas de transcription cloud. Demandez une clé IA à votre administrateur ou utilisez un autre moteur."
+  },
+  "OpenRouter no ha aceptado tu clave de IA. Pide a tu administrador que la revise.": {
+    "es": "OpenRouter no ha aceptado tu clave de IA. Pide a tu administrador que la revise.",
+    "en": "OpenRouter did not accept your AI key. Ask your administrator to check it.",
+    "de": "OpenRouter hat Ihren KI-Schlüssel nicht akzeptiert. Bitten Sie Ihre Administration, ihn zu prüfen.",
+    "fr": "OpenRouter n'a pas accepté votre clé IA. Demandez à votre administrateur de la vérifier."
+  },
+  "Se ha agotado el saldo de IA de tu cuenta. Pide a tu administrador que lo amplíe.": {
+    "es": "Se ha agotado el saldo de IA de tu cuenta. Pide a tu administrador que lo amplíe.",
+    "en": "Your account's AI balance has run out. Ask your administrator to increase it.",
+    "de": "Das KI-Guthaben Ihres Kontos ist aufgebraucht. Bitten Sie Ihre Administration, es zu erhöhen.",
+    "fr": "Le solde IA de votre compte est épuisé. Demandez à votre administrateur de l'augmenter."
+  },
+  "El servicio de transcripción en la nube no ha respondido (%d). Inténtalo más tarde.": {
+    "es": "El servicio de transcripción en la nube no ha respondido (%d). Inténtalo más tarde.",
+    "en": "The cloud transcription service did not respond (%d). Try again later.",
+    "de": "Der Cloud-Transkriptionsdienst hat nicht geantwortet (%d). Versuchen Sie es später erneut.",
+    "fr": "Le service de transcription cloud n'a pas répondu (%d). Réessayez plus tard."
+  },
+  "Tu cuenta no tiene IA en la nube para redactar informes. Pide a tu administrador una clave de IA.": {
+    "es": "Tu cuenta no tiene IA en la nube para redactar informes. Pide a tu administrador una clave de IA.",
+    "en": "Your account has no cloud AI to write reports. Ask your administrator for an AI key.",
+    "de": "Ihr Konto hat keine Cloud-KI zum Verfassen von Berichten. Bitten Sie Ihre Administration um einen KI-Schlüssel.",
+    "fr": "Votre compte n'a pas d'IA cloud pour rédiger les comptes rendus. Demandez une clé IA à votre administrateur."
+  },
+  "Ningún modelo de IA ha podido redactar el informe (%d). Inténtalo más tarde.": {
+    "es": "Ningún modelo de IA ha podido redactar el informe (%d). Inténtalo más tarde.",
+    "en": "No AI model could write the report (%d). Try again later.",
+    "de": "Kein KI-Modell konnte den Bericht verfassen (%d). Versuchen Sie es später erneut.",
+    "fr": "Aucun modèle d'IA n'a pu rédiger le compte rendu (%d). Réessayez plus tard."
+  },
+  "La IA ha devuelto una respuesta que no se puede leer. Inténtalo de nuevo.": {
+    "es": "La IA ha devuelto una respuesta que no se puede leer. Inténtalo de nuevo.",
+    "en": "The AI returned an answer that cannot be read. Try again.",
+    "de": "Die KI hat eine nicht lesbare Antwort geliefert. Versuchen Sie es erneut.",
+    "fr": "L'IA a renvoyé une réponse illisible. Réessayez."
+  },
+  "La transcripción no tiene información clínica suficiente para redactar un informe.": {
+    "es": "La transcripción no tiene información clínica suficiente para redactar un informe.",
+    "en": "The transcript doesn't have enough clinical information to write a report.",
+    "de": "Das Transkript enthält nicht genug klinische Informationen für einen Bericht.",
+    "fr": "La transcription ne contient pas assez d'informations cliniques pour rédiger un compte rendu."
+  },
+  "Sin conexión a internet. Hace falta conexión para usar la IA en la nube.": {
+    "es": "Sin conexión a internet. Hace falta conexión para usar la IA en la nube.",
+    "en": "No internet connection. A connection is needed to use cloud AI.",
+    "de": "Keine Internetverbindung. Für die Cloud-KI wird eine Verbindung benötigt.",
+    "fr": "Pas de connexion internet. Une connexion est nécessaire pour utiliser l'IA cloud."
+  },
+  "No he podido completar la operación.": {
+    "es": "No he podido completar la operación.",
+    "en": "I couldn't complete the operation.",
+    "de": "Der Vorgang konnte nicht abgeschlossen werden.",
+    "fr": "Je n'ai pas pu terminer l'opération."
+  },
+  "Se reintentará sola al abrir la app.": {
+    "es": "Se reintentará sola al abrir la app.",
+    "en": "It will be retried by itself when the app is opened.",
+    "de": "Beim Öffnen der App wird es automatisch erneut versucht.",
+    "fr": "Une nouvelle tentative aura lieu toute seule à l'ouverture de l'app."
+  }
+}

@@ -119,6 +119,8 @@ fun SettingsScreen(app: AppContainer) {
 
         GroupedList(Modifier.padding(top = 16.dp)) { row { FieldRow(tr("Versión"), version) } }
 
+        ExperimentalSection(app)
+
         Box(
             Modifier.padding(top = 24.dp).fillMaxWidth().surface().clickable { confirmSignOut = true }.heightIn(min = 52.dp),
             contentAlignment = Alignment.Center,
@@ -131,6 +133,55 @@ fun SettingsScreen(app: AppContainer) {
             title = { Text(tr("¿Cerrar sesión?")) },
             confirmButton = { TextButton({ confirmSignOut = false; scope.launch { app.auth.signOut() } }) { Text(tr("Cerrar sesión"), color = Palette.destructive) } },
             dismissButton = { TextButton({ confirmSignOut = false }) { Text(tr("Cancelar")) } },
+        )
+    }
+}
+
+/** Features under test. Recordings stay on this device and belong to the signed-in user. */
+@Composable
+private fun ExperimentalSection(app: AppContainer) {
+    val recordings by app.recordings.recordings.collectAsState()
+    var auto by remember { mutableStateOf(app.prefs.getString(AppContainer.AUTO_PROCESS_KEY) != "false") }
+    var confirmDelete by remember { mutableStateOf(false) }
+    Column(Modifier.padding(top = 24.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        SectionLabel(tr("EXPERIMENTAL"))
+        GroupedList {
+            row {
+                Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(tr("Transcribir consultas automáticamente"), fontSize = 17.sp, color = Palette.text)
+                        Text(tr("Transcribe el audio al terminar de grabar o importar."), fontSize = 13.sp, color = Palette.textFaint)
+                    }
+                    androidx.compose.material3.Switch(auto, { auto = it; app.prefs.putString(AppContainer.AUTO_PROCESS_KEY, it.toString()) })
+                }
+            }
+            row {
+                Row(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable { app.router.push(com.chiarasystems.chiara.data.Route.Recordings) }.padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(tr("Consultas grabadas"), fontSize = 17.sp, color = Palette.text)
+                        Text(tr("%d en este dispositivo", recordings.size), fontSize = 13.sp, color = Palette.textFaint)
+                    }
+                }
+            }
+            row {
+                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(enabled = recordings.isNotEmpty()) { confirmDelete = true }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
+                    Text(tr("Borrar todas las consultas grabadas"), fontSize = 17.sp, color = if (recordings.isEmpty()) Palette.disabled else Palette.destructive)
+                }
+            }
+        }
+        Text(tr("Las grabaciones se guardan solo en este dispositivo y las ve únicamente quien las hizo. Cerrar sesión no las borra."), Modifier.padding(horizontal = 4.dp), fontSize = 13.sp, color = Palette.textFaint)
+    }
+    if (confirmDelete) {
+        AlertDialog(
+            onDismissRequest = { confirmDelete = false },
+            title = { Text(tr("¿Borrar todas las consultas grabadas?")) },
+            text = { Text(tr("Se borran de este dispositivo el audio y las transcripciones. No se puede deshacer.")) },
+            confirmButton = {
+                TextButton({ confirmDelete = false; app.recordings.deleteAll() }) {
+                    Text(if (recordings.size == 1) tr("Borrar 1 consulta") else tr("Borrar %d consultas", recordings.size), color = Palette.destructive)
+                }
+            },
+            dismissButton = { TextButton({ confirmDelete = false }) { Text(tr("Cancelar")) } },
         )
     }
 }

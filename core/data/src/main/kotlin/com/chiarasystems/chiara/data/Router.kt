@@ -15,12 +15,17 @@ enum class AppTab { Agenda, Patients, Reports, Settings }
 sealed interface Route {
     data class Patient(val id: String) : Route
     data class Report(val id: String) : Route
+    data class Recording(val id: String) : Route
+    /** All the recorded consultations (Settings, experimental). */
+    data object Recordings : Route
 }
 
 sealed interface ActiveSheet {
     data class Booking(val patientId: String?, val day: LocalDate) : ActiveSheet
     data object NewPatient : ActiveSheet
     data object Assistant : ActiveSheet
+    data class Record(val patientId: String?) : ActiveSheet
+    data class ImportAudio(val patientId: String?) : ActiveSheet
 }
 
 /** Port of iOS `Router`: selected tab, one back stack per tab, the sheet being shown and the agenda's selected day. */
@@ -31,6 +36,7 @@ class Router(private val today: () -> LocalDate = { LocalDate.now() }) {
         AppTab.Agenda to MutableStateFlow<List<Route>>(emptyList()),
         AppTab.Patients to MutableStateFlow<List<Route>>(emptyList()),
         AppTab.Reports to MutableStateFlow<List<Route>>(emptyList()),
+        AppTab.Settings to MutableStateFlow<List<Route>>(emptyList()),
     )
     private val _sheet = MutableStateFlow<ActiveSheet?>(null)
     val sheet: StateFlow<ActiveSheet?> = _sheet.asStateFlow()

@@ -50,7 +50,13 @@ import com.chiarasystems.chiara.designsystem.tr
 @Composable
 fun RootScreen(app: AppContainer) {
     val phase by app.auth.phase.collectAsState()
+    val user by app.auth.user.collectAsState()
     LaunchedEffect(phase) { if (phase == AuthPhase.SignedOut) app.clearSessionState() }
+    // Recordings stay on the device; only the signed-in user's are shown. What was left unfinished is picked up again.
+    LaunchedEffect(user?.id) {
+        app.recordings.setOwner(user?.id)
+        if (user != null) app.pipeline.resumeUnfinished()
+    }
     Crossfade(phase, Modifier.fillMaxSize().background(Palette.background), label = "root") { p ->
         when (p) {
             AuthPhase.SignedOut -> LoginScreen(app.auth)

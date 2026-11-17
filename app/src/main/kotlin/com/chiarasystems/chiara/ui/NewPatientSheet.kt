@@ -60,11 +60,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun AppSheet(
     title: String, onClose: () -> Unit, confirmLabel: String? = null, confirmEnabled: Boolean = true,
-    onConfirm: () -> Unit = {}, skipPartially: Boolean = true, content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit,
+    onConfirm: () -> Unit = {}, skipPartially: Boolean = true, dismissible: Boolean = true, content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit,
 ) {
-    val state: SheetState = rememberModalBottomSheetState(skipPartiallyExpanded = skipPartially)
+    val state: SheetState = rememberModalBottomSheetState(skipPartiallyExpanded = skipPartially, confirmValueChange = { dismissible || it != androidx.compose.material3.SheetValue.Hidden })
     ModalBottomSheet(
-        onDismissRequest = onClose, sheetState = state, containerColor = Palette.background,
+        onDismissRequest = { if (dismissible) onClose() }, sheetState = state, properties = androidx.compose.material3.ModalBottomSheetProperties(shouldDismissOnBackPress = dismissible), containerColor = Palette.background,
         shape = androidx.compose.foundation.shape.RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
     ) {
         Column(Modifier.fillMaxWidth().imePadding().navigationBarsPadding()) {

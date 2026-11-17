@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Status-bar icon: the Chiara "C" arc and dot (monogram of the handoff, 32x32). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp" android:viewportWidth="32" android:viewportHeight="32">
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="3.2" android:strokeLineCap="round"
+        android:pathData="M23.66,9.57 A10,10 0 1,0 23.66,22.43" />
+    <path android:fillColor="#FFFFFF" android:pathData="M22.4,14.3 a1.7,1.7 0 1,0 0.01,0 z" />
+</vector>

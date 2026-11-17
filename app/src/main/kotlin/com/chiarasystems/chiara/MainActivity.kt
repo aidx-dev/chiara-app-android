@@ -1,6 +1,7 @@
 package com.chiarasystems.chiara
 
 import android.app.Application
+import android.app.Application.ActivityLifecycleCallbacks
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -22,6 +23,16 @@ class ChiaraApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         container = AppContainer(this)
+        com.chiarasystems.chiara.recording.Notifier.createChannels(this)
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityStarted(activity: android.app.Activity) { container.startedActivities++ }
+            override fun onActivityStopped(activity: android.app.Activity) { container.startedActivities-- }
+            override fun onActivityCreated(activity: android.app.Activity, savedInstanceState: Bundle?) {}
+            override fun onActivityResumed(activity: android.app.Activity) {}
+            override fun onActivityPaused(activity: android.app.Activity) {}
+            override fun onActivitySaveInstanceState(activity: android.app.Activity, outState: Bundle) {}
+            override fun onActivityDestroyed(activity: android.app.Activity) {}
+        })
     }
 }
 

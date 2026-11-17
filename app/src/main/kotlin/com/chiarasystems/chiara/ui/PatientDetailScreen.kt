@@ -18,6 +18,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Mic
+import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.outlined.EventAvailable
 import androidx.compose.material.icons.outlined.PersonOff
@@ -106,6 +108,8 @@ fun PatientDetailScreen(app: AppContainer, patientId: String) {
                     NextAppointment(app, p, next, loaded)
                     SectionTitle(tr("Informes"), Modifier.padding(top = 28.dp, bottom = 10.dp))
                     ReportsList(app, reports, loaded)
+                    SectionTitle(tr("Consultas grabadas"), Modifier.padding(top = 28.dp, bottom = 10.dp))
+                    RecordedConsultations(app, p)
                     SectionTitle(tr("Datos del paciente"), Modifier.padding(top = 28.dp, bottom = 10.dp))
                     Details(p)
                 }
@@ -204,5 +208,28 @@ private fun Details(p: Patient) {
         row { FieldRow(tr("DNI"), p.documentId?.nilIfEmpty ?: "—") }
         row { FieldRow(tr("Aseguradora"), p.insuranceCompany?.nilIfEmpty ?: "—") }
         row { FieldRow(tr("Clínica"), p.referringClinic?.nilIfEmpty ?: "—") }
+    }
+}
+
+/** Experimental: record or import a consultation and transcribe it, kept only on this device. */
+@Composable
+private fun RecordedConsultations(app: AppContainer, p: Patient) {
+    val all by app.recordings.recordings.collectAsState()
+    val items = all.filter { it.patientId == p.id }
+    Column(Modifier.fillMaxWidth().surface()) {
+        items.forEach { r ->
+            RecordingRow(r, Modifier.clickable { app.router.push(Route.Recording(r.id)) })
+            Hairline(inset = 16.dp)
+        }
+        Row(Modifier.fillMaxWidth().clickable { app.router.show(ActiveSheet.Record(p.id)) }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            Icon(Icons.Filled.Mic, null, tint = Palette.primary, modifier = Modifier.size(22.dp))
+            Text(tr("Grabar consulta"), Modifier.padding(start = 10.dp).weight(1f), fontSize = 17.sp, color = Palette.primary)
+            Text(tr("Experimental"), fontSize = 12.sp, fontWeight = FontWeight.Medium, color = Palette.warningFg)
+        }
+        Hairline(inset = 16.dp)
+        Row(Modifier.fillMaxWidth().clickable { app.router.show(ActiveSheet.ImportAudio(p.id)) }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            Icon(Icons.Outlined.FileDownload, null, tint = Palette.primary, modifier = Modifier.size(22.dp))
+            Text(tr("Importar audio"), Modifier.padding(start = 10.dp), fontSize = 17.sp, color = Palette.primary)
+        }
     }
 }

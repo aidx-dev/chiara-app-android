@@ -8,7 +8,20 @@ import com.chiarasystems.chiara.data.ReportsStore
 import com.chiarasystems.chiara.data.Router
 import com.chiarasystems.chiara.data.SettingsStore
 import com.chiarasystems.chiara.data.ToastCenter
+import com.chiarasystems.chiara.ai.CloudTranscriber
+import com.chiarasystems.chiara.ai.ConsultationPipeline
+import com.chiarasystems.chiara.ai.OpenRouterChat
+import com.chiarasystems.chiara.ai.RecordingStore
+import com.chiarasystems.chiara.ai.UserAIConfig
+import com.chiarasystems.chiara.ai.WorkflowSteps
+import com.chiarasystems.chiara.ai.Translate
 import com.chiarasystems.chiara.designsystem.Translator
+import com.chiarasystems.chiara.recording.AndroidPipelineBackground
+import com.chiarasystems.chiara.recording.AppTranscribers
+import com.chiarasystems.chiara.recording.ConsultationRecorder
+import com.chiarasystems.chiara.recording.NoLocalAsr
+import com.chiarasystems.chiara.recording.Notifier
+import com.chiarasystems.chiara.recording.SqliteRecordingStore
 import com.chiarasystems.chiara.network.DemoBackend
 import com.chiarasystems.chiara.network.FileResponseCache
 import com.chiarasystems.chiara.network.SupabaseClient
@@ -24,7 +37,7 @@ import kotlinx.serialization.json.jsonPrimitive
 import okhttp3.OkHttpClient
 
 /** Manual dependency graph (the app is small enough that a DI framework would only add build time). */
-class AppContainer(context: Context) {
+class AppContainer(private val context: Context) {
     val appScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     val prefs = SharedPreferencesStore(context)
@@ -51,6 +64,30 @@ class AppContainer(context: Context) {
     val router = Router()
     val toast = ToastCenter(appScope)
 
+    // --- Recording and processing (Phase 5)
+    /** Number of started activities: the app is in front while it is above zero. */
+    @Volatile var startedActivities = 0
+    val isInFront: Boolean get() = startedActivities > 0
+
+    val recordings: RecordingStore = SqliteRecordingStore(context)
+    val recorder = ConsultationRecorder(context)
+    /** The recording being captured now (survives the sheet being closed or recreated). */
+    @Volatile var activeRecordingId: String? = null
+    /** The user's AI settings from the server; read on demand and kept in memory only (the key never reaches the disk). */
+    suspend fun aiConfig(): UserAIConfig = UserAIConfig.load(client)
+    val chat = OpenRouterChat(config = ::aiConfig)
+    val cloudTranscriber = CloudTranscriber(key = { aiConfig().apiKey })
+    val transcribers = AppTranscribers(context, cloudTranscriber) { NoLocalAsr }
+    private val translate = Translate { key, args -> translator(settings.code).tr(key, *args.toTypedArray()) }
+    val pipeline = ConsultationPipeline(
+        recordings, WorkflowSteps(recordings, transcribers, chat, translate) { settings.code }, appScope,
+        isEnabled = { prefs.getString(AUTO_PROCESS_KEY) != "false" },
+        notify = { if (!isInFront) Notifier.post(context, it) },
+        prepare = {},
+        background = AndroidPipelineBackground(context),
+        isInFront = { isInFront },
+    )
+
     private val assets = context.assets
     private val tables: Map<String, Map<String, String>> = listOf("es", "en", "de", "fr").associateWith { code ->
         runCatching {
@@ -59,11 +96,13 @@ class AppContainer(context: Context) {
         }.getOrDefault(emptyMap())
     }
 
+    companion object { const val AUTO_PROCESS_KEY = "recording.autoProcess" }
+
     fun translator(code: String) = Translator(code, tables[code].orEmpty())
     fun calFormat(code: String) = com.chiarasystems.chiara.designsystem.CalFormat(code)
 
     /** Nothing clinical may outlive the session in memory. */
     fun clearSessionState() {
-        patients.reset(); appointments.reset(); reports.reset(); router.reset()
+        patients.reset(); appointments.reset(); reports.reset(); router.reset(); recordings.setOwner(null)
     }
 }
