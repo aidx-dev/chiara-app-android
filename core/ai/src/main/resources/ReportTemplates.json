@@ -1,0 +1,1444 @@
+{
+  "common": {
+    "backgroundLabels": [
+      [
+        "Alergias",
+        "Allergies",
+        "Allergien",
+        "Allergies"
+      ],
+      [
+        "Hábitos Tóxicos",
+        "Toxic Habits",
+        "Genussmittel und Suchtverhalten",
+        "Habitudes toxiques"
+      ],
+      [
+        "Patologías Previas",
+        "Previous Conditions",
+        "Vorerkrankungen",
+        "Pathologies antérieures"
+      ],
+      [
+        "Intervenciones",
+        "Procedures",
+        "Eingriffe",
+        "Interventions"
+      ],
+      [
+        "Ingresos Hospitalarios",
+        "Hospital Admissions",
+        "Krankenhausaufenthalte",
+        "Hospitalisations"
+      ],
+      [
+        "Tratamiento Habitual",
+        "Usual Treatment",
+        "Dauermedikation",
+        "Traitement habituel"
+      ]
+    ],
+    "noConsta": [
+      "No consta",
+      "Not stated",
+      "Keine Angabe",
+      "Non renseigné"
+    ],
+    "noRepeat": " No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí.",
+    "sexRuleFemale": " La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+    "sexRuleMale": " La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente)."
+  },
+  "parity": [
+    {
+      "firstPromptFrench": "Extrae los antecedentes médicos generales del paciente no relacionados con la medicina vascular. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAllergies: <valor>\nHabitudes toxiques: <valor>\nPathologies antérieures: <valor>\nInterventions: <valor>\nHospitalisations: <valor>\nTraitement habituel: <valor>\nPara Pathologies antérieures: escribe un resumen general breve de las enfermedades previas que el paciente cuenta, sin detalles. Para Interventions: escribe un resumen general breve de las cirugías que el paciente cuenta, sin fechas. Hospitalisations son solo las hospitalizaciones: una consulta o una revisión no es un ingreso. Las impresiones diagnósticas que el médico da en esta consulta no son patologías previas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: Non renseigné. No incluyas diagnósticos vasculares ni tratamientos prescritos durante esta consulta. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: FRANÇAIS.",
+      "id": "vascular",
+      "noConstaGerman": "Keine Angabe.",
+      "reportSystemEsFemale": "Eres un médico experto en medicina vascular redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de medicina vascular. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: ESPAÑOL. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción. La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+      "reviewSystemEnMale": "Eres un médico experto en medicina vascular revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: ENGLISH. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita. La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente).",
+      "reviewUserLast": "PRIOR\n\nEste es un borrador de la sección 'Tratamiento' de un informe médico profesional de medicina vascular.\n\nDRAFT\n\nCompáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito. No añadas pruebas, derivaciones, consejos ni justificaciones. No añadas información que no esté presente en el borrador. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: DEUTSCH. No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí."
+    },
+    {
+      "firstPromptFrench": "Extrae los puntos clave de esta sección como una lista de viñetas cortas usando '-'. Cubre los siguientes aspectos SI Y SOLO SI aparecen explícitamente en los resúmenes: motivo principal de la consulta, tiempo de evolución, inicio del problema, síntomas principales, factores que agravan o alivian, consecuencias en la vida diaria y tratamientos previos relacionados. Una viñeta por aspecto. Sé muy conciso: una frase por viñeta. Si un aspecto no aparece en los resúmenes, omite esa viñeta completamente — no la inventes ni la rellenes con inferencias. NO incluyas: antecedentes médicos, psicológicos o familiares; situación laboral o social; hábitos de vida; exploración del estado mental; diagnósticos; ni plan de tratamiento. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: FRANÇAIS.",
+      "id": "psychology",
+      "noConstaGerman": "Keine Angabe.",
+      "reportSystemEsFemale": "Eres un psicólogo clínico experto redactando un informe clínico profesional. Se te proporcionarán los resúmenes de una consulta psicológica en español. Redactarás el informe sección por sección cuando se te solicite. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: ESPAÑOL. Escribe cada sección como un texto en prosa continua, sin sub-apartados, sin listas, sin viñetas, sin negrita y sin ningún tipo de encabezado. Integra toda la información relevante de forma fluida en párrafos. Si no hay información sobre algún aspecto, omítelo sin mencionarlo. Usa terminología clínica precisa. No añadas información que no esté en los resúmenes.\nREGLAS ESTRICTAS DE FIDELIDAD:\n- Escribe ÚNICAMENTE lo que aparezca explícitamente en los resúmenes. Nunca inferas, extrapoles ni completes con conocimiento propio.\n- Si un aspecto clínico no aparece en los resúmenes, omítelo completamente. No afirmes su presencia ni su ausencia.\n- No formules diagnósticos que el profesional no haya mencionado explícitamente en la sesión.\n- No describas resultados de exploraciones (estado mental, evaluación de riesgo, hábitos) que no se hayan realizado explícitamente en la sesión.\n- Copia VERBATIM diagnósticos, nombres de pruebas o escalas, siglas y acrónimos tal como aparezcan en los resúmenes.\n- Anonimización estricta: refíerete al sujeto únicamente como 'el paciente' o 'la paciente', sin nombres propios. La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+      "reviewSystemEnMale": "Eres un psicólogo clínico experto revisando un borrador de informe clínico. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: ENGLISH. Reescribe la sección solicitada siguiendo el formato indicado en las instrucciones. Corrige puntuación y mayúsculas, elimina artefactos y muletillas. Incluye ÚNICAMENTE contenido que pertenezca temáticamente a esta sección; elimina cualquier fragmento que corresponda a otra sección. No añadas información que no esté en el borrador. No afirmes la ausencia de síntomas, riesgos o hábitos que no hayan sido evaluados explícitamente. No introduzcas diagnósticos ni hipótesis clínicas que no aparezcan en el borrador. Escribe solo el cuerpo de la sección: sin título, sin encabezado, sin negrita ni cursiva y sin repetir el nombre de la sección. La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente).",
+      "reviewUserLast": "PRIOR\n\nEste es un borrador de la sección 'Conclusiones y recomendaciones' de un informe clínico psicológico.\n\nDRAFT\n\nReescribe el contenido como una lista corta de viñetas usando '-'. Agrupa ideas relacionadas en una sola viñeta; no más de 6 viñetas en total. Incluye SOLO contenido de esta sección; elimina lo que pertenezca a otras secciones. No añadas información que no esté en el borrador. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: DEUTSCH. No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí."
+    },
+    {
+      "firstPromptFrench": "Extrae los antecedentes médicos generales del paciente no relacionados con la dermatología. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAllergies: <valor>\nHabitudes toxiques: <valor>\nPathologies antérieures: <valor>\nInterventions: <valor>\nHospitalisations: <valor>\nTraitement habituel: <valor>\nPara Pathologies antérieures: escribe un resumen general breve — no listes diagnósticos individuales ni detalles. Para Interventions: escribe un resumen general breve — no listes procedimientos individuales ni fechas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: Non renseigné. No incluyas diagnósticos dermatológicos ni tratamientos prescritos durante esta consulta. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: FRANÇAIS.",
+      "id": "dermatology",
+      "noConstaGerman": "Keine Angabe.",
+      "reportSystemEsFemale": "Eres un médico experto en dermatología redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de dermatología. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: ESPAÑOL. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción. La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+      "reviewSystemEnMale": "Eres un médico experto en dermatología revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: ENGLISH. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita. La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente).",
+      "reviewUserLast": "PRIOR\n\nEste es un borrador de la sección 'Tratamiento' de un informe médico profesional de dermatología.\n\nDRAFT\n\nCompáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito. No añadas información que no esté presente en el borrador. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: DEUTSCH. No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí."
+    },
+    {
+      "firstPromptFrench": "Extrae los antecedentes médicos generales del paciente no relacionados con la cirugía plástica. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAllergies: <valor>\nHabitudes toxiques: <valor>\nPathologies antérieures: <valor>\nInterventions: <valor>\nHospitalisations: <valor>\nTraitement habituel: <valor>\nPara Pathologies antérieures: escribe un resumen general breve — no listes diagnósticos individuales ni detalles. Para Interventions: escribe un resumen general breve — incluye intervenciones previas de cirugía plástica y otras cirugías; no listes procedimientos individuales ni fechas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: Non renseigné. No incluyas el diagnóstico ni el plan de tratamiento de la consulta actual. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: FRANÇAIS.",
+      "id": "plastic_surgery",
+      "noConstaGerman": "Keine Angabe.",
+      "reportSystemEsFemale": "Eres un médico experto en cirugía plástica, reparadora y estética redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de cirugía plástica. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: ESPAÑOL. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción. La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+      "reviewSystemEnMale": "Eres un médico experto en cirugía plástica, reparadora y estética revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: ENGLISH. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita. La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente).",
+      "reviewUserLast": "PRIOR\n\nEste es un borrador de la sección 'Tratamiento' de un informe médico profesional de cirugía plástica.\n\nDRAFT\n\nCompáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito y el plan quirúrgico. No añadas información que no esté presente en el borrador. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: DEUTSCH. No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí."
+    },
+    {
+      "firstPromptFrench": "Extrae los antecedentes médicos del paciente. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAllergies: <valor>\nHabitudes toxiques: <valor>\nPathologies antérieures: <valor>\nInterventions: <valor>\nHospitalisations: <valor>\nTraitement habituel: <valor>\nPara Pathologies antérieures: incluye un resumen general breve de las patologías previas y la fórmula obstétrica si consta (p. ej. G2P1C1A0: 2 gestaciones, 1 parto vaginal, 1 cesárea, 0 abortos). Para Interventions: escribe un resumen general breve — incluye cesáreas anteriores, partos instrumentales, cirugías ginecológicas y otras; no listes procedimientos individuales ni fechas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: Non renseigné. No incluyas el diagnóstico ni el plan de tratamiento de la consulta actual. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: FRANÇAIS.",
+      "id": "gynecology",
+      "noConstaGerman": "Keine Angabe.",
+      "reportSystemEsFemale": "Eres un médico experto en ginecología y obstetricia redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de ginecología y obstetricia. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: ESPAÑOL. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción. La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+      "reviewSystemEnMale": "Eres un médico experto en ginecología y obstetricia revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: ENGLISH. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita. La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente).",
+      "reviewUserLast": "PRIOR\n\nEste es un borrador de la sección 'Tratamiento' de un informe médico profesional de ginecología y obstetricia.\n\nDRAFT\n\nCompáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito. No añadas información que no esté presente en el borrador. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: DEUTSCH. No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí."
+    },
+    {
+      "firstPromptFrench": "Describe en prosa el motivo de consulta, los síntomas referidos y los antecedentes relevantes para esta visita (alergias, patologías crónicas, tratamiento habitual e intervenciones previas, solo si se mencionan en la transcripción). No incluyas diagnósticos del médico, resultados de pruebas, tratamientos prescritos en esta consulta ni datos personales identificativos. Escribe solo en prosa. Sé conciso. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: FRANÇAIS.",
+      "id": "general_medicine",
+      "noConstaGerman": "Keine Angabe.",
+      "reportSystemEsFemale": "Eres un médico de medicina general redactando un informe de consulta conciso y directo. Se te proporciona la transcripción completa de una consulta de atención primaria. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: ESPAÑOL. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — breve, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas ni asumas información que no esté explícitamente presente en la transcripción. La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+      "reviewSystemEnMale": "Eres un médico de medicina general revisando un informe de consulta. Se te proporciona el borrador actual. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: ENGLISH. Reescribe únicamente la sección solicitada — breve, coherente y sin contradicciones. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita. La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente).",
+      "reviewUserLast": "PRIOR\n\nEste es un borrador de la sección 'Plan' de un informe de medicina general.\n\nDRAFT\n\nCompáctalo conservando únicamente lo esencial: fármacos, pruebas solicitadas, derivaciones y seguimiento. Elimina gestiones no clínicas (citas, secretaría, correos, llamadas). Corrige puntuación y mayúsculas. No añadas información que no esté en el borrador. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: DEUTSCH. No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí."
+    },
+    {
+      "firstPromptFrench": "Extrae los antecedentes médicos generales del paciente. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAllergies: <valor>\nHabitudes toxiques: <valor>\nPathologies antérieures: <valor>\nInterventions: <valor>\nHospitalisations: <valor>\nTraitement habituel: <valor>\nPara Pathologies antérieures: escribe un resumen general breve de las enfermedades previas que el paciente cuenta, sin detalles. Para Interventions: escribe un resumen general breve de las cirugías que el paciente cuenta, sin fechas. Hospitalisations son solo las hospitalizaciones: una consulta o una revisión no es un ingreso. Las impresiones diagnósticas que el médico da en esta consulta no son patologías previas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: Non renseigné. No incluyas diagnósticos ni tratamientos prescritos durante esta consulta. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: FRANÇAIS.",
+      "id": "internista",
+      "noConstaGerman": "Keine Angabe.",
+      "reportSystemEsFemale": "Eres un médico internista redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de medicina interna. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: ESPAÑOL. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción. La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+      "reviewSystemEnMale": "Eres un médico internista revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: ENGLISH. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita. La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente).",
+      "reviewUserLast": "PRIOR\n\nEste es un borrador de la sección 'Tratamiento' de un informe médico profesional de medicina interna.\n\nDRAFT\n\nCompáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito. No añadas pruebas, derivaciones, consejos ni justificaciones. No añadas información que no esté presente en el borrador. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: DEUTSCH. No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí."
+    },
+    {
+      "firstPromptFrench": "Describe en prosa el motivo de consulta, los objetivos del paciente y los antecedentes relevantes desde el punto de vista nutricional mencionados en la transcripción (intolerencias, alergias alimentarias, patologías que afecten a la nutrición, medicamentos relevantes, intervenciones nutricionales previas). No incluyas las medidas antropométricas, la valoración dietética, el diagnóstico ni el plan. No incluyas datos personales identificativos. Escribe solo en prosa. Sé conciso. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: FRANÇAIS.",
+      "id": "nutritionist",
+      "noConstaGerman": "Keine Angabe.",
+      "reportSystemEsFemale": "Eres un nutricionista redactando un informe de consulta nutricional. Se te proporciona la transcripción completa de una consulta de nutrición. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: ESPAÑOL. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — factual y con terminología técnica nutricional adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa, salvo cuando se indique un formato estructurado: sin markdown, sin encabezados, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas ni asumas información que no esté explícitamente presente en la transcripción. La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+      "reviewSystemEnMale": "Eres un nutricionista revisando un informe de consulta nutricional. Se te proporciona el borrador actual. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: ENGLISH. Reescribe únicamente la sección solicitada — coherente y sin contradicciones. Para secciones con formato estructurado (Campo: valor), conserva exactamente ese formato. Escribe únicamente el contenido de la sección reescrita. La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente).",
+      "reviewUserLast": "PRIOR\n\nEste es un borrador de la sección 'Plan Nutricional' de un informe de consulta nutricional.\n\nDRAFT\n\nCompáctalo conservando únicamente lo esencial: pautas dietéticas, objetivos, suplementos y seguimiento. Elimina gestiones no clínicas (citas, correos, llamadas). Corrige puntuación y mayúsculas. No añadas información que no esté en el borrador. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: DEUTSCH. No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí."
+    },
+    {
+      "firstPromptFrench": "Write the visit record as a bullet-point list with exactly these items:\n\n- Physician: full name · specialty · facility and city · date\n- Products: comma-separated list of products discussed\n- Key points: main message delivered; physician reaction, objections, or current prescribing habits\n- Sentiment: Positive / Neutral / Negative — reason in five words or fewer\n- Commitments: what the physician agreed to, or —\n- Materials left: samples or materials left, or —\n- Next steps: action — responsible — deadline\n- Next visit: date or timeframe, or —\n- Safety: any adverse event or product complaint, or None reported\n\nUse only information present in the transcript. Do not invent data. If an item is not mentioned, write —. Keep the total under 120 words. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: FRANÇAIS.",
+      "id": "visitador",
+      "noConstaGerman": "Keine Angabe.",
+      "reportSystemEsFemale": "You are a CRM assistant for pharmaceutical sales representatives. You will receive the transcript of a voice note recorded by a rep immediately after a physician visit. Transform it into a concise CRM visit record. Write the record EXCLUSIVELY in the language: ESPAÑOL. Be extremely concise: short phrases, no filler. Use only information present in the transcript — never invent or assume data. Keep product names, doses, and dates exactly as spoken. If any adverse event, side-effect report, or product complaint is mentioned, include it under Safety so it can be reported to pharmacovigilance. Do not omit or soften it. La persona atendida es una mujer: escribe en femenino cuando te refieras a ella (la paciente).",
+      "reviewSystemEnMale": "You are a CRM assistant reviewing a physician visit record. Write the record EXCLUSIVELY in the language: ENGLISH. Rewrite it keeping the exact field structure, removing redundancy, and ensuring the total stays under 120 words. Do not add information that is not in the draft. La persona atendida es un hombre: escribe en masculino cuando te refieras a él (el paciente).",
+      "reviewUserLast": "PRIOR\n\nThis is a draft CRM visit record.\n\nDRAFT\n\nCheck that all fields are present and correctly labelled. Remove redundancy and filler. If the total exceeds 120 words, trim it while keeping all essential data. Ensure Safety appears if and only if an adverse event or complaint was mentioned; otherwise write None reported. Do not add information that is not in the draft. Escribe TODO el contenido, incluidas las etiquetas de campo, exclusivamente en el idioma: DEUTSCH. No repitas información ya incluida en las secciones anteriores; si algún contenido pertenece a otra sección, omítelo aquí."
+    }
+  ],
+  "source": "f261080",
+  "templates": [
+    {
+      "fields": [
+        {
+          "id": "background",
+          "kind": "text",
+          "titles": [
+            "Antecedentes",
+            "Background",
+            "Vorgeschichte",
+            "Antécédents"
+          ]
+        },
+        {
+          "id": "reducedAnamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis reducida",
+            "Summary anamnesis",
+            "Kurzanamnese",
+            "Anamnèse résumée"
+          ]
+        },
+        {
+          "id": "anamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis",
+            "Detailed anamnesis",
+            "Ausführliche Anamnese",
+            "Anamnèse détaillée"
+          ]
+        },
+        {
+          "id": "examination",
+          "kind": "text",
+          "titles": [
+            "Exploración",
+            "Physical examination",
+            "Körperliche Untersuchung",
+            "Examen physique"
+          ]
+        },
+        {
+          "id": "additionalTests",
+          "kind": "text",
+          "titles": [
+            "Pruebas complementarias",
+            "Complementary tests",
+            "Zusatzuntersuchungen",
+            "Examens complémentaires"
+          ]
+        },
+        {
+          "id": "diagnosis",
+          "kind": "text",
+          "titles": [
+            "Diagnóstico",
+            "Diagnoses",
+            "Diagnosen",
+            "Diagnostics"
+          ]
+        },
+        {
+          "id": "icdCodes",
+          "kind": "icdMultiSelect",
+          "titles": [
+            "Códigos CIE-10",
+            "ICD-10 Codes",
+            "ICD-10-Codes",
+            "Codes CIM-10"
+          ]
+        },
+        {
+          "id": "treatmentPlan",
+          "kind": "text",
+          "titles": [
+            "Plan de tratamiento",
+            "Treatment plan",
+            "Behandlungsplan",
+            "Plan de traitement"
+          ]
+        }
+      ],
+      "generationSections": [
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "background",
+          "maxTokens": 600,
+          "name": "Antecedentes",
+          "prompt": "Extrae los antecedentes médicos generales del paciente no relacionados con la medicina vascular. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAlergias: <valor>\nHábitos Tóxicos: <valor>\nPatologías Previas: <valor>\nIntervenciones: <valor>\nIngresos Hospitalarios: <valor>\nTratamiento Habitual: <valor>\nPara Patologías Previas: escribe un resumen general breve de las enfermedades previas que el paciente cuenta, sin detalles. Para Intervenciones: escribe un resumen general breve de las cirugías que el paciente cuenta, sin fechas. Ingresos Hospitalarios son solo las hospitalizaciones: una consulta o una revisión no es un ingreso. Las impresiones diagnósticas que el médico da en esta consulta no son patologías previas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: No consta. No incluyas diagnósticos vasculares ni tratamientos prescritos durante esta consulta.",
+          "reviewBody": "Preserva exactamente los seis campos con su formato (Campo: <valor>). Para cada campo: corrige puntuación y mayúsculas y elimina artefactos o muletillas. Si un campo no tiene información, escribe: No consta. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "anamnesis",
+          "maxTokens": 1600,
+          "name": "Anamnesis",
+          "prompt": "Esta es la transcripción de una consulta médica entre médico y paciente. Describe en prosa la historia clínica del paciente, incluyendo el motivo de consulta, los síntomas y los antecedentes médicos y quirúrgicos relevantes. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No incluyas los hallazgos de la exploración física ni de la ecografía hecha en la consulta: van en Exploración. No incluyas ningún dato personal identificativo del paciente. Incluye únicamente la información presente de forma explícita en la transcripción. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo, eliminando todo lo que no sea médicamente relevante para la historia clínica del paciente y el motivo de consulta. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No incluyas los hallazgos de la exploración física ni de la ecografía hecha en la consulta. No uses subsecciones, etiquetas ni encabezados de ningún tipo. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "reducedAnamnesis",
+          "maxTokens": 200,
+          "name": "Anamnesis Reducida",
+          "prompt": "A partir del texto de anamnesis anterior, escribe un párrafo que resuma los aspectos más relevantes para la medicina vascular: motivo de consulta principal, tiempo de evolución, síntomas vasculares clave y antecedentes médicos de mayor relevancia para esta especialidad. Escribe en prosa continua. No añadas información que no esté en la anamnesis.",
+          "reviewBody": "Reescribe el resumen en 2-3 frases muy concisas. Elimina cualquier aspecto no médico o irrelevante para la medicina vascular. Corrige la puntuación y las mayúsculas. No añadas información que no esté en el borrador.",
+          "sourceFieldId": "anamnesis"
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Dicta el médico en la transcripción hallazgos concretos de la exploración física o de una ecografía hecha en la consulta (lo que observa, palpa o mide)? Decir que va a explorar o pedir que el paciente se desvista no cuenta.",
+          "fieldId": "examination",
+          "maxTokens": 800,
+          "name": "Exploración",
+          "prompt": "Hallazgos que el médico dicta durante la consulta: primero la exploración física (inspección, palpación, pulsos, maniobras) y después la ecografía o eco-Doppler que realiza (vasos estudiados, calibres, velocidades, flujos, compresiones y otras estructuras que describe), con sus medidas y sus mismos matices. Incluye únicamente los hallazgos mencionados de forma explícita. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Se comentan en la transcripción resultados de pruebas complementarias hechas antes de esta consulta (imagen, analíticas, etc.)? La ecografía que el médico hace durante la consulta no cuenta.",
+          "fieldId": "additionalTests",
+          "maxTokens": 800,
+          "name": "Pruebas Complementarias",
+          "prompt": "Pruebas complementarias hechas antes de esta consulta y sus resultados revisados durante ella (imagen, laboratorio, etc.). No incluyas la ecografía que el médico hace en la consulta: va en Exploración. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Pendiente de filiación diagnóstica.",
+            "Diagnosis pending.",
+            "Diagnose ausstehend.",
+            "Diagnostic en attente."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Expresa el médico en la transcripción un diagnóstico o una impresión diagnóstica?",
+          "fieldId": "diagnosis",
+          "maxTokens": 500,
+          "name": "Diagnósticos",
+          "prompt": "Diagnósticos confirmados y diagnósticos en estudio o diferenciales relevantes para la medicina vascular. Enuméralos uno por línea. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.).",
+          "reviewBody": "Extrae únicamente los nombres de los diagnósticos relevantes para la medicina vascular, uno por línea, sin explicaciones, descripciones, notas ni contexto adicional. Elimina cualquier artefacto, alucinación o diagnóstico no relevante para esta especialidad. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.). Cada línea debe contener únicamente el nombre de la enfermedad o condición, nada más.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Sin cambios terapéuticos indicados en esta consulta.",
+            "No therapeutic changes indicated in this consultation.",
+            "In dieser Konsultation keine therapeutischen Änderungen.",
+            "Aucune modification thérapeutique indiquée lors de cette consultation."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Indica el médico en la transcripción un tratamiento, una prueba o un seguimiento concretos para el paciente?",
+          "fieldId": "treatmentPlan",
+          "maxTokens": 1200,
+          "name": "Tratamiento",
+          "prompt": "Medicamentos prescritos o ajustados, pruebas solicitadas, procedimientos planificados, derivaciones e instrucciones de seguimiento que el médico indica en la consulta. Escribe solo lo que el médico indica: no añadas pruebas, derivaciones, consejos ni justificaciones propias. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito. No añadas pruebas, derivaciones, consejos ni justificaciones. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        }
+      ],
+      "id": "vascular",
+      "reportSystemPrompt": "Eres un médico experto en medicina vascular redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de medicina vascular. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción.",
+      "reviewIntro": "Este es un borrador de la sección '{SECTION}' de un informe médico profesional de medicina vascular.",
+      "reviewSystemPrompt": "Eres un médico experto en medicina vascular revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita.",
+      "summarySystemPrompt": "Eres un médico experto en medicina vascular. Se te proporciona la transcripción literal de una consulta médico-paciente. Tu tarea es resumirla.",
+      "summaryUserPrompt": "Esta es la transcripción de la consulta:\n\n{TEXT}\n\nResume la interacción entre el médico y el paciente, atribuyendo cada afirmación explícitamente al médico o al paciente.\nConserva toda la información médica relevante.\nRecoge siempre las impresiones y sospechas diagnósticas que el médico dice en voz alta.\nCuando el paciente explica la causa o el motivo de algo (por qué come o deja de comer algo, por qué toma algo), escríbelo tal como lo explica, sin invertirlo.\nDescribe los síntomas con los matices que da el paciente (constante o intermitente, pulsátil o no, en reposo o al andar).\nSi el paciente enumera pruebas o informes, nombra cada uno con lo que el paciente dice de él, sin mezclarlos ni atribuirles conclusiones de otro.\nRecoge cada hallazgo de la exploración y de la ecografía que dicta el médico con sus mismos matices (\"alguna araña vascular suelta\" no es \"ninguna\"), y las respuestas del paciente a preguntas sobre hábitos (tabaco, alcohol).\nLa transcripción es automática y contiene errores de reconocimiento: omite las frases que no tienen sentido clínico y no interpretes palabras mal reconocidas (\"tag\" es TAC).\nNo añadas ni asumas información que no esté explícitamente presente en la transcripción.\nNo uses listas, viñetas, guiones ni encabezados de ningún tipo.\nEscribe solo en prosa continua.",
+      "version": 1
+    },
+    {
+      "fields": [
+        {
+          "id": "reasonForConsultation",
+          "kind": "text",
+          "titles": [
+            "Motivo de consulta y problema actual",
+            "Reason for consultation and current problem",
+            "Konsultationsgrund und aktuelles Problem",
+            "Motif de consultation et problème actuel"
+          ]
+        },
+        {
+          "id": "personalHistory",
+          "kind": "text",
+          "titles": [
+            "Historia personal, antecedentes y contexto",
+            "Personal history, background and context",
+            "Persönliche Vorgeschichte, Hintergrund und Kontext",
+            "Histoire personnelle, antécédents et contexte"
+          ]
+        },
+        {
+          "id": "clinicalAssessment",
+          "kind": "text",
+          "titles": [
+            "Evaluación y formulación clínica",
+            "Assessment and clinical formulation",
+            "Beurteilung und klinische Formulierung",
+            "Évaluation et formulation clinique"
+          ]
+        },
+        {
+          "id": "conclusions",
+          "kind": "text",
+          "titles": [
+            "Conclusiones y recomendaciones",
+            "Conclusions and recommendations",
+            "Schlussfolgerungen und Empfehlungen",
+            "Conclusions et recommandations"
+          ]
+        }
+      ],
+      "generationSections": [
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "reasonForConsultation",
+          "maxTokens": 1500,
+          "name": "Motivo de consulta e historia del problema actual",
+          "prompt": "Extrae los puntos clave de esta sección como una lista de viñetas cortas usando '-'. Cubre los siguientes aspectos SI Y SOLO SI aparecen explícitamente en los resúmenes: motivo principal de la consulta, tiempo de evolución, inicio del problema, síntomas principales, factores que agravan o alivian, consecuencias en la vida diaria y tratamientos previos relacionados. Una viñeta por aspecto. Sé muy conciso: una frase por viñeta. Si un aspecto no aparece en los resúmenes, omite esa viñeta completamente — no la inventes ni la rellenes con inferencias. NO incluyas: antecedentes médicos, psicológicos o familiares; situación laboral o social; hábitos de vida; exploración del estado mental; diagnósticos; ni plan de tratamiento.",
+          "reviewBody": "Reescribe el contenido como una lista corta de viñetas usando '-'. Agrupa ideas relacionadas en una sola viñeta; no más de 6 viñetas en total. Incluye SOLO contenido de esta sección; elimina lo que pertenezca a otras secciones. No añadas información que no esté en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "personalHistory",
+          "maxTokens": 2000,
+          "name": "Historia personal, antecedentes y contexto",
+          "prompt": "Redacta esta sección en prosa continua incluyendo ÚNICAMENTE los aspectos que aparezcan explícitamente en los resúmenes. Los aspectos posibles son: antecedentes médicos (enfermedades relevantes, cirugías, medicación actual, alergias); antecedentes psicológicos y psiquiátricos (diagnósticos previos, tratamientos anteriores, hospitalizaciones, conductas autolesivas o intentos de suicidio); antecedentes familiares (enfermedades médicas, trastornos psicológicos, consumo de sustancias, relaciones significativas); historia evolutiva (embarazo y parto, desarrollo psicomotor y del lenguaje, escolarización, relaciones sociales en infancia, acontecimientos vitales relevantes); situación familiar y social actual (convivencia, red de apoyo, pareja, hijos, relaciones); situación académica y laboral (estudios, situación laboral, satisfacción, estrés, situación económica); hábitos de vida (sueño, alimentación, actividad física, ocio, consumo de sustancias). Si un aspecto no aparece en los resúmenes, omítelo por completo — no afirmes su ausencia ni escribas que 'no consta'. Las hipótesis que el profesional formula en esta sesión no son antecedentes. NO incluyas: descripción del motivo de consulta o síntomas actuales; observaciones clínicas de la sesión actual; hipótesis diagnósticas; ni plan de tratamiento. Esos contenidos pertenecen a otras secciones.",
+          "reviewBody": "Reescribe como prosa continua muy concisa. Elimina detalles redundantes o poco relevantes clínicamente. El resultado debe ser significativamente más corto que el borrador. Incluye SOLO contenido de esta sección; elimina lo que pertenezca a otras secciones. No añadas información que no esté en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Explora el profesional en la transcripción el estado mental o el riesgo del paciente, aplica alguna prueba o escala, o formula una hipótesis sobre el problema? Que el paciente cuente sus síntomas no cuenta.",
+          "fieldId": "clinicalAssessment",
+          "maxTokens": 1800,
+          "name": "Evaluación y formulación clínica",
+          "prompt": "Redacta esta sección en prosa continua incluyendo ÚNICAMENTE los aspectos que aparezcan explícitamente en los resúmenes. Los aspectos posibles son: exploración del estado mental (aspecto general, actitud, nivel de conciencia, orientación, atención y concentración, memoria, lenguaje, estado de ánimo, afecto, pensamiento —curso y contenido—, percepción, juicio, insight); evaluación del riesgo (ideación suicida, plan suicida, riesgo autolesivo, riesgo heteroagresivo, factores protectores); recursos y fortalezas (apoyo familiar y social, recursos personales, estrategias de afrontamiento, intereses y motivaciones); formulación clínica (hipótesis diagnóstica, diagnóstico si procede, factores predisponentes, precipitantes, mantenedores y protectores). PROHIBICIONES ESTRICTAS: - Solo redacta la exploración del estado mental si fue realizada explícitamente en la sesión; no la construyas a partir del estilo conversacional. - Solo redacta la evaluación del riesgo si fue explorada explícitamente; NUNCA afirmes ausencia de ideación suicida o riesgo si no fue preguntado. - Solo formula hipótesis diagnóstica o diagnóstico si el profesional lo mencionó explícitamente. - Si un aspecto no aparece en los resúmenes, omítelo por completo. NO incluyas: el motivo de consulta o síntomas ya descritos; antecedentes personales o familiares; objetivos terapéuticos; ni técnicas o plan de intervención. Esos contenidos pertenecen a otras secciones.",
+          "reviewBody": "Reescribe como prosa continua muy concisa. Elimina detalles redundantes o poco relevantes clínicamente. El resultado debe ser significativamente más corto que el borrador. Incluye SOLO contenido de esta sección; elimina lo que pertenezca a otras secciones. No añadas información que no esté en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Indica el profesional en la transcripción una impresión diagnóstica, objetivos terapéuticos, un plan o una frecuencia de sesiones, tareas o recomendaciones para el paciente?",
+          "fieldId": "conclusions",
+          "maxTokens": 1200,
+          "name": "Conclusiones y recomendaciones",
+          "prompt": "Extrae los puntos clave de esta sección como una lista de viñetas cortas usando '-'. Cubre los siguientes aspectos SI Y SOLO SI aparecen explícitamente en los resúmenes: impresión diagnóstica (solo si el profesional la formuló), objetivos terapéuticos, técnicas o estrategias previstas, frecuencia de sesiones, tareas o recomendaciones, y observaciones de seguimiento. Una viñeta por aspecto. Sé muy conciso: una frase por viñeta. Si un aspecto no aparece en los resúmenes, omite esa viñeta completamente — no la inventes. NO formules diagnósticos que el profesional no haya mencionado. NO repitas el motivo de consulta, los antecedentes ni la formulación clínica ya incluidos en secciones anteriores.",
+          "reviewBody": "Reescribe el contenido como una lista corta de viñetas usando '-'. Agrupa ideas relacionadas en una sola viñeta; no más de 6 viñetas en total. Incluye SOLO contenido de esta sección; elimina lo que pertenezca a otras secciones. No añadas información que no esté en el borrador.",
+          "sourceFieldId": null
+        }
+      ],
+      "id": "psychology",
+      "reportSystemPrompt": "Eres un psicólogo clínico experto redactando un informe clínico profesional. Se te proporcionarán los resúmenes de una consulta psicológica en español. Redactarás el informe sección por sección cuando se te solicite. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Escribe cada sección como un texto en prosa continua, sin sub-apartados, sin listas, sin viñetas, sin negrita y sin ningún tipo de encabezado. Integra toda la información relevante de forma fluida en párrafos. Si no hay información sobre algún aspecto, omítelo sin mencionarlo. Usa terminología clínica precisa. No añadas información que no esté en los resúmenes.\nREGLAS ESTRICTAS DE FIDELIDAD:\n- Escribe ÚNICAMENTE lo que aparezca explícitamente en los resúmenes. Nunca inferas, extrapoles ni completes con conocimiento propio.\n- Si un aspecto clínico no aparece en los resúmenes, omítelo completamente. No afirmes su presencia ni su ausencia.\n- No formules diagnósticos que el profesional no haya mencionado explícitamente en la sesión.\n- No describas resultados de exploraciones (estado mental, evaluación de riesgo, hábitos) que no se hayan realizado explícitamente en la sesión.\n- Copia VERBATIM diagnósticos, nombres de pruebas o escalas, siglas y acrónimos tal como aparezcan en los resúmenes.\n- Anonimización estricta: refíerete al sujeto únicamente como 'el paciente' o 'la paciente', sin nombres propios.",
+      "reviewIntro": "Este es un borrador de la sección '{SECTION}' de un informe clínico psicológico.",
+      "reviewSystemPrompt": "Eres un psicólogo clínico experto revisando un borrador de informe clínico. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Reescribe la sección solicitada siguiendo el formato indicado en las instrucciones. Corrige puntuación y mayúsculas, elimina artefactos y muletillas. Incluye ÚNICAMENTE contenido que pertenezca temáticamente a esta sección; elimina cualquier fragmento que corresponda a otra sección. No añadas información que no esté en el borrador. No afirmes la ausencia de síntomas, riesgos o hábitos que no hayan sido evaluados explícitamente. No introduzcas diagnósticos ni hipótesis clínicas que no aparezcan en el borrador. Escribe solo el cuerpo de la sección: sin título, sin encabezado, sin negrita ni cursiva y sin repetir el nombre de la sección.",
+      "summarySystemPrompt": "Eres un asistente especializado en psicología clínica. Se te proporcionará un fragmento de la transcripción de una consulta psicológica en español. Tu tarea es describir en voz activa la interacción entre el terapeuta y el paciente: qué dice o propone el terapeuta, cómo responde el paciente, qué temas surgen y cómo avanzan. Incluye ÚNICAMENTE lo que aparece literalmente en el fragmento. No añadas interpretaciones, inferencias, diagnósticos propios ni información que no esté en el texto. Escribe en español.",
+      "summaryUserPrompt": "Fragmento de transcripción:\n{TEXT}\n\nDescribe en voz activa la interacción terapeuta-paciente en este fragmento. Incluye únicamente lo que aparece en el texto.\nSi el profesional expresa una hipótesis o impresión diagnóstica, recógela con sus palabras y con su mismo grado de certeza.\nNo escribas lo que el profesional no dijo ni lo que no se preguntó (\"no menciona\", \"no formula\", \"no explora\").\nCuando el paciente explica la causa o el motivo de algo, escríbelo tal como lo explica, sin invertirlo.\nDescribe los síntomas con los matices que da el paciente (frecuencia, intensidad, desde cuándo, qué los desencadena o alivia).\nSi el paciente menciona informes, diagnósticos o tratamientos previos, nombra cada uno con lo que el paciente dice de él, sin mezclarlos.\nRecoge las respuestas del paciente a preguntas explícitas sobre consumo de sustancias, sueño o ideación suicida con sus mismos matices, también cuando la respuesta es negativa.\nLa transcripción es automática y contiene errores de reconocimiento: omite las frases que no tienen sentido clínico y no interpretes palabras mal reconocidas.",
+      "version": 1
+    },
+    {
+      "fields": [
+        {
+          "id": "background",
+          "kind": "text",
+          "titles": [
+            "Antecedentes",
+            "Background",
+            "Vorgeschichte",
+            "Antécédents"
+          ]
+        },
+        {
+          "id": "reducedAnamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis reducida",
+            "Summary anamnesis",
+            "Kurzanamnese",
+            "Anamnèse résumée"
+          ]
+        },
+        {
+          "id": "anamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis",
+            "Detailed anamnesis",
+            "Ausführliche Anamnese",
+            "Anamnèse détaillée"
+          ]
+        },
+        {
+          "id": "examination",
+          "kind": "text",
+          "titles": [
+            "Exploración",
+            "Physical examination",
+            "Körperliche Untersuchung",
+            "Examen physique"
+          ]
+        },
+        {
+          "id": "additionalTests",
+          "kind": "text",
+          "titles": [
+            "Pruebas complementarias",
+            "Complementary tests",
+            "Zusatzuntersuchungen",
+            "Examens complémentaires"
+          ]
+        },
+        {
+          "id": "diagnosis",
+          "kind": "text",
+          "titles": [
+            "Diagnóstico",
+            "Diagnoses",
+            "Diagnosen",
+            "Diagnostics"
+          ]
+        },
+        {
+          "id": "icdCodes",
+          "kind": "icdMultiSelect",
+          "titles": [
+            "Códigos CIE-10",
+            "ICD-10 Codes",
+            "ICD-10-Codes",
+            "Codes CIM-10"
+          ]
+        },
+        {
+          "id": "treatmentPlan",
+          "kind": "text",
+          "titles": [
+            "Plan de tratamiento",
+            "Treatment plan",
+            "Behandlungsplan",
+            "Plan de traitement"
+          ]
+        }
+      ],
+      "generationSections": [
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "background",
+          "maxTokens": 600,
+          "name": "Antecedentes",
+          "prompt": "Extrae los antecedentes médicos generales del paciente no relacionados con la dermatología. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAlergias: <valor>\nHábitos Tóxicos: <valor>\nPatologías Previas: <valor>\nIntervenciones: <valor>\nIngresos Hospitalarios: <valor>\nTratamiento Habitual: <valor>\nPara Patologías Previas: escribe un resumen general breve — no listes diagnósticos individuales ni detalles. Para Intervenciones: escribe un resumen general breve — no listes procedimientos individuales ni fechas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: No consta. No incluyas diagnósticos dermatológicos ni tratamientos prescritos durante esta consulta.",
+          "reviewBody": "Preserva exactamente los seis campos con su formato (Campo: <valor>). Para cada campo: corrige puntuación y mayúsculas y elimina artefactos o muletillas. Si un campo no tiene información, escribe: No consta. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "anamnesis",
+          "maxTokens": 1600,
+          "name": "Anamnesis",
+          "prompt": "Esta es la transcripción de una consulta médica entre médico y paciente. Describe en prosa la historia clínica del paciente, incluyendo el motivo de consulta, los síntomas y los antecedentes médicos y quirúrgicos relevantes. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No incluyas ningún dato personal identificativo del paciente. Incluye únicamente la información presente de forma explícita en la transcripción. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo, eliminando todo lo que no sea médicamente relevante para la historia clínica del paciente y el motivo de consulta. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No uses subsecciones, etiquetas ni encabezados de ningún tipo. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "reducedAnamnesis",
+          "maxTokens": 200,
+          "name": "Anamnesis Reducida",
+          "prompt": "A partir del texto de anamnesis anterior, escribe un párrafo que resuma los aspectos más relevantes para la dermatología: motivo de consulta principal, tiempo de evolución, síntomas dermatológicos clave y antecedentes médicos de mayor relevancia para esta especialidad. Escribe en prosa continua. No añadas información que no esté en la anamnesis.",
+          "reviewBody": "Reescribe el resumen en 2-3 frases muy concisas. Elimina cualquier aspecto no médico o irrelevante para la dermatología. Corrige la puntuación y las mayúsculas. No añadas información que no esté en el borrador.",
+          "sourceFieldId": "anamnesis"
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Dicta el médico en la transcripción hallazgos concretos de la exploración de la piel, las mucosas o los anejos, o de una dermatoscopia hecha en la consulta (lo que observa, palpa o mide)? Decir que va a explorar o pedir que el paciente se desvista no cuenta.",
+          "fieldId": "examination",
+          "maxTokens": 600,
+          "name": "Exploración",
+          "prompt": "Hallazgos de la exploración física documentados en la transcripción. Incluye únicamente los hallazgos mencionados de forma explícita. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Se comentan en la transcripción resultados de pruebas complementarias hechas antes de esta consulta (biopsias, analíticas, imagen, etc.)? La dermatoscopia que el médico hace durante la consulta no cuenta.",
+          "fieldId": "additionalTests",
+          "maxTokens": 800,
+          "name": "Pruebas Complementarias",
+          "prompt": "Pruebas complementarias ya realizadas y sus resultados revisados durante la consulta (imagen, laboratorio, dermatoscopia, biopsia, etc.). Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Pendiente de filiación diagnóstica.",
+            "Diagnosis pending.",
+            "Diagnose ausstehend.",
+            "Diagnostic en attente."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Expresa el médico en la transcripción un diagnóstico o una impresión diagnóstica?",
+          "fieldId": "diagnosis",
+          "maxTokens": 500,
+          "name": "Diagnósticos",
+          "prompt": "Diagnósticos confirmados y diagnósticos en estudio o diferenciales relevantes para la dermatología. Enuméralos uno por línea. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.).",
+          "reviewBody": "Extrae únicamente los nombres de los diagnósticos relevantes para la dermatología, uno por línea, sin explicaciones, descripciones, notas ni contexto adicional. Elimina cualquier artefacto, alucinación o diagnóstico no relevante para esta especialidad. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.). Cada línea debe contener únicamente el nombre de la enfermedad o condición, nada más.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Sin cambios terapéuticos indicados en esta consulta.",
+            "No therapeutic changes indicated in this consultation.",
+            "In dieser Konsultation keine therapeutischen Änderungen.",
+            "Aucune modification thérapeutique indiquée lors de cette consultation."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Indica el médico en la transcripción un tratamiento, una prueba o un seguimiento concretos para el paciente?",
+          "fieldId": "treatmentPlan",
+          "maxTokens": 1200,
+          "name": "Tratamiento",
+          "prompt": "Medicamentos prescritos o ajustados, procedimientos planificados, derivaciones e instrucciones de seguimiento. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        }
+      ],
+      "id": "dermatology",
+      "reportSystemPrompt": "Eres un médico experto en dermatología redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de dermatología. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción.",
+      "reviewIntro": "Este es un borrador de la sección '{SECTION}' de un informe médico profesional de dermatología.",
+      "reviewSystemPrompt": "Eres un médico experto en dermatología revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita.",
+      "summarySystemPrompt": "Eres un médico experto en dermatología. Se te proporciona la transcripción literal de una consulta médico-paciente. Tu tarea es resumirla.",
+      "summaryUserPrompt": "Esta es la transcripción de la consulta:\n\n{TEXT}\n\nResume la interacción entre el médico y el paciente, atribuyendo cada afirmación explícitamente al médico o al paciente.\nConserva toda la información médica relevante.\nNo añadas ni asumas información que no esté explícitamente presente en la transcripción.\nNo uses listas, viñetas, guiones ni encabezados de ningún tipo.\nEscribe solo en prosa continua.",
+      "version": 1
+    },
+    {
+      "fields": [
+        {
+          "id": "background",
+          "kind": "text",
+          "titles": [
+            "Antecedentes",
+            "Background",
+            "Vorgeschichte",
+            "Antécédents"
+          ]
+        },
+        {
+          "id": "reducedAnamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis reducida",
+            "Summary anamnesis",
+            "Kurzanamnese",
+            "Anamnèse résumée"
+          ]
+        },
+        {
+          "id": "anamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis",
+            "Detailed anamnesis",
+            "Ausführliche Anamnese",
+            "Anamnèse détaillée"
+          ]
+        },
+        {
+          "id": "examination",
+          "kind": "text",
+          "titles": [
+            "Exploración",
+            "Physical examination",
+            "Körperliche Untersuchung",
+            "Examen physique"
+          ]
+        },
+        {
+          "id": "additionalTests",
+          "kind": "text",
+          "titles": [
+            "Pruebas complementarias",
+            "Complementary tests",
+            "Zusatzuntersuchungen",
+            "Examens complémentaires"
+          ]
+        },
+        {
+          "id": "diagnosis",
+          "kind": "text",
+          "titles": [
+            "Diagnóstico",
+            "Diagnoses",
+            "Diagnosen",
+            "Diagnostics"
+          ]
+        },
+        {
+          "id": "icdCodes",
+          "kind": "icdMultiSelect",
+          "titles": [
+            "Códigos CIE-10",
+            "ICD-10 Codes",
+            "ICD-10-Codes",
+            "Codes CIM-10"
+          ]
+        },
+        {
+          "id": "treatmentPlan",
+          "kind": "text",
+          "titles": [
+            "Plan de tratamiento",
+            "Treatment plan",
+            "Behandlungsplan",
+            "Plan de traitement"
+          ]
+        }
+      ],
+      "generationSections": [
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "background",
+          "maxTokens": 600,
+          "name": "Antecedentes",
+          "prompt": "Extrae los antecedentes médicos generales del paciente no relacionados con la cirugía plástica. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAlergias: <valor>\nHábitos Tóxicos: <valor>\nPatologías Previas: <valor>\nIntervenciones: <valor>\nIngresos Hospitalarios: <valor>\nTratamiento Habitual: <valor>\nPara Patologías Previas: escribe un resumen general breve — no listes diagnósticos individuales ni detalles. Para Intervenciones: escribe un resumen general breve — incluye intervenciones previas de cirugía plástica y otras cirugías; no listes procedimientos individuales ni fechas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: No consta. No incluyas el diagnóstico ni el plan de tratamiento de la consulta actual.",
+          "reviewBody": "Preserva exactamente los seis campos con su formato (Campo: <valor>). Para cada campo: corrige puntuación y mayúsculas y elimina artefactos o muletillas. Si un campo no tiene información, escribe: No consta. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "anamnesis",
+          "maxTokens": 1600,
+          "name": "Anamnesis",
+          "prompt": "Esta es la transcripción de una consulta médica entre médico y paciente. Describe en prosa la historia clínica del paciente, incluyendo el motivo de consulta, los síntomas, la preocupación estética o funcional referida y los antecedentes médicos y quirúrgicos relevantes para la cirugía plástica. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No incluyas ningún dato personal identificativo del paciente. Incluye únicamente la información presente de forma explícita en la transcripción. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo, eliminando todo lo que no sea médicamente relevante para la historia clínica del paciente y el motivo de consulta. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No uses subsecciones, etiquetas ni encabezados de ningún tipo. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "reducedAnamnesis",
+          "maxTokens": 200,
+          "name": "Anamnesis Reducida",
+          "prompt": "A partir del texto de anamnesis anterior, escribe un párrafo que resuma los aspectos más relevantes para la cirugía plástica: motivo de consulta principal, tiempo de evolución, síntomas o preocupación estética o funcional clave y antecedentes de mayor relevancia para esta especialidad. Escribe en prosa continua. No añadas información que no esté en la anamnesis.",
+          "reviewBody": "Reescribe el resumen en 2-3 frases muy concisas. Elimina cualquier aspecto no médico o irrelevante para la cirugía plástica. Corrige la puntuación y las mayúsculas. No añadas información que no esté en el borrador.",
+          "sourceFieldId": "anamnesis"
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Dicta el médico en la transcripción hallazgos concretos de la exploración física (inspección de heridas, cicatrices, contorno corporal, tejidos, mama, cara, extremidades u otras regiones anatómicas, o una medición o valoración hecha en la consulta)? Decir que va a explorar o pedir que el paciente se desvista no cuenta.",
+          "fieldId": "examination",
+          "maxTokens": 600,
+          "name": "Exploración",
+          "prompt": "Hallazgos de la exploración física documentados en la transcripción. Incluye únicamente los hallazgos mencionados de forma explícita (heridas, cicatrices, tejidos, contorno corporal, asimetrías, ptosis, defectos tisulares u otras regiones exploradas). Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Se comentan en la transcripción resultados de pruebas complementarias realizadas antes de esta consulta (imagen, analítica, fotografías clínicas previas, biopsia, etc.)?",
+          "fieldId": "additionalTests",
+          "maxTokens": 800,
+          "name": "Pruebas Complementarias",
+          "prompt": "Pruebas complementarias ya realizadas y sus resultados revisados durante la consulta (imagen, laboratorio, fotografías clínicas, biopsia, etc.). Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Pendiente de filiación diagnóstica.",
+            "Diagnosis pending.",
+            "Diagnose ausstehend.",
+            "Diagnostic en attente."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Expresa el médico en la transcripción un diagnóstico o una impresión diagnóstica?",
+          "fieldId": "diagnosis",
+          "maxTokens": 500,
+          "name": "Diagnósticos",
+          "prompt": "Diagnósticos confirmados y diagnósticos en estudio o diferenciales relevantes para la cirugía plástica. Enuméralos uno por línea. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.).",
+          "reviewBody": "Extrae únicamente los nombres de los diagnósticos relevantes para la cirugía plástica, uno por línea, sin explicaciones, descripciones, notas ni contexto adicional. Elimina cualquier artefacto, alucinación o diagnóstico no relevante para esta especialidad. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.). Cada línea debe contener únicamente el nombre de la enfermedad o condición, nada más.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Sin cambios terapéuticos indicados en esta consulta.",
+            "No therapeutic changes indicated in this consultation.",
+            "In dieser Konsultation keine therapeutischen Änderungen.",
+            "Aucune modification thérapeutique indiquée lors de cette consultation."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Indica el médico en la transcripción un tratamiento, un procedimiento, una intervención quirúrgica o un seguimiento concretos para el paciente?",
+          "fieldId": "treatmentPlan",
+          "maxTokens": 1200,
+          "name": "Tratamiento",
+          "prompt": "Plan quirúrgico, procedimientos planificados, medicamentos prescritos o ajustados, derivaciones e instrucciones de seguimiento. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito y el plan quirúrgico. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        }
+      ],
+      "id": "plastic_surgery",
+      "reportSystemPrompt": "Eres un médico experto en cirugía plástica, reparadora y estética redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de cirugía plástica. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción.",
+      "reviewIntro": "Este es un borrador de la sección '{SECTION}' de un informe médico profesional de cirugía plástica.",
+      "reviewSystemPrompt": "Eres un médico experto en cirugía plástica, reparadora y estética revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita.",
+      "summarySystemPrompt": "Eres un médico experto en cirugía plástica, reparadora y estética. Se te proporciona la transcripción literal de una consulta médico-paciente. Tu tarea es resumirla.",
+      "summaryUserPrompt": "Esta es la transcripción de la consulta:\n\n{TEXT}\n\nResume la interacción entre el médico y el paciente, atribuyendo cada afirmación explícitamente al médico o al paciente.\nConserva toda la información médica relevante.\nNo añadas ni asumas información que no esté explícitamente presente en la transcripción.\nNo uses listas, viñetas, guiones ni encabezados de ningún tipo.\nEscribe solo en prosa continua.",
+      "version": 1
+    },
+    {
+      "fields": [
+        {
+          "id": "background",
+          "kind": "text",
+          "titles": [
+            "Antecedentes",
+            "Background",
+            "Vorgeschichte",
+            "Antécédents"
+          ]
+        },
+        {
+          "id": "reducedAnamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis reducida",
+            "Summary anamnesis",
+            "Kurzanamnese",
+            "Anamnèse résumée"
+          ]
+        },
+        {
+          "id": "anamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis",
+            "Detailed anamnesis",
+            "Ausführliche Anamnese",
+            "Anamnèse détaillée"
+          ]
+        },
+        {
+          "id": "examination",
+          "kind": "text",
+          "titles": [
+            "Exploración",
+            "Physical examination",
+            "Körperliche Untersuchung",
+            "Examen physique"
+          ]
+        },
+        {
+          "id": "additionalTests",
+          "kind": "text",
+          "titles": [
+            "Pruebas complementarias",
+            "Complementary tests",
+            "Zusatzuntersuchungen",
+            "Examens complémentaires"
+          ]
+        },
+        {
+          "id": "diagnosis",
+          "kind": "text",
+          "titles": [
+            "Diagnóstico",
+            "Diagnoses",
+            "Diagnosen",
+            "Diagnostics"
+          ]
+        },
+        {
+          "id": "icdCodes",
+          "kind": "icdMultiSelect",
+          "titles": [
+            "Códigos CIE-10",
+            "ICD-10 Codes",
+            "ICD-10-Codes",
+            "Codes CIM-10"
+          ]
+        },
+        {
+          "id": "treatmentPlan",
+          "kind": "text",
+          "titles": [
+            "Plan de tratamiento",
+            "Treatment plan",
+            "Behandlungsplan",
+            "Plan de traitement"
+          ]
+        }
+      ],
+      "generationSections": [
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "background",
+          "maxTokens": 700,
+          "name": "Antecedentes",
+          "prompt": "Extrae los antecedentes médicos del paciente. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAlergias: <valor>\nHábitos Tóxicos: <valor>\nPatologías Previas: <valor>\nIntervenciones: <valor>\nIngresos Hospitalarios: <valor>\nTratamiento Habitual: <valor>\nPara Patologías Previas: incluye un resumen general breve de las patologías previas y la fórmula obstétrica si consta (p. ej. G2P1C1A0: 2 gestaciones, 1 parto vaginal, 1 cesárea, 0 abortos). Para Intervenciones: escribe un resumen general breve — incluye cesáreas anteriores, partos instrumentales, cirugías ginecológicas y otras; no listes procedimientos individuales ni fechas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: No consta. No incluyas el diagnóstico ni el plan de tratamiento de la consulta actual.",
+          "reviewBody": "Preserva exactamente los seis campos con su formato (Campo: <valor>). Para cada campo: corrige puntuación y mayúsculas y elimina artefactos o muletillas. Si un campo no tiene información, escribe: No consta. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "anamnesis",
+          "maxTokens": 1600,
+          "name": "Anamnesis",
+          "prompt": "Esta es la transcripción de una consulta médica entre médico y paciente. Describe en prosa la historia clínica de la paciente, incluyendo el motivo de consulta, los síntomas ginecológicos u obstétricos referidos y los antecedentes médicos y quirúrgicos relevantes para la ginecología y obstetricia. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No incluyas ningún dato personal identificativo de la paciente. Incluye únicamente la información presente de forma explícita en la transcripción. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo, eliminando todo lo que no sea médicamente relevante para la historia clínica de la paciente y el motivo de consulta. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No uses subsecciones, etiquetas ni encabezados de ningún tipo. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "reducedAnamnesis",
+          "maxTokens": 200,
+          "name": "Anamnesis Reducida",
+          "prompt": "A partir del texto de anamnesis anterior, escribe un párrafo que resuma los aspectos más relevantes para la ginecología y obstetricia: motivo de consulta principal, tiempo de evolución, síntomas ginecológicos u obstétricos clave y antecedentes de mayor relevancia para esta especialidad. Escribe en prosa continua. No añadas información que no esté en la anamnesis.",
+          "reviewBody": "Reescribe el resumen en 2-3 frases muy concisas. Elimina cualquier aspecto no médico o irrelevante para la ginecología y obstetricia. Corrige la puntuación y las mayúsculas. No añadas información que no esté en el borrador.",
+          "sourceFieldId": "anamnesis"
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Dicta el médico en la transcripción hallazgos concretos de la exploración física (exploración vaginal, especuloscopia, tacto bimanual, palpación abdominal, auscultación fetal u otras regiones exploradas)? Decir que va a explorar o preparar a la paciente no cuenta.",
+          "fieldId": "examination",
+          "maxTokens": 600,
+          "name": "Exploración",
+          "prompt": "Hallazgos de la exploración física documentados en la transcripción. Incluye únicamente los hallazgos mencionados de forma explícita (exploración vaginal, especuloscopia, tacto bimanual, palpación abdominal, auscultación fetal u otras regiones exploradas). Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Se comentan en la transcripción resultados de pruebas complementarias realizadas antes de esta consulta (ecografía, citología, cultivos, analítica hormonal, biopsia, amniocentesis, etc.)?",
+          "fieldId": "additionalTests",
+          "maxTokens": 800,
+          "name": "Pruebas Complementarias",
+          "prompt": "Pruebas complementarias ya realizadas y sus resultados revisados durante la consulta (ecografía, citología, cultivos, analítica hormonal, biopsia, amniocentesis, etc.). Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Pendiente de filiación diagnóstica.",
+            "Diagnosis pending.",
+            "Diagnose ausstehend.",
+            "Diagnostic en attente."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Expresa el médico en la transcripción un diagnóstico o una impresión diagnóstica?",
+          "fieldId": "diagnosis",
+          "maxTokens": 500,
+          "name": "Diagnósticos",
+          "prompt": "Diagnósticos confirmados y diagnósticos en estudio o diferenciales relevantes para la ginecología y obstetricia. Enuméralos uno por línea. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.).",
+          "reviewBody": "Extrae únicamente los nombres de los diagnósticos relevantes para la ginecología y obstetricia, uno por línea, sin explicaciones, descripciones, notas ni contexto adicional. Elimina cualquier artefacto, alucinación o diagnóstico no relevante para esta especialidad. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.). Cada línea debe contener únicamente el nombre de la enfermedad o condición, nada más.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Sin cambios terapéuticos indicados en esta consulta.",
+            "No therapeutic changes indicated in this consultation.",
+            "In dieser Konsultation keine therapeutischen Änderungen.",
+            "Aucune modification thérapeutique indiquée lors de cette consultation."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Indica el médico en la transcripción un tratamiento, una prueba o un seguimiento concretos para la paciente?",
+          "fieldId": "treatmentPlan",
+          "maxTokens": 1200,
+          "name": "Tratamiento",
+          "prompt": "Medicamentos prescritos o ajustados, procedimientos planificados, derivaciones e instrucciones de seguimiento. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        }
+      ],
+      "id": "gynecology",
+      "reportSystemPrompt": "Eres un médico experto en ginecología y obstetricia redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de ginecología y obstetricia. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción.",
+      "reviewIntro": "Este es un borrador de la sección '{SECTION}' de un informe médico profesional de ginecología y obstetricia.",
+      "reviewSystemPrompt": "Eres un médico experto en ginecología y obstetricia revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita.",
+      "summarySystemPrompt": "Eres un médico experto en ginecología y obstetricia. Se te proporciona la transcripción literal de una consulta médico-paciente. Tu tarea es resumirla.",
+      "summaryUserPrompt": "Esta es la transcripción de la consulta:\n\n{TEXT}\n\nResume la interacción entre el médico y el paciente, atribuyendo cada afirmación explícitamente al médico o al paciente.\nConserva toda la información médica relevante.\nNo añadas ni asumas información que no esté explícitamente presente en la transcripción.\nNo uses listas, viñetas, guiones ni encabezados de ningún tipo.\nEscribe solo en prosa continua.",
+      "version": 1
+    },
+    {
+      "fields": [
+        {
+          "id": "background",
+          "kind": "text",
+          "titles": [
+            "Antecedentes",
+            "Background",
+            "Vorgeschichte",
+            "Antécédents"
+          ]
+        },
+        {
+          "id": "anamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis",
+            "History of presenting complaint",
+            "Anamnese",
+            "Anamnèse"
+          ]
+        },
+        {
+          "id": "examination",
+          "kind": "text",
+          "titles": [
+            "Exploración",
+            "Physical examination",
+            "Körperliche Untersuchung",
+            "Examen physique"
+          ]
+        },
+        {
+          "id": "additionalTests",
+          "kind": "text",
+          "titles": [
+            "Pruebas complementarias",
+            "Complementary tests",
+            "Zusatzuntersuchungen",
+            "Examens complémentaires"
+          ]
+        },
+        {
+          "id": "diagnosis",
+          "kind": "text",
+          "titles": [
+            "Diagnóstico",
+            "Diagnoses",
+            "Diagnosen",
+            "Diagnostics"
+          ]
+        },
+        {
+          "id": "icdCodes",
+          "kind": "icdMultiSelect",
+          "titles": [
+            "Códigos CIE-10",
+            "ICD-10 Codes",
+            "ICD-10-Codes",
+            "Codes CIM-10"
+          ]
+        },
+        {
+          "id": "treatmentPlan",
+          "kind": "text",
+          "titles": [
+            "Plan",
+            "Plan",
+            "Plan",
+            "Plan"
+          ]
+        }
+      ],
+      "generationSections": [
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "anamnesis",
+          "maxTokens": 800,
+          "name": "Anamnesis",
+          "prompt": "Describe en prosa el motivo de consulta, los síntomas referidos y los antecedentes relevantes para esta visita (alergias, patologías crónicas, tratamiento habitual e intervenciones previas, solo si se mencionan en la transcripción). No incluyas diagnósticos del médico, resultados de pruebas, tratamientos prescritos en esta consulta ni datos personales identificativos. Escribe solo en prosa. Sé conciso.",
+          "reviewBody": "Compáctalo en un párrafo claro eliminando lo que no sea médicamente relevante. No incluyas diagnósticos, resultados de pruebas ni el plan de tratamiento. Corrige puntuación y mayúsculas. No añadas información que no esté en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Dicta el médico en la transcripción hallazgos concretos de la exploración física (constantes vitales, auscultación, palpación, percusión u otras regiones exploradas)? Decir que va a explorar o pedir que el paciente se quite ropa no cuenta.",
+          "fieldId": "examination",
+          "maxTokens": 400,
+          "name": "Exploración",
+          "prompt": "Hallazgos de la exploración física dictados en la transcripción. Incluye solo los hallazgos mencionados de forma explícita. Escribe solo en prosa. Sé breve.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Pendiente de filiación diagnóstica.",
+            "Diagnosis pending.",
+            "Diagnose ausstehend.",
+            "Diagnostic en attente."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Expresa el médico en la transcripción un diagnóstico o una impresión diagnóstica?",
+          "fieldId": "diagnosis",
+          "maxTokens": 400,
+          "name": "Diagnósticos",
+          "prompt": "Diagnósticos confirmados y diagnósticos en estudio. Enuméralos uno por línea. No incluyas códigos de clasificación (CIE, SNOMED, etc.).",
+          "reviewBody": "Extrae únicamente los nombres de los diagnósticos, uno por línea, sin explicaciones ni contexto adicional. Elimina cualquier diagnóstico no mencionado explícitamente por el médico. No incluyas códigos de clasificación (CIE, SNOMED, etc.).",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Sin cambios terapéuticos indicados en esta consulta.",
+            "No therapeutic changes indicated in this consultation.",
+            "In dieser Konsultation keine therapeutischen Änderungen.",
+            "Aucune modification thérapeutique indiquée lors de cette consultation."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Indica el médico en la transcripción un tratamiento, una prueba o un seguimiento concretos?",
+          "fieldId": "treatmentPlan",
+          "maxTokens": 700,
+          "name": "Plan",
+          "prompt": "Medicamentos prescritos o ajustados, pruebas solicitadas, derivaciones e instrucciones de seguimiento. Escribe solo en prosa. Sé conciso.",
+          "reviewBody": "Compáctalo conservando únicamente lo esencial: fármacos, pruebas solicitadas, derivaciones y seguimiento. Elimina gestiones no clínicas (citas, secretaría, correos, llamadas). Corrige puntuación y mayúsculas. No añadas información que no esté en el borrador.",
+          "sourceFieldId": null
+        }
+      ],
+      "id": "general_medicine",
+      "reportSystemPrompt": "Eres un médico de medicina general redactando un informe de consulta conciso y directo. Se te proporciona la transcripción completa de una consulta de atención primaria. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — breve, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas ni asumas información que no esté explícitamente presente en la transcripción.",
+      "reviewIntro": "Este es un borrador de la sección '{SECTION}' de un informe de medicina general.",
+      "reviewSystemPrompt": "Eres un médico de medicina general revisando un informe de consulta. Se te proporciona el borrador actual. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Reescribe únicamente la sección solicitada — breve, coherente y sin contradicciones. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita.",
+      "summarySystemPrompt": "Eres un médico de medicina general. Se te proporciona la transcripción literal de una consulta. Tu tarea es resumirla.",
+      "summaryUserPrompt": "Esta es la transcripción de la consulta:\n\n{TEXT}\n\nResume brevemente la interacción entre el médico y el paciente, atribuyendo cada afirmación al médico o al paciente.\nConserva la información médica relevante.\nNo añadas ni asumas información que no esté explícitamente presente en la transcripción.\nNo uses listas, viñetas, guiones ni encabezados.\nEscribe solo en prosa continua.",
+      "version": 1
+    },
+    {
+      "fields": [
+        {
+          "id": "background",
+          "kind": "text",
+          "titles": [
+            "Antecedentes",
+            "Background",
+            "Vorgeschichte",
+            "Antécédents"
+          ]
+        },
+        {
+          "id": "reducedAnamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis reducida",
+            "Summary anamnesis",
+            "Kurzanamnese",
+            "Anamnèse résumée"
+          ]
+        },
+        {
+          "id": "anamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis",
+            "Detailed anamnesis",
+            "Ausführliche Anamnese",
+            "Anamnèse détaillée"
+          ]
+        },
+        {
+          "id": "examination",
+          "kind": "text",
+          "titles": [
+            "Exploración",
+            "Physical examination",
+            "Körperliche Untersuchung",
+            "Examen physique"
+          ]
+        },
+        {
+          "id": "additionalTests",
+          "kind": "text",
+          "titles": [
+            "Pruebas complementarias",
+            "Complementary tests",
+            "Zusatzuntersuchungen",
+            "Examens complémentaires"
+          ]
+        },
+        {
+          "id": "diagnosis",
+          "kind": "text",
+          "titles": [
+            "Diagnóstico",
+            "Diagnoses",
+            "Diagnosen",
+            "Diagnostics"
+          ]
+        },
+        {
+          "id": "icdCodes",
+          "kind": "icdMultiSelect",
+          "titles": [
+            "Códigos CIE-10",
+            "ICD-10 Codes",
+            "ICD-10-Codes",
+            "Codes CIM-10"
+          ]
+        },
+        {
+          "id": "treatmentPlan",
+          "kind": "text",
+          "titles": [
+            "Plan de tratamiento",
+            "Treatment plan",
+            "Behandlungsplan",
+            "Plan de traitement"
+          ]
+        }
+      ],
+      "generationSections": [
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "background",
+          "maxTokens": 600,
+          "name": "Antecedentes",
+          "prompt": "Extrae los antecedentes médicos generales del paciente. Escribe exactamente los siguientes seis campos, uno por línea, con este formato exacto:\nAlergias: <valor>\nHábitos Tóxicos: <valor>\nPatologías Previas: <valor>\nIntervenciones: <valor>\nIngresos Hospitalarios: <valor>\nTratamiento Habitual: <valor>\nPara Patologías Previas: escribe un resumen general breve de las enfermedades previas que el paciente cuenta, sin detalles. Para Intervenciones: escribe un resumen general breve de las cirugías que el paciente cuenta, sin fechas. Ingresos Hospitalarios son solo las hospitalizaciones: una consulta o una revisión no es un ingreso. Las impresiones diagnósticas que el médico da en esta consulta no son patologías previas. Incluye únicamente la información explícitamente presente en la transcripción. Si un campo no tiene información, escribe: No consta. No incluyas diagnósticos ni tratamientos prescritos durante esta consulta.",
+          "reviewBody": "Preserva exactamente los seis campos con su formato (Campo: <valor>). Para cada campo: corrige puntuación y mayúsculas y elimina artefactos o muletillas. Si un campo no tiene información, escribe: No consta. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "anamnesis",
+          "maxTokens": 1600,
+          "name": "Anamnesis",
+          "prompt": "Esta es la transcripción de una consulta médica entre médico y paciente. Describe en prosa la historia clínica del paciente, incluyendo el motivo de consulta, los síntomas y los antecedentes médicos y quirúrgicos relevantes. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No incluyas los hallazgos de la exploración física hecha en la consulta: van en Exploración. No incluyas ningún dato personal identificativo del paciente. Incluye únicamente la información presente de forma explícita en la transcripción. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo, eliminando todo lo que no sea médicamente relevante para la historia clínica del paciente y el motivo de consulta. No incluyas diagnósticos hechos por el médico, resultados de pruebas, recomendaciones de tratamiento ni planes de seguimiento. No incluyas los hallazgos de la exploración física hecha en la consulta. No uses subsecciones, etiquetas ni encabezados de ningún tipo. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "reducedAnamnesis",
+          "maxTokens": 200,
+          "name": "Anamnesis Reducida",
+          "prompt": "A partir del texto de anamnesis anterior, escribe un párrafo que resuma los aspectos más relevantes para la medicina interna: motivo de consulta principal, tiempo de evolución, síntomas clave y antecedentes médicos de mayor relevancia para esta especialidad. Escribe en prosa continua. No añadas información que no esté en la anamnesis.",
+          "reviewBody": "Reescribe el resumen en 2-3 frases muy concisas. Elimina cualquier aspecto no médico o irrelevante para la medicina interna. Corrige la puntuación y las mayúsculas. No añadas información que no esté en el borrador.",
+          "sourceFieldId": "anamnesis"
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Dicta el médico en la transcripción hallazgos concretos de la exploración física (lo que observa, palpa o mide)? Decir que va a explorar o pedir que el paciente se desvista no cuenta.",
+          "fieldId": "examination",
+          "maxTokens": 800,
+          "name": "Exploración",
+          "prompt": "Hallazgos que el médico dicta durante la exploración física en la consulta: inspección, palpación, percusión, auscultación, constantes vitales y cualquier otra maniobra que describa, con sus medidas y sus mismos matices. Incluye únicamente los hallazgos mencionados de forma explícita. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Se comentan en la transcripción resultados de pruebas complementarias hechas antes de esta consulta (imagen, analíticas, etc.)?",
+          "fieldId": "additionalTests",
+          "maxTokens": 800,
+          "name": "Pruebas Complementarias",
+          "prompt": "Pruebas complementarias hechas antes de esta consulta y sus resultados revisados durante ella (imagen, laboratorio, etc.). Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Pendiente de filiación diagnóstica.",
+            "Diagnosis pending.",
+            "Diagnose ausstehend.",
+            "Diagnostic en attente."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Expresa el médico en la transcripción un diagnóstico o una impresión diagnóstica?",
+          "fieldId": "diagnosis",
+          "maxTokens": 500,
+          "name": "Diagnósticos",
+          "prompt": "Diagnósticos confirmados y diagnósticos en estudio o diferenciales relevantes para la medicina interna. Enuméralos uno por línea. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.).",
+          "reviewBody": "Extrae únicamente los nombres de los diagnósticos, uno por línea, sin explicaciones, descripciones, notas ni contexto adicional. Elimina cualquier artefacto, alucinación o diagnóstico no mencionado explícitamente por el médico. No incluyas ningún código de clasificación de enfermedades ni de facturación (CIE, SNOMED, etc.). Cada línea debe contener únicamente el nombre de la enfermedad o condición, nada más.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Sin cambios terapéuticos indicados en esta consulta.",
+            "No therapeutic changes indicated in this consultation.",
+            "In dieser Konsultation keine therapeutischen Änderungen.",
+            "Aucune modification thérapeutique indiquée lors de cette consultation."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Indica el médico en la transcripción un tratamiento, una prueba o un seguimiento concretos para el paciente?",
+          "fieldId": "treatmentPlan",
+          "maxTokens": 1200,
+          "name": "Tratamiento",
+          "prompt": "Medicamentos prescritos o ajustados, pruebas solicitadas, procedimientos planificados, derivaciones e instrucciones de seguimiento que el médico indica en la consulta. Escribe solo lo que el médico indica: no añadas pruebas, derivaciones, consejos ni justificaciones propias. Escribe solo en prosa.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje médico formal y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. Elimina cualquier instrucción o indicación de carácter administrativo o logístico posterior a la consulta: llamadas telefónicas, envío de correos electrónicos, obtención o entrega de informes, contacto con la secretaría, solicitud o confirmación de citas, disponibilidad del médico u otras gestiones no clínicas. Conserva únicamente el tratamiento médico prescrito. No añadas pruebas, derivaciones, consejos ni justificaciones. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        }
+      ],
+      "id": "internista",
+      "reportSystemPrompt": "Eres un médico internista redactando un informe médico profesional. Se te proporciona la transcripción completa de una consulta médico-paciente en una clínica de medicina interna. Redactarás el informe de consulta estructurado sección por sección. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — conciso, factual y con terminología médica adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas, inferidas ni asumas información que no esté explícitamente presente en la transcripción.",
+      "reviewIntro": "Este es un borrador de la sección '{SECTION}' de un informe médico profesional de medicina interna.",
+      "reviewSystemPrompt": "Eres un médico internista revisando un informe de consulta estructurado. Se te proporciona el borrador actual del informe. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Reescribe únicamente la sección solicitada para que el informe sea internamente coherente — sin contradicciones, sin omisiones, con terminología médica consistente. Conserva solo los términos médicos relevantes y precisos. Escribe solo en prosa: sin markdown, sin encabezados, sin listas, sin negrita ni cursiva, sin títulos de sección. Escribe únicamente el contenido de la sección reescrita.",
+      "summarySystemPrompt": "Eres un médico internista. Se te proporciona la transcripción literal de una consulta médico-paciente. Tu tarea es resumirla.",
+      "summaryUserPrompt": "Esta es la transcripción de la consulta:\n\n{TEXT}\n\nResume la interacción entre el médico y el paciente, atribuyendo cada afirmación explícitamente al médico o al paciente.\nConserva toda la información médica relevante.\nRecoge siempre las impresiones y sospechas diagnósticas que el médico dice en voz alta.\nCuando el paciente explica la causa o el motivo de algo (por qué come o deja de comer algo, por qué toma algo), escríbelo tal como lo explica, sin invertirlo.\nDescribe los síntomas con los matices que da el paciente (constante o intermitente, pulsátil o no, en reposo o al andar).\nSi el paciente enumera pruebas o informes, nombra cada uno con lo que el paciente dice de él, sin mezclarlos ni atribuirles conclusiones de otro.\nRecoge cada hallazgo de la exploración que dicta el médico con sus mismos matices, y las respuestas del paciente a preguntas sobre hábitos (tabaco, alcohol).\nLa transcripción es automática y contiene errores de reconocimiento: omite las frases que no tienen sentido clínico y no interpretes palabras mal reconocidas.\nNo añadas ni asumas información que no esté explícitamente presente en la transcripción.\nNo uses listas, viñetas, guiones ni encabezados de ningún tipo.\nEscribe solo en prosa continua.",
+      "version": 1
+    },
+    {
+      "fields": [
+        {
+          "id": "background",
+          "kind": "text",
+          "titles": [
+            "Antecedentes",
+            "Background",
+            "Vorgeschichte",
+            "Antécédents"
+          ]
+        },
+        {
+          "id": "anamnesis",
+          "kind": "text",
+          "titles": [
+            "Anamnesis",
+            "History of presenting complaint",
+            "Anamnese",
+            "Anamnèse"
+          ]
+        },
+        {
+          "id": "anthropometrics",
+          "kind": "text",
+          "titles": [
+            "Medidas antropométricas",
+            "Anthropometric measurements",
+            "Anthropometrische Maße",
+            "Mesures anthropométriques"
+          ]
+        },
+        {
+          "id": "dietaryAssessment",
+          "kind": "text",
+          "titles": [
+            "Valoración dietética",
+            "Dietary assessment",
+            "Ernährungsbeurteilung",
+            "Évaluation diététique"
+          ]
+        },
+        {
+          "id": "diagnosis",
+          "kind": "text",
+          "titles": [
+            "Diagnóstico nutricional",
+            "Nutritional diagnosis",
+            "Ernährungsdiagnose",
+            "Diagnostic nutritionnel"
+          ]
+        },
+        {
+          "id": "icdCodes",
+          "kind": "icdMultiSelect",
+          "titles": [
+            "Códigos CIE-10",
+            "ICD-10 Codes",
+            "ICD-10-Codes",
+            "Codes CIM-10"
+          ]
+        },
+        {
+          "id": "nutritionPlan",
+          "kind": "text",
+          "titles": [
+            "Plan nutricional",
+            "Nutrition plan",
+            "Ernährungsplan",
+            "Plan nutritionnel"
+          ]
+        }
+      ],
+      "generationSections": [
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "anamnesis",
+          "maxTokens": 700,
+          "name": "Anamnesis",
+          "prompt": "Describe en prosa el motivo de consulta, los objetivos del paciente y los antecedentes relevantes desde el punto de vista nutricional mencionados en la transcripción (intolerencias, alergias alimentarias, patologías que afecten a la nutrición, medicamentos relevantes, intervenciones nutricionales previas). No incluyas las medidas antropométricas, la valoración dietética, el diagnóstico ni el plan. No incluyas datos personales identificativos. Escribe solo en prosa. Sé conciso.",
+          "reviewBody": "Compáctalo en uno o dos párrafos eliminando lo que no sea relevante para el motivo de consulta y el contexto nutricional del paciente. No incluyas medidas, valoración dietética, diagnóstico ni plan. Corrige puntuación y mayúsculas. No añadas información que no esté en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "anthropometrics",
+          "maxTokens": 300,
+          "name": "Medidas Antropométricas",
+          "prompt": "Escribe exactamente los siguientes campos, uno por línea, con este formato exacto:\nPeso: <valor>\nTalla: <valor>\nIMC: <valor>\nPerímetro abdominal: <valor>\nMasa grasa: <valor>\nMasa magra: <valor>\n% grasa corporal: <valor>\nExtrae los valores que el nutricionista dicte en la transcripción. Incluye las unidades cuando consten (kg, cm, kg/m², %). Si un campo no se menciona en la transcripción, escribe: No consta.",
+          "reviewBody": "Preserva exactamente los siete campos con su formato (Campo: <valor>). Para cada campo: corrige la ortografía y las unidades. Si un campo no tiene información, escribe: No consta. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": null,
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Describe el paciente o el nutricionista en la transcripción los hábitos alimentarios actuales del paciente (qué come, con qué frecuencia, horarios, hidratación o suplementos)?",
+          "fieldId": "dietaryAssessment",
+          "maxTokens": 600,
+          "name": "Valoración Dietética",
+          "prompt": "Describe en prosa los hábitos alimentarios actuales del paciente según lo referido en la transcripción: patrón de comidas, alimentos habituales, frecuencia, hidratación, consumo de alcohol, suplementos y cualquier restricción o preferencia alimentaria mencionada. Escribe solo en prosa. Sé preciso y conciso.",
+          "reviewBody": "Compáctalo y resúmelo conservando únicamente lo esencial, usando lenguaje técnico nutricional y prosa clara. Organiza el contenido en párrafos claros, uno por cada parte diferenciada de la sección. Corrige la puntuación y las mayúsculas. Elimina artefactos, referencias a la transcripción o muletillas. No añadas información que no esté presente en el borrador.",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Pendiente de valoración nutricional.",
+            "Nutritional assessment pending.",
+            "Ernährungsbeurteilung ausstehend.",
+            "Évaluation nutritionnelle en attente."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Expresa el nutricionista en la transcripción una valoración del estado nutricional o un diagnóstico nutricional del paciente?",
+          "fieldId": "diagnosis",
+          "maxTokens": 400,
+          "name": "Diagnóstico Nutricional",
+          "prompt": "Diagnóstico o valoración nutricional expresada por el nutricionista. Enumera uno por línea. No incluyas códigos de clasificación (CIE, SNOMED, etc.).",
+          "reviewBody": "Extrae únicamente los diagnósticos o valoraciones nutricionales, uno por línea, sin explicaciones ni contexto adicional. Elimina cualquier diagnóstico no mencionado explícitamente por el nutricionista. No incluyas códigos de clasificación (CIE, SNOMED, etc.).",
+          "sourceFieldId": null
+        },
+        {
+          "emptyFallback": [
+            "Sin cambios dietéticos indicados en esta consulta.",
+            "No dietary changes indicated in this consultation.",
+            "In dieser Konsultation keine diätetischen Änderungen.",
+            "Aucune modification diététique indiquée lors de cette consultation."
+          ],
+          "evidenceGate": "observe",
+          "evidenceQuestion": "¿Indica el nutricionista en la transcripción recomendaciones dietéticas, objetivos nutricionales, suplementos o pautas de seguimiento concretos?",
+          "fieldId": "nutritionPlan",
+          "maxTokens": 800,
+          "name": "Plan Nutricional",
+          "prompt": "Recomendaciones dietéticas, objetivos nutricionales, pautas de alimentación, suplementos indicados e instrucciones de seguimiento que el nutricionista indica en la consulta. Escribe solo en prosa. Sé conciso.",
+          "reviewBody": "Compáctalo conservando únicamente lo esencial: pautas dietéticas, objetivos, suplementos y seguimiento. Elimina gestiones no clínicas (citas, correos, llamadas). Corrige puntuación y mayúsculas. No añadas información que no esté en el borrador.",
+          "sourceFieldId": null
+        }
+      ],
+      "id": "nutritionist",
+      "reportSystemPrompt": "Eres un nutricionista redactando un informe de consulta nutricional. Se te proporciona la transcripción completa de una consulta de nutrición. REGLA ESTRICTA: Redacta el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Cuando se te solicite una sección, escribe únicamente el contenido de esa sección — factual y con terminología técnica nutricional adecuada. Si la transcripción no contiene información relevante para una sección, escribe solo: No consta. Escribe solo en prosa, salvo cuando se indique un formato estructurado: sin markdown, sin encabezados, sin negrita ni cursiva, sin títulos de sección. Basa todo estrictamente en lo que se discutió. No añadas ni asumas información que no esté explícitamente presente en la transcripción.",
+      "reviewIntro": "Este es un borrador de la sección '{SECTION}' de un informe de consulta nutricional.",
+      "reviewSystemPrompt": "Eres un nutricionista revisando un informe de consulta nutricional. Se te proporciona el borrador actual. REGLA ESTRICTA: Redacta y revisa el informe EXCLUSIVAMENTE en el idioma: {LANGUAGE}. Reescribe únicamente la sección solicitada — coherente y sin contradicciones. Para secciones con formato estructurado (Campo: valor), conserva exactamente ese formato. Escribe únicamente el contenido de la sección reescrita.",
+      "summarySystemPrompt": "Eres un nutricionista. Se te proporciona la transcripción literal de una consulta de nutrición. Tu tarea es resumirla.",
+      "summaryUserPrompt": "Esta es la transcripción de la consulta:\n\n{TEXT}\n\nResume brevemente la interacción entre el nutricionista y el paciente, atribuyendo cada afirmación al nutricionista o al paciente.\nConserva la información clínica y nutricional relevante.\nNo añadas ni asumas información que no esté explícitamente presente en la transcripción.\nNo uses listas, viñetas, guiones ni encabezados.\nEscribe solo en prosa continua.",
+      "version": 1
+    },
+    {
+      "fields": [
+        {
+          "id": "visitRecord",
+          "kind": "text",
+          "titles": [
+            "Registro de visita",
+            "Visit record",
+            "Besuchsprotokoll",
+            "Compte rendu de visite"
+          ]
+        }
+      ],
+      "generationSections": [
+        {
+          "emptyFallback": null,
+          "evidenceGate": "off",
+          "evidenceQuestion": null,
+          "fieldId": "visitRecord",
+          "maxTokens": 400,
+          "name": "Visit Record",
+          "prompt": "Write the visit record as a bullet-point list with exactly these items:\n\n- Physician: full name · specialty · facility and city · date\n- Products: comma-separated list of products discussed\n- Key points: main message delivered; physician reaction, objections, or current prescribing habits\n- Sentiment: Positive / Neutral / Negative — reason in five words or fewer\n- Commitments: what the physician agreed to, or —\n- Materials left: samples or materials left, or —\n- Next steps: action — responsible — deadline\n- Next visit: date or timeframe, or —\n- Safety: any adverse event or product complaint, or None reported\n\nUse only information present in the transcript. Do not invent data. If an item is not mentioned, write —. Keep the total under 120 words.",
+          "reviewBody": "Check that all fields are present and correctly labelled. Remove redundancy and filler. If the total exceeds 120 words, trim it while keeping all essential data. Ensure Safety appears if and only if an adverse event or complaint was mentioned; otherwise write None reported. Do not add information that is not in the draft.",
+          "sourceFieldId": null
+        }
+      ],
+      "id": "visitador",
+      "reportSystemPrompt": "You are a CRM assistant for pharmaceutical sales representatives. You will receive the transcript of a voice note recorded by a rep immediately after a physician visit. Transform it into a concise CRM visit record. Write the record EXCLUSIVELY in the language: {LANGUAGE}. Be extremely concise: short phrases, no filler. Use only information present in the transcript — never invent or assume data. Keep product names, doses, and dates exactly as spoken. If any adverse event, side-effect report, or product complaint is mentioned, include it under Safety so it can be reported to pharmacovigilance. Do not omit or soften it.",
+      "reviewIntro": "This is a draft CRM visit record.",
+      "reviewSystemPrompt": "You are a CRM assistant reviewing a physician visit record. Write the record EXCLUSIVELY in the language: {LANGUAGE}. Rewrite it keeping the exact field structure, removing redundancy, and ensuring the total stays under 120 words. Do not add information that is not in the draft.",
+      "summarySystemPrompt": "You are a CRM assistant for the pharmaceutical industry. You will receive the literal transcript of a sales rep voice note. Summarise it.",
+      "summaryUserPrompt": "Here is the voice note transcript:\n\n{TEXT}\n\nBriefly summarise the key visit details: physician visited, products discussed, main conversation points, and next steps.\nDo not add or assume information not explicitly present in the transcript.\nWrite in continuous prose only.",
+      "version": 1
+    }
+  ]
+}

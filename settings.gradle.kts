@@ -6,5 +6,5 @@ dependencyResolutionManagement {
     repositories { google(); mavenCentral() }
 }
 rootProject.name = "chiara-app-android"
-include(":app", ":core:model", ":core:domain", ":core:network", ":core:data", ":core:designsystem")
+include(":app", ":core:model", ":core:domain", ":core:network", ":core:data", ":core:designsystem", ":core:ai")
 // Pending modules (see docs/MIGRATION.md): :feature:*, :ml:asr, :ml:llm
