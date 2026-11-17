@@ -60,7 +60,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun AppSheet(
     title: String, onClose: () -> Unit, confirmLabel: String? = null, confirmEnabled: Boolean = true,
-    onConfirm: () -> Unit = {}, skipPartially: Boolean = true, content: @Composable () -> Unit,
+    onConfirm: () -> Unit = {}, skipPartially: Boolean = true, content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit,
 ) {
     val state: SheetState = rememberModalBottomSheetState(skipPartiallyExpanded = skipPartially)
     ModalBottomSheet(

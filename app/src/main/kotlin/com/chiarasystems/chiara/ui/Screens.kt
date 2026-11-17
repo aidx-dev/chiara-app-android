@@ -25,7 +25,7 @@ fun TabContent(app: AppContainer, tab: AppTab) {
             AppTab.Agenda -> AgendaScreen(app)
             AppTab.Patients -> PatientsScreen(app)
             AppTab.Reports -> ReportsScreen(app)
-            AppTab.Settings -> Placeholder("Ajustes")
+            AppTab.Settings -> SettingsScreen(app)
         }
     }
 }
@@ -35,7 +35,8 @@ fun Sheets(app: AppContainer) {
     val sheet by app.router.sheet.collectAsState()
     when (sheet) {
         ActiveSheet.NewPatient -> NewPatientSheet(app)
-        // Booking and Assistant sheets arrive with their screens.
+        is ActiveSheet.Booking -> BookingSheet(app, sheet as ActiveSheet.Booking)
+        // The assistant sheet arrives with the assistant (Phase 6).
         else -> Unit
     }
 }
