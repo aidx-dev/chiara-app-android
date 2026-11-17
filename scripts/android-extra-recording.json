@@ -814,5 +814,11 @@
     "en": "It will be retried by itself when the app is opened.",
     "de": "Beim Öffnen der App wird es automatisch erneut versucht.",
     "fr": "Une nouvelle tentative aura lieu toute seule à l'ouverture de l'app."
+  },
+  "No he podido usar el dictado.": {
+    "es": "No he podido usar el dictado.",
+    "en": "I couldn't use dictation.",
+    "de": "Das Diktat konnte nicht verwendet werden.",
+    "fr": "Je n'ai pas pu utiliser la dictée."
   }
 }

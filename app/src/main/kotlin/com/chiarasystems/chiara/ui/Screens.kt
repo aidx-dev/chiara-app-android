@@ -40,8 +40,8 @@ fun Sheets(app: AppContainer) {
         is ActiveSheet.Record -> RecordConsultationSheet(app, (sheet as ActiveSheet.Record).patientId?.let { id -> app.patients.patient(id) })
         is ActiveSheet.ImportAudio -> ImportAudioSheet(app, (sheet as ActiveSheet.ImportAudio).patientId?.let { id -> app.patients.patient(id) })
         is ActiveSheet.Booking -> BookingSheet(app, sheet as ActiveSheet.Booking)
-        // The assistant sheet arrives with the assistant (Phase 6).
-        else -> Unit
+        ActiveSheet.Assistant -> AssistantSheet(app)
+        null -> Unit
     }
 }
 

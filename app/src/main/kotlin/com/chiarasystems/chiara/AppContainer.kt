@@ -2,6 +2,12 @@ package com.chiarasystems.chiara
 
 import android.content.Context
 import com.chiarasystems.chiara.data.AppointmentsStore
+import com.chiarasystems.chiara.data.AssistantStore
+import com.chiarasystems.chiara.data.DayFormatter
+import com.chiarasystems.chiara.domain.AssistantContext
+import com.chiarasystems.chiara.domain.RuleBasedEngine
+import com.chiarasystems.chiara.recording.DictationService
+import java.util.Locale
 import com.chiarasystems.chiara.data.AuthStore
 import com.chiarasystems.chiara.data.PatientsStore
 import com.chiarasystems.chiara.data.ReportsStore
@@ -88,6 +94,18 @@ class AppContainer(private val context: Context) {
         isInFront = { isInFront },
     )
 
+    // --- Assistant (Phase 6): the keyword rules answer commands; the on-device model/agent plugs in as `agent`.
+    private val dayFormatter = object : DayFormatter {
+        override fun dayChip(day: java.time.LocalDate) = calFormat(settings.code).dayChip(day)
+        override fun longDay(day: java.time.LocalDate) = calFormat(settings.code).longDay(day)
+    }
+    val assistant = AssistantStore(
+        engine = RuleBasedEngine(), agent = null, patients = patients, appointments = appointments, days = dayFormatter,
+        context = { AssistantContext(java.time.LocalDate.now(), settings.code, Locale.forLanguageTag(settings.code)) },
+        tr = { key, args -> translator(settings.code).tr(key, *args.toTypedArray()) },
+    )
+    fun newDictation() = DictationService(context)
+
     private val assets = context.assets
     private val tables: Map<String, Map<String, String>> = listOf("es", "en", "de", "fr").associateWith { code ->
         runCatching {
@@ -103,6 +121,6 @@ class AppContainer(private val context: Context) {
 
     /** Nothing clinical may outlive the session in memory. */
     fun clearSessionState() {
-        patients.reset(); appointments.reset(); reports.reset(); router.reset(); recordings.setOwner(null)
+        patients.reset(); appointments.reset(); reports.reset(); router.reset(); recordings.setOwner(null); assistant.reset()
     }
 }
