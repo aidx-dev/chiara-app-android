@@ -97,7 +97,7 @@ fun SettingsScreen(app: AppContainer) {
             AppLanguage.entries.forEach { l ->
                 row {
                     Row(
-                        Modifier.fillMaxWidth().heightIn(min = 48.dp).clickable { app.settings.setLanguage(l) }.padding(horizontal = 16.dp, vertical = 10.dp),
+                        Modifier.fillMaxWidth().heightIn(min = 48.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { app.settings.setLanguage(l) }.padding(horizontal = 16.dp, vertical = 10.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Column(Modifier.weight(1f)) {
@@ -120,19 +120,28 @@ fun SettingsScreen(app: AppContainer) {
         GroupedList(Modifier.padding(top = 16.dp)) { row { FieldRow(tr("Versión"), version) } }
 
         LocalAiSection(app)
+        if (com.chiarasystems.chiara.BuildConfig.DEBUG) {
+            GroupedList(Modifier.padding(top = 24.dp)) {
+                row {
+                    Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.push(com.chiarasystems.chiara.data.Route.Bench) }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
+                        Text("Banco de pruebas del asistente", fontSize = 17.sp, color = Palette.text)
+                    }
+                }
+            }
+        }
 
         ExperimentalSection(app)
 
         GroupedList(Modifier.padding(top = 24.dp)) {
             row {
-                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable { app.router.push(com.chiarasystems.chiara.data.Route.Notices) }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
+                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.push(com.chiarasystems.chiara.data.Route.Notices) }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
                     Text(tr("Licencias de terceros"), fontSize = 17.sp, color = Palette.text)
                 }
             }
         }
 
         Box(
-            Modifier.padding(top = 24.dp).fillMaxWidth().surface().clickable { confirmSignOut = true }.heightIn(min = 52.dp),
+            Modifier.padding(top = 24.dp).fillMaxWidth().surface().clickable(role = androidx.compose.ui.semantics.Role.Button) { confirmSignOut = true }.heightIn(min = 52.dp),
             contentAlignment = Alignment.Center,
         ) { Text(tr("Cerrar sesión"), fontSize = 17.sp, color = Palette.destructive) }
     }
@@ -166,7 +175,7 @@ private fun ExperimentalSection(app: AppContainer) {
                 }
             }
             row {
-                Row(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable { app.router.push(com.chiarasystems.chiara.data.Route.Recordings) }.padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.push(com.chiarasystems.chiara.data.Route.Recordings) }.padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
                         Text(tr("Consultas grabadas"), fontSize = 17.sp, color = Palette.text)
                         Text(tr("%d en este dispositivo", recordings.size), fontSize = 13.sp, color = Palette.textFaint)

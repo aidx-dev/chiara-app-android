@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -88,7 +89,7 @@ fun LoginScreen(auth: AuthStore) {
     Box(Modifier.fillMaxSize().background(Palette.background)) {
         LoginBackground()
         Column(
-            Modifier.fillMaxSize().statusBarsPadding().imePadding().verticalScroll(rememberScrollState()).padding(horizontal = 24.dp),
+            Modifier.align(Alignment.TopCenter).widthIn(max = 480.dp).fillMaxSize().statusBarsPadding().imePadding().verticalScroll(rememberScrollState()).padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Spacer(Modifier.height(70.dp))
@@ -120,7 +121,7 @@ fun LoginScreen(auth: AuthStore) {
                             if (showPassword) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
                             if (showPassword) tr("Ocultar contraseña") else tr("Mostrar contraseña"),
                             tint = Palette.textFaint,
-                            modifier = Modifier.size(44.dp).clickable { showPassword = !showPassword }.padding(10.dp),
+                            modifier = Modifier.size(44.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { showPassword = !showPassword }.padding(10.dp),
                         )
                     },
                 )
@@ -149,7 +150,7 @@ fun LoginScreen(auth: AuthStore) {
             }
             Text(
                 tr("¿Olvidaste tu contraseña?"),
-                Modifier.padding(top = 20.dp, bottom = 90.dp).clickable { scope.launch { auth.requestPasswordReset(email) } },
+                Modifier.padding(top = 20.dp, bottom = 90.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { scope.launch { auth.requestPasswordReset(email) } },
                 fontSize = 15.sp, color = Palette.primary,
             )
         }

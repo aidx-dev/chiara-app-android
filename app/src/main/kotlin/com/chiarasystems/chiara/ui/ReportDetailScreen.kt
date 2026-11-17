@@ -113,7 +113,7 @@ fun ReportDetailScreen(app: AppContainer, reportId: String) {
             Row(Modifier.padding(top = 14.dp)) {
                 if (patient != null) {
                     Row(
-                        Modifier.background(Palette.surface, CircleShape).clickable { app.router.push(Route.Patient(patient.id)) }.padding(start = 4.dp, end = 12.dp, top = 4.dp, bottom = 4.dp),
+                        Modifier.background(Palette.surface, CircleShape).clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.push(Route.Patient(patient.id)) }.padding(start = 4.dp, end = 12.dp, top = 4.dp, bottom = 4.dp),
                         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
                         Avatar(patient, size = 32.dp)

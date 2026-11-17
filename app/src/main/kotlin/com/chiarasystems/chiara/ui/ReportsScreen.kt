@@ -107,7 +107,7 @@ fun ReportsScreen(app: AppContainer) {
                     itemsIndexed(items, key = { _, r -> r.id }) { i, r ->
                         Column(Modifier.fillMaxWidth().background(Palette.surface, cardRowShape(i, items.size))) {
                             if (i > 0) Hairline(inset = 68.dp)
-                            ReportRow(r, name(r), Modifier.clickable { app.router.push(Route.Report(r.id)) })
+                            ReportRow(r, name(r), Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.push(Route.Report(r.id)) })
                         }
                     }
                     item(key = "s-$label") { Box(Modifier.padding(bottom = 14.dp)) }

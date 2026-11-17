@@ -178,7 +178,7 @@ fun AssistantSheet(app: AppContainer) {
                         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             EXAMPLES.forEach { ex ->
                                 val label = tr(ex)
-                                Text(label, Modifier.background(Palette.accent, CircleShape).clickable { submit(label) }.padding(horizontal = 14.dp, vertical = 9.dp), fontSize = 15.sp, fontWeight = FontWeight.Medium, color = Palette.primary)
+                                Text(label, Modifier.background(Palette.accent, CircleShape).clickable(role = androidx.compose.ui.semantics.Role.Button) { submit(label) }.padding(horizontal = 14.dp, vertical = 9.dp), fontSize = 15.sp, fontWeight = FontWeight.Medium, color = Palette.primary)
                             }
                         }
                     }
@@ -189,7 +189,7 @@ fun AssistantSheet(app: AppContainer) {
                 Column(Modifier.fillMaxWidth().surface(20)) {
                     state.candidates.forEachIndexed { i, p ->
                         if (i > 0) Hairline(inset = 16.dp)
-                        Row(Modifier.fillMaxWidth().clickable { scope.launch { assistant.choose(p) } }.padding(horizontal = 16.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Row(Modifier.fillMaxWidth().clickable(role = androidx.compose.ui.semantics.Role.Button) { scope.launch { assistant.choose(p) } }.padding(horizontal = 16.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                             Avatar(p, size = 32.dp)
                             Text(p.fullName, Modifier.weight(1f), fontSize = 16.sp, color = Palette.text)
                             Text(p.documentId.orEmpty(), fontSize = 13.sp, color = Palette.textFaint)
@@ -201,7 +201,7 @@ fun AssistantSheet(app: AppContainer) {
                 Column(Modifier.fillMaxWidth().surface(20)) {
                     state.appointmentChoices.forEachIndexed { i, a ->
                         if (i > 0) Hairline(inset = 16.dp)
-                        Row(Modifier.fillMaxWidth().clickable { scope.launch { assistant.choose(a) } }.padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Row(Modifier.fillMaxWidth().clickable(role = androidx.compose.ui.semantics.Role.Button) { scope.launch { assistant.choose(a) } }.padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                             Icon(Icons.Filled.CalendarMonth, null, tint = Palette.primary, modifier = Modifier.size(24.dp))
                             Text(assistant.label(a), Modifier.weight(1f), fontSize = 16.sp, fontFamily = FontFamily.Monospace, color = Palette.text)
                             a.visit.type?.let { Text(tr(it.raw), fontSize = 13.sp, color = Palette.textFaint) }
@@ -212,7 +212,7 @@ fun AssistantSheet(app: AppContainer) {
             if (state.slotChoices.isNotEmpty()) {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     state.slotChoices.forEach { slot ->
-                        Box(Modifier.height(38.dp).background(Palette.accent, CircleShape).clickable { scope.launch { assistant.choose(slot) } }.padding(horizontal = 14.dp), contentAlignment = Alignment.Center) {
+                        Box(Modifier.height(38.dp).background(Palette.accent, CircleShape).clickable(role = androidx.compose.ui.semantics.Role.Button) { scope.launch { assistant.choose(slot) } }.padding(horizontal = 14.dp), contentAlignment = Alignment.Center) {
                             Text(assistant.label(slot, state.slotDuration), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Palette.primary)
                         }
                     }
@@ -221,7 +221,7 @@ fun AssistantSheet(app: AppContainer) {
             state.patientProposal?.let { PatientChangeCard(it, state.isWorking, ::confirmPatient) { assistant.dismissProposal() } }
             state.proposal?.let { p -> ProposalCard(app, p, state.isWorking, ::confirm, assistant::pick) { assistant.dismissProposal() } }
             if (state.canCreatePatient) {
-                Row(Modifier.background(Palette.accent, CircleShape).clickable { app.router.show(ActiveSheet.NewPatient) }.padding(horizontal = 16.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.background(Palette.accent, CircleShape).clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.show(ActiveSheet.NewPatient) }.padding(horizontal = 16.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Filled.PersonAdd, null, tint = Palette.primary, modifier = Modifier.size(18.dp))
                     Text(tr("Crear paciente"), Modifier.padding(start = 8.dp), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Palette.primary)
                 }
@@ -255,7 +255,7 @@ fun AssistantSheet(app: AppContainer) {
                     )
                 }
                 if (hasText) {
-                    Box(Modifier.padding(end = 6.dp, bottom = 6.dp).size(36.dp).background(if (canSend) Palette.primary else Palette.disabled, CircleShape).clickable(enabled = canSend) { submit(text) }, contentAlignment = Alignment.Center) {
+                    Box(Modifier.padding(end = 6.dp, bottom = 6.dp).size(36.dp).background(if (canSend) Palette.primary else Palette.disabled, CircleShape).clickable(enabled = canSend, role = androidx.compose.ui.semantics.Role.Button) { submit(text) }, contentAlignment = Alignment.Center) {
                         Icon(Icons.AutoMirrored.Filled.Send, tr("Enviar"), tint = Color.White, modifier = Modifier.size(18.dp))
                     }
                 }
@@ -263,7 +263,7 @@ fun AssistantSheet(app: AppContainer) {
             if (!hasText || listening) {
                 Box(
                     Modifier.size(48.dp).let { if (listening) it.background(Palette.primary, CircleShape) else it.glass(CircleShape) }
-                        .clickable(enabled = reason == null && !state.isWorking) { toggleDictation() },
+                        .clickable(enabled = reason == null && !state.isWorking, role = androidx.compose.ui.semantics.Role.Button) { toggleDictation() },
                     contentAlignment = Alignment.Center,
                 ) {
                     if (preparing) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
@@ -318,7 +318,7 @@ private fun PatientChangeCard(p: PatientProposal, working: Boolean, onConfirm: (
             Detail(if (p.field == PatientProposal.Field.Phone) Icons.Filled.Mic else Icons.Filled.Schedule, p.newValue)
         }
         PrimaryButton(tr("Confirmar"), onConfirm, enabled = !working)
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { Text(tr("Cancelar"), Modifier.clickable(onClick = onCancel), fontSize = 16.sp, fontWeight = FontWeight.Medium, color = Palette.textMuted) }
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { Text(tr("Cancelar"), Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button, onClick = onCancel), fontSize = 16.sp, fontWeight = FontWeight.Medium, color = Palette.textMuted) }
     }
 }
 
@@ -355,7 +355,7 @@ private fun ProposalCard(app: AppContainer, p: AssistantProposal, working: Boole
                 SectionLabel(tr("Horas libres ese día"))
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     p.suggestions.forEach { start ->
-                        Box(Modifier.height(38.dp).background(Palette.accent, CircleShape).clickable { onPick(start) }.padding(horizontal = 14.dp), contentAlignment = Alignment.Center) {
+                        Box(Modifier.height(38.dp).background(Palette.accent, CircleShape).clickable(role = androidx.compose.ui.semantics.Role.Button) { onPick(start) }.padding(horizontal = 14.dp), contentAlignment = Alignment.Center) {
                             Text("${Dates.hhmm(start)}–${Dates.hhmm(start + p.duration)}", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Palette.primary)
                         }
                     }
@@ -365,9 +365,9 @@ private fun ProposalCard(app: AppContainer, p: AssistantProposal, working: Boole
         val cancel = p.change == AssistantProposal.Change.Cancel
         PrimaryButton(if (cancel) tr("Cancelar cita") else tr("Confirmar"), onConfirm, enabled = p.isValid && !working, tint = if (cancel) Palette.destructive else Palette.primary)
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            if (p.change == AssistantProposal.Change.Create) Text(tr("Editar"), Modifier.clickable { app.router.show(ActiveSheet.Booking(p.patient.id, p.day)) }, fontSize = 16.sp, fontWeight = FontWeight.Medium, color = Palette.primary)
+            if (p.change == AssistantProposal.Change.Create) Text(tr("Editar"), Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.show(ActiveSheet.Booking(p.patient.id, p.day)) }, fontSize = 16.sp, fontWeight = FontWeight.Medium, color = Palette.primary)
             Box(Modifier.weight(1f))
-            Text(if (cancel) tr("No cancelar") else tr("Cancelar"), Modifier.clickable(onClick = onCancel), fontSize = 16.sp, fontWeight = FontWeight.Medium, color = Palette.textMuted)
+            Text(if (cancel) tr("No cancelar") else tr("Cancelar"), Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button, onClick = onCancel), fontSize = 16.sp, fontWeight = FontWeight.Medium, color = Palette.textMuted)
         }
     }
 }

@@ -148,7 +148,7 @@ private fun Actions(app: AppContainer, p: Patient) {
 @Composable
 private fun ActionCard(title: String, icon: ImageVector, modifier: Modifier, enabled: Boolean = true, onClick: () -> Unit) {
     Column(
-        modifier.height(64.dp).surface(20).let { if (enabled) it.clickable(onClick = onClick) else it.alpha(0.4f) },
+        modifier.height(64.dp).surface(20).let { if (enabled) it.clickable(role = androidx.compose.ui.semantics.Role.Button, onClick = onClick) else it.alpha(0.4f) },
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center,
     ) {
         Icon(icon, null, tint = Palette.primary, modifier = Modifier.size(22.dp))
@@ -174,7 +174,7 @@ private fun NextAppointment(app: AppContainer, p: Patient, next: PatientAppointm
         }
     } else {
         Row(
-            Modifier.fillMaxWidth().surface().clickable(enabled = loaded) { app.router.show(ActiveSheet.Booking(p.id, app.router.agendaDay.value)) }.padding(16.dp),
+            Modifier.fillMaxWidth().surface().clickable(enabled = loaded, role = androidx.compose.ui.semantics.Role.Button) { app.router.show(ActiveSheet.Booking(p.id, app.router.agendaDay.value)) }.padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(if (loaded) tr("Sin citas programadas · Agendar") else tr("Cargando…"), Modifier.weight(1f), fontSize = 17.sp, color = if (loaded) Palette.primary else Palette.textFaint)
@@ -191,7 +191,7 @@ private fun ReportsList(app: AppContainer, reports: List<Report>, loaded: Boolea
         Column(Modifier.fillMaxWidth().surface()) {
             reports.forEachIndexed { i, r ->
                 if (i > 0) Hairline(inset = 68.dp)
-                ReportRow(r, null, Modifier.clickable { app.router.push(Route.Report(r.id)) })
+                ReportRow(r, null, Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.push(Route.Report(r.id)) })
             }
         }
     }
@@ -219,16 +219,16 @@ private fun RecordedConsultations(app: AppContainer, p: Patient) {
     val items = all.filter { it.patientId == p.id }
     Column(Modifier.fillMaxWidth().surface()) {
         items.forEach { r ->
-            RecordingRow(r, Modifier.clickable { app.router.push(Route.Recording(r.id)) })
+            RecordingRow(r, Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.push(Route.Recording(r.id)) })
             Hairline(inset = 16.dp)
         }
-        Row(Modifier.fillMaxWidth().clickable { app.router.show(ActiveSheet.Record(p.id)) }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(Modifier.fillMaxWidth().clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.show(ActiveSheet.Record(p.id)) }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Filled.Mic, null, tint = Palette.primary, modifier = Modifier.size(22.dp))
             Text(tr("Grabar consulta"), Modifier.padding(start = 10.dp).weight(1f), fontSize = 17.sp, color = Palette.primary)
             Text(tr("Experimental"), fontSize = 12.sp, fontWeight = FontWeight.Medium, color = Palette.warningFg)
         }
         Hairline(inset = 16.dp)
-        Row(Modifier.fillMaxWidth().clickable { app.router.show(ActiveSheet.ImportAudio(p.id)) }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(Modifier.fillMaxWidth().clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.show(ActiveSheet.ImportAudio(p.id)) }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Outlined.FileDownload, null, tint = Palette.primary, modifier = Modifier.size(22.dp))
             Text(tr("Importar audio"), Modifier.padding(start = 10.dp), fontSize = 17.sp, color = Palette.primary)
         }

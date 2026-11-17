@@ -110,7 +110,7 @@ fun <T> Segmented(options: List<Pair<T, String>>, selected: T, onSelect: (T) -> 
         options.forEach { (value, label) ->
             val on = value == selected
             Box(
-                Modifier.weight(1f).height(30.dp).background(if (on) Palette.surface else Color.Transparent, CircleShape).clickable { onSelect(value) },
+                Modifier.weight(1f).height(30.dp).background(if (on) Palette.surface else Color.Transparent, CircleShape).clickable(role = androidx.compose.ui.semantics.Role.Button) { onSelect(value) },
                 contentAlignment = Alignment.Center,
             ) { Text(label, fontSize = 14.sp, fontWeight = if (on) FontWeight.SemiBold else FontWeight.Medium, color = Palette.text) }
         }
@@ -171,11 +171,11 @@ fun NewPatientSheet(app: AppContainer) {
                         Row(Modifier.fillMaxWidth().height(34.dp), verticalAlignment = Alignment.CenterVertically) {
                             val dob = draft.dateOfBirth
                             if (dob != null) {
-                                Text(cal.birthDate(dob), Modifier.clickable { showDate = true }, fontSize = 17.sp, color = Palette.primary)
+                                Text(cal.birthDate(dob), Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { showDate = true }, fontSize = 17.sp, color = Palette.primary)
                                 Box(Modifier.weight(1f))
-                                Text(tr("Quitar fecha"), Modifier.clickable { edit { copy(dateOfBirth = null) } }, fontSize = 15.sp, color = Palette.textFaint)
+                                Text(tr("Quitar fecha"), Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { edit { copy(dateOfBirth = null) } }, fontSize = 15.sp, color = Palette.textFaint)
                             } else {
-                                Text(tr("Añadir fecha"), Modifier.clickable { edit { copy(dateOfBirth = LocalDate.of(1990, 1, 1)) }; showDate = true }, fontSize = 17.sp, color = Palette.primary)
+                                Text(tr("Añadir fecha"), Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { edit { copy(dateOfBirth = LocalDate.of(1990, 1, 1)) }; showDate = true }, fontSize = 17.sp, color = Palette.primary)
                             }
                         }
                     }

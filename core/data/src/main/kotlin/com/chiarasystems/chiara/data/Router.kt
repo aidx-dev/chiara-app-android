@@ -20,6 +20,8 @@ sealed interface Route {
     data object Recordings : Route
     /** Third-party licences (Settings). */
     data object Notices : Route
+    /** Debug: the assistant bench (19 requests through the real model). */
+    data object Bench : Route
 }
 
 sealed interface ActiveSheet {

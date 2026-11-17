@@ -141,7 +141,7 @@ fun BookingSheet(app: AppContainer, initial: ActiveSheet.Booking) {
             SectionLabel(tr("PACIENTE"), Modifier.padding(top = 6.dp, bottom = 8.dp))
             Column(Modifier.fillMaxWidth().surface(20).animateContentSize()) {
                 Row(
-                    Modifier.fillMaxWidth().heightIn(min = 56.dp).clickable { pickerOpen = !pickerOpen }.padding(horizontal = 16.dp),
+                    Modifier.fillMaxWidth().heightIn(min = 56.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { pickerOpen = !pickerOpen }.padding(horizontal = 16.dp),
                     verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
                     patient?.let { Avatar(it, size = 36.dp) }
@@ -166,7 +166,7 @@ fun BookingSheet(app: AppContainer, initial: ActiveSheet.Booking) {
                     LazyColumn(Modifier.heightIn(max = 220.dp)) {
                         items(options.take(60), key = { it.id }) { o ->
                             Row(
-                                Modifier.fillMaxWidth().clickable { patientId = o.id; pickerOpen = false; query = "" }.padding(horizontal = 16.dp, vertical = 8.dp),
+                                Modifier.fillMaxWidth().clickable(role = androidx.compose.ui.semantics.Role.Button) { patientId = o.id; pickerOpen = false; query = "" }.padding(horizontal = 16.dp, vertical = 8.dp),
                                 verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp),
                             ) {
                                 Avatar(o, size = 32.dp)
@@ -198,7 +198,7 @@ fun BookingSheet(app: AppContainer, initial: ActiveSheet.Booking) {
                             Box(
                                 Modifier.weight(1f).height(42.dp)
                                     .background(if (selected) Palette.primary else if (isTaken) Palette.field else Palette.surface, RoundedCornerShape(13.dp))
-                                    .clickable(enabled = !isTaken) { start = minute },
+                                    .clickable(enabled = !isTaken, role = androidx.compose.ui.semantics.Role.Button) { start = minute },
                                 contentAlignment = Alignment.Center,
                             ) {
                                 Text(
@@ -224,7 +224,7 @@ fun BookingSheet(app: AppContainer, initial: ActiveSheet.Booking) {
                     val on = type == t
                     Box(
                         Modifier.height(38.dp).background(if (on) Palette.accent else Palette.surface, CircleShape)
-                            .border(1.dp, if (on) Palette.primary else Color.Transparent, CircleShape).clickable { type = t }.padding(horizontal = 15.dp),
+                            .border(1.dp, if (on) Palette.primary else Color.Transparent, CircleShape).clickable(role = androidx.compose.ui.semantics.Role.Button) { type = t }.padding(horizontal = 15.dp),
                         contentAlignment = Alignment.Center,
                     ) { Text(tr(t.raw), fontSize = 15.sp, fontWeight = FontWeight.Medium, color = if (on) Palette.primary else Palette.text) }
                 }
@@ -260,8 +260,8 @@ fun MonthCalendar(selection: LocalDate, month: LocalDate, today: LocalDate, hasA
     Column(Modifier.fillMaxWidth().surface(Radius.cardLarge).padding(horizontal = 10.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Row(Modifier.padding(horizontal = 6.dp), verticalAlignment = Alignment.CenterVertically) {
             Text(cal.monthYear(first), Modifier.weight(1f), fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = Palette.text)
-            Icon(Icons.Filled.ChevronLeft, tr("Mes anterior"), tint = if (canBack) Palette.primary else Palette.disabled, modifier = Modifier.size(36.dp).clickable(enabled = canBack) { onMonth(first.minusMonths(1)) }.padding(6.dp))
-            Icon(Icons.Filled.ChevronRight, tr("Mes siguiente"), tint = if (canForward) Palette.primary else Palette.disabled, modifier = Modifier.size(36.dp).clickable(enabled = canForward) { onMonth(first.plusMonths(1)) }.padding(6.dp))
+            Icon(Icons.Filled.ChevronLeft, tr("Mes anterior"), tint = if (canBack) Palette.primary else Palette.disabled, modifier = Modifier.size(36.dp).clickable(enabled = canBack, role = androidx.compose.ui.semantics.Role.Button) { onMonth(first.minusMonths(1)) }.padding(6.dp))
+            Icon(Icons.Filled.ChevronRight, tr("Mes siguiente"), tint = if (canForward) Palette.primary else Palette.disabled, modifier = Modifier.size(36.dp).clickable(enabled = canForward, role = androidx.compose.ui.semantics.Role.Button) { onMonth(first.plusMonths(1)) }.padding(6.dp))
         }
         Row(Modifier.fillMaxWidth()) {
             val monday = Dates.startOfWeek(first)
@@ -274,7 +274,7 @@ fun MonthCalendar(selection: LocalDate, month: LocalDate, today: LocalDate, hasA
                         val selected = d == selection
                         val isToday = d == today
                         val disabled = d.isBefore(today) || Dates.isSunday(d)
-                        Column(Modifier.weight(1f).height(46.dp).clickable(enabled = !disabled) { onSelect(d) }, horizontalAlignment = Alignment.CenterHorizontally) {
+                        Column(Modifier.weight(1f).height(46.dp).clickable(enabled = !disabled, role = androidx.compose.ui.semantics.Role.Button) { onSelect(d) }, horizontalAlignment = Alignment.CenterHorizontally) {
                             Box(Modifier.size(36.dp).background(if (selected) Palette.primary else Color.Transparent, CircleShape), contentAlignment = Alignment.Center) {
                                 Text(d.dayOfMonth.toString(), fontSize = 17.sp, fontWeight = if (selected || isToday) FontWeight.Bold else FontWeight.Normal, color = if (selected) Color.White else if (disabled) Palette.disabled else if (isToday) Palette.primary else Palette.text)
                             }

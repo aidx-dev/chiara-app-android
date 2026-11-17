@@ -116,7 +116,7 @@ fun PatientsScreen(app: AppContainer) {
                     if (serving) OfflineBanner()
                     loadError?.let { ErrorNote(it.userMessage()) }
                     Row(
-                        Modifier.fillMaxWidth().surface().clickable { app.router.show(ActiveSheet.NewPatient) }.padding(horizontal = 16.dp, vertical = 10.dp),
+                        Modifier.fillMaxWidth().surface().clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.show(ActiveSheet.NewPatient) }.padding(horizontal = 16.dp, vertical = 10.dp),
                         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp),
                     ) {
                         Box(Modifier.size(40.dp).background(Palette.accent, CircleShape), contentAlignment = Alignment.Center) {
@@ -140,7 +140,7 @@ fun PatientsScreen(app: AppContainer) {
                 itemsIndexed(visible, key = { _, p -> p.id }) { i, p ->
                     Column(Modifier.fillMaxWidth().background(Palette.surface, cardRowShape(i, visible.size))) {
                         if (i > 0) Hairline(inset = 68.dp)
-                        PatientRow(p, Modifier.clickable { app.router.push(Route.Patient(p.id)) })
+                        PatientRow(p, Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.push(Route.Patient(p.id)) })
                     }
                 }
             }

@@ -77,7 +77,7 @@ fun PatientSummaryCard(app: AppContainer, p: Patient, modifier: Modifier = Modif
     }
 
     if (summary.isEmpty() && !summarizing && problem == null) {
-        Row(modifier.fillMaxWidth().height(52.dp).surface(20).clickable { run() }, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+        Row(modifier.fillMaxWidth().height(52.dp).surface(20).clickable(role = androidx.compose.ui.semantics.Role.Button) { run() }, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
             Icon(Icons.Outlined.AutoAwesome, null, tint = Palette.primary, modifier = Modifier.size(20.dp))
             Text(tr("Resumir ficha con IA"), Modifier.padding(start = 8.dp), fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = Palette.primary)
         }
@@ -103,7 +103,7 @@ fun PatientSummaryCard(app: AppContainer, p: Patient, modifier: Modifier = Modif
                 }
             }
             problem?.let { Text(it, fontSize = 14.sp, color = Palette.destructive) }
-            if (!summarizing) Text(tr("Resumir de nuevo"), Modifier.clickable { run() }, fontSize = 15.sp, fontWeight = FontWeight.Medium, color = Palette.primary)
+            if (!summarizing) Text(tr("Resumir de nuevo"), Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { run() }, fontSize = 15.sp, fontWeight = FontWeight.Medium, color = Palette.primary)
         }
     }
 }
@@ -133,13 +133,13 @@ fun LocalAiSection(app: AppContainer) {
                 }
             }
             row {
-                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(enabled = !working) { picker.launch(arrayOf("*/*")) }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
+                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(enabled = !working, role = androidx.compose.ui.semantics.Role.Button) { picker.launch(arrayOf("*/*")) }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
                     if (working) Row(verticalAlignment = Alignment.CenterVertically) { CircularProgressIndicator(Modifier.size(18.dp), strokeWidth = 2.dp); Text(tr("Copiando el modelo…"), Modifier.padding(start = 8.dp), fontSize = 17.sp, color = Palette.textMuted) }
                     else Text(if (installed) tr("Cambiar el modelo…") else tr("Elegir el archivo del modelo…"), fontSize = 17.sp, color = Palette.primary)
                 }
             }
             if (installed) row {
-                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable { confirmDelete = true }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
+                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { confirmDelete = true }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
                     Text(tr("Borrar el modelo"), fontSize = 17.sp, color = Palette.destructive)
                 }
             }
@@ -169,6 +169,38 @@ fun NoticesScreen(app: AppContainer) {
         DetailTopBar(tr("Licencias de terceros"), onBack = { app.router.pop() })
         Column(Modifier.weight(1f).verticalScroll(androidx.compose.foundation.rememberScrollState()).padding(16.dp)) {
             Text(text, fontSize = 13.sp, color = Palette.text, lineHeight = 19.sp)
+        }
+    }
+}
+
+/** Debug: runs the 19 bench requests through the real assistant (model, agent, tools, the clinic's data). Nothing is written. */
+@Composable
+fun BenchScreen(app: AppContainer) {
+    val scope = rememberCoroutineScope()
+    val patients by app.patients.patients.collectAsState()
+    var running by remember { mutableStateOf(false) }
+    var done by remember { mutableStateOf(listOf<com.chiarasystems.chiara.data.AssistantBench.Result>()) }
+    val name = patients.firstOrNull()?.fullName.orEmpty()
+    val tr = LocalTranslator.current
+    Column(Modifier.fillMaxWidth()) {
+        DetailTopBar("Banco del asistente", onBack = { app.router.pop() })
+        Column(Modifier.weight(1f).verticalScroll(androidx.compose.foundation.rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Text("Paciente de prueba: ${name.ifEmpty { "—" }}. Usa el modelo instalado y los datos reales de la cuenta; no confirma ningún cambio.", fontSize = 13.sp, color = Palette.textMuted)
+            Box(Modifier.fillMaxWidth().height(48.dp).surface(20).clickable(enabled = !running && name.isNotEmpty(), role = androidx.compose.ui.semantics.Role.Button) {
+                running = true; done = emptyList()
+                scope.launch {
+                    try { com.chiarasystems.chiara.data.AssistantBench.run(app.assistant, app.assistantReader, name, { tr.tr(it) }) { _, r -> done = done + r } }
+                    finally { running = false }
+                }
+            }, contentAlignment = Alignment.Center) { Text(if (running) "Ejecutando… ${done.size}/19" else "Ejecutar los 19 casos", color = Palette.primary, fontWeight = FontWeight.SemiBold) }
+            if (done.isNotEmpty()) Text("${done.count { it.passed }} de ${done.size} correctos", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Palette.text)
+            done.forEach { r ->
+                Column(Modifier.fillMaxWidth().surface(16).padding(12.dp)) {
+                    Text((if (r.passed) "✓ " else "✗ ") + r.case.turns.joinToString("  →  "), fontSize = 14.sp, fontWeight = FontWeight.Medium, color = if (r.passed) Palette.successFg else Palette.destructive)
+                    Text(r.outcome.toString().take(220), fontSize = 12.sp, color = Palette.textMuted)
+                    if (r.calls.isNotEmpty()) Text(r.calls.joinToString { it.first }, fontSize = 12.sp, color = Palette.textFaint)
+                }
+            }
         }
     }
 }

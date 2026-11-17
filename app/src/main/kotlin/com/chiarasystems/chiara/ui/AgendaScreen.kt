@@ -129,14 +129,14 @@ fun AgendaScreen(app: AppContainer) {
                     when (dayAppointments.size) { 0 -> tr("Citas"); 1 -> tr("1 cita"); else -> tr("%d citas", dayAppointments.size) },
                     Modifier.weight(1f),
                 )
-                Text(tr("Agendar"), Modifier.clickable { router.show(ActiveSheet.Booking(null, day)) }.padding(8.dp), fontSize = 15.sp, fontWeight = FontWeight.Medium, color = Palette.primary)
+                Text(tr("Agendar"), Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { router.show(ActiveSheet.Booking(null, day)) }.padding(8.dp), fontSize = 15.sp, fontWeight = FontWeight.Medium, color = Palette.primary)
             }
             if (dayAppointments.isEmpty()) {
                 EmptyDay { router.show(ActiveSheet.Booking(null, day)) }
             } else {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     dayAppointments.forEach { a ->
-                        AppointmentRow(a, Modifier.clickable { router.push(Route.Patient(a.patientId)) })
+                        AppointmentRow(a, Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { router.push(Route.Patient(a.patientId)) })
                     }
                 }
             }
@@ -150,7 +150,7 @@ private fun EmptyDay(onBook: () -> Unit) {
         Icon(Icons.Outlined.CalendarMonth, null, tint = Palette.textFaint, modifier = Modifier.size(32.dp))
         Text(tr("Sin citas este día"), fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = Palette.text, modifier = Modifier.padding(top = 4.dp))
         Text(tr("Tienes la agenda libre."), fontSize = 15.sp, color = Palette.textFaint)
-        Box(Modifier.padding(top = 10.dp).height(40.dp).background(Palette.accent, CircleShape).clip(CircleShape).clickable(onClick = onBook).padding(horizontal = 18.dp), contentAlignment = Alignment.Center) {
+        Box(Modifier.padding(top = 10.dp).height(40.dp).background(Palette.accent, CircleShape).clip(CircleShape).clickable(role = androidx.compose.ui.semantics.Role.Button, onClick = onBook).padding(horizontal = 18.dp), contentAlignment = Alignment.Center) {
             Text(tr("Agendar cita"), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Palette.primary)
         }
     }
@@ -203,7 +203,7 @@ private fun DayBriefingCard(app: AppContainer, day: LocalDate, appointments: Lis
                 }
             }
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 2.dp).clickable(enabled = !loading) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 2.dp).clickable(enabled = !loading, role = androidx.compose.ui.semantics.Role.Button) {
             if (expanded) { expanded = false; return@clickable }
             scope.launch {
                 loading = true
@@ -239,14 +239,14 @@ private fun CalendarCard(app: AppContainer, day: LocalDate, expanded: Boolean, o
 
     Column(Modifier.fillMaxWidth().surface(Radius.cardLarge).animateContentSize().padding(horizontal = 10.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Row(Modifier.padding(horizontal = 6.dp), verticalAlignment = Alignment.CenterVertically) {
-            Row(Modifier.heightIn36().clickable { onExpanded(!expanded) }, verticalAlignment = Alignment.CenterVertically) {
+            Row(Modifier.heightIn36().clickable(role = androidx.compose.ui.semantics.Role.Button) { onExpanded(!expanded) }, verticalAlignment = Alignment.CenterVertically) {
                 Text(monthLabel, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = Palette.text)
                 Spacer(Modifier.width(6.dp))
                 Icon(Icons.Filled.ExpandMore, tr(if (expanded) "Ver solo la semana" else "Ver el mes completo"), tint = Palette.primary, modifier = Modifier.size(18.dp).rotate(if (expanded) 180f else 0f))
             }
             Spacer(Modifier.weight(1f))
-            Icon(Icons.Filled.ChevronLeft, shiftLabel.first, tint = Palette.primary, modifier = Modifier.size(36.dp).clickable { shift(-1) }.padding(6.dp))
-            Icon(Icons.Filled.ChevronRight, shiftLabel.second, tint = Palette.primary, modifier = Modifier.size(36.dp).clickable { shift(1) }.padding(6.dp))
+            Icon(Icons.Filled.ChevronLeft, shiftLabel.first, tint = Palette.primary, modifier = Modifier.size(36.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { shift(-1) }.padding(6.dp))
+            Icon(Icons.Filled.ChevronRight, shiftLabel.second, tint = Palette.primary, modifier = Modifier.size(36.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { shift(1) }.padding(6.dp))
         }
         Row(Modifier.fillMaxWidth()) {
             val start = Dates.startOfWeek(day)
@@ -269,7 +269,7 @@ private fun Modifier.heightIn36() = this.then(Modifier.height(36.dp))
 
 @Composable
 private fun DayCell(day: LocalDate, selected: Boolean, isToday: Boolean, otherMonth: Boolean, hasAppointments: Boolean, label: String, modifier: Modifier, onClick: () -> Unit) {
-    Column(modifier.height(48.dp).clickable(onClick = onClick), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier.height(48.dp).clickable(role = androidx.compose.ui.semantics.Role.Button, onClick = onClick), horizontalAlignment = Alignment.CenterHorizontally) {
         Box(Modifier.size(38.dp).background(if (selected) Palette.primary else Color.Transparent, CircleShape), contentAlignment = Alignment.Center) {
             Text(
                 day.dayOfMonth.toString(), fontSize = 17.sp, fontWeight = if (selected || isToday) FontWeight.Bold else FontWeight.Medium,

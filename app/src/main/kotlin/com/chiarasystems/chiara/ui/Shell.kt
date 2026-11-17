@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -90,7 +91,10 @@ fun MainShell(app: AppContainer) {
     val hazeState = remember { HazeState() }
     Box(Modifier.fillMaxSize().background(Palette.background)) {
         // The content runs under the floating tab bar, which blurs it (the glass layer samples this haze source).
-        Box(Modifier.fillMaxSize().haze(hazeState)) { TabContent(app, tab) }
+        // On tablets and landscape the content keeps a phone-like column (640 dp) instead of stretching.
+        Box(Modifier.fillMaxSize().haze(hazeState), contentAlignment = Alignment.TopCenter) {
+            Box(Modifier.widthIn(max = 640.dp).fillMaxSize()) { TabContent(app, tab) }
+        }
         androidx.compose.runtime.CompositionLocalProvider(LocalHazeState provides hazeState) {
         TabBar(items, tab, Modifier.align(Alignment.BottomCenter)) { router.select(it) }
         // Assistant button; adding appointments/patients lives in each screen's top bar.
@@ -108,7 +112,7 @@ fun MainShell(app: AppContainer) {
                     ) {
                         Text(t.message, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Palette.text)
                         t.actionTitle?.let {
-                            Text(it, Modifier.clickable { app.toast.performAction() }, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Palette.primary)
+                            Text(it, Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { app.toast.performAction() }, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Palette.primary)
                         }
                     }
                 }
@@ -122,14 +126,14 @@ fun MainShell(app: AppContainer) {
 @Composable
 private fun TabBar(items: List<TabItem>, selected: AppTab, modifier: Modifier = Modifier, onSelect: (AppTab) -> Unit) {
     Row(
-        modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.navigationBars).padding(horizontal = 16.dp, vertical = 8.dp)
+        modifier.widthIn(max = 640.dp).fillMaxWidth().windowInsetsPadding(WindowInsets.navigationBars).padding(horizontal = 16.dp, vertical = 8.dp)
             .glass(androidx.compose.foundation.shape.RoundedCornerShape(28.dp)).padding(horizontal = 8.dp, vertical = 6.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
         items.forEach { item ->
             val on = item.tab == selected
             Column(
-                Modifier.weight(1f).clickable { onSelect(item.tab) }.padding(vertical = 4.dp),
+                Modifier.weight(1f).clickable(role = androidx.compose.ui.semantics.Role.Button) { onSelect(item.tab) }.padding(vertical = 4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Icon(item.icon, null, Modifier.size(26.dp), tint = if (on) Palette.primary else Palette.textMuted)

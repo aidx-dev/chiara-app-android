@@ -417,7 +417,7 @@ fun RecordingsListScreen(app: AppContainer) {
     var pendingDelete by remember { mutableStateOf<Recording?>(null) }
     Column(Modifier.fillMaxSize()) {
         DetailTopBar(tr("Consultas grabadas"), onBack = { app.router.pop() }) {
-            Icon(Icons.Outlined.FileDownload, tr("Importar audio"), tint = Palette.primary, modifier = Modifier.size(44.dp).clickable { app.router.show(com.chiarasystems.chiara.data.ActiveSheet.ImportAudio(null)) }.padding(10.dp))
+            Icon(Icons.Outlined.FileDownload, tr("Importar audio"), tint = Palette.primary, modifier = Modifier.size(44.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.show(com.chiarasystems.chiara.data.ActiveSheet.ImportAudio(null)) }.padding(10.dp))
         }
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
             if (items.isEmpty()) {
@@ -426,7 +426,7 @@ fun RecordingsListScreen(app: AppContainer) {
                 Column(Modifier.fillMaxWidth().surface()) {
                     items.forEachIndexed { i, r ->
                         if (i > 0) Hairline(inset = 16.dp)
-                        RecordingRow(r, Modifier.clickable { app.router.push(Route.Recording(r.id)) })
+                        RecordingRow(r, Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { app.router.push(Route.Recording(r.id)) })
                     }
                 }
             }
@@ -583,7 +583,7 @@ fun RecordingDetailScreen(app: AppContainer, id: String) {
                     var menu by remember { mutableStateOf(false) }
                     Box {
                         Row(
-                            Modifier.clickable(enabled = busy == null && !processing) { menu = true }.padding(vertical = 4.dp),
+                            Modifier.clickable(enabled = busy == null && !processing, role = androidx.compose.ui.semantics.Role.Button) { menu = true }.padding(vertical = 4.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
                             Icon(Icons.Outlined.AutoAwesome, null, tint = Palette.primary, modifier = Modifier.size(20.dp))
@@ -603,12 +603,12 @@ fun RecordingDetailScreen(app: AppContainer, id: String) {
                             }
                         }
                     }
-                    Row(Modifier.clickable { app.recordings.deleteAudio(recording); version++ }.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Row(Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { app.recordings.deleteAudio(recording); version++ }.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                         Icon(Icons.Filled.Delete, null, tint = Palette.destructive, modifier = Modifier.size(20.dp))
                         Text(tr("Borrar solo el audio"), Modifier.padding(start = 8.dp), fontSize = 15.sp, fontWeight = FontWeight.Medium, color = Palette.destructive)
                     }
                 }
-                Row(Modifier.clickable { confirmDelete = true }.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { confirmDelete = true }.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Filled.Delete, null, tint = Palette.destructive, modifier = Modifier.size(20.dp))
                     Text(tr("Eliminar grabación"), Modifier.padding(start = 8.dp), fontSize = 15.sp, fontWeight = FontWeight.Medium, color = Palette.destructive)
                 }
@@ -666,7 +666,7 @@ private fun Experimental2() {
 
 @Composable
 private fun ShareLine(text: String, onClick: () -> Unit) {
-    Row(Modifier.clickable(onClick = onClick).padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button, onClick = onClick).padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
         Icon(Icons.Outlined.Share, null, tint = Palette.primary, modifier = Modifier.size(20.dp))
         Text(text, Modifier.padding(start = 8.dp), fontSize = 15.sp, fontWeight = FontWeight.Medium, color = Palette.primary)
     }

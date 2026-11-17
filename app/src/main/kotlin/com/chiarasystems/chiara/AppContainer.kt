@@ -110,10 +110,11 @@ class AppContainer(private val context: Context) {
     val models = LocalModels(context)
     /** The on-device language model (MediaPipe); the rules answer commands while it is not installed. */
     val llm = MediaPipeLlm(context, models, ::tr)
+    val assistantReader = ClinicReader(patients, appointments, reports, dayFormatter, ::tr)
     val summarizer = LlmPatientSummarizer(llm, ClinicReader(patients, appointments, reports, dayFormatter, ::tr))
     val assistant = AssistantStore(
         engine = FallbackEngine(LlmIntentEngine(llm), RuleBasedEngine()),
-        agent = ToolCallingAgent(llm, ClinicReader(patients, appointments, reports, dayFormatter, ::tr), dayFormatter), patients = patients, appointments = appointments, days = dayFormatter,
+        agent = ToolCallingAgent(llm, assistantReader, dayFormatter), patients = patients, appointments = appointments, days = dayFormatter,
         context = { AssistantContext(java.time.LocalDate.now(), settings.code, Locale.forLanguageTag(settings.code)) },
         tr = { key, args -> translator(settings.code).tr(key, *args.toTypedArray()) },
     )

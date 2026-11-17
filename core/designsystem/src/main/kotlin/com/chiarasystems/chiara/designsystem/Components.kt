@@ -213,7 +213,7 @@ fun GlassPillButton(text: String, onClick: () -> Unit, modifier: Modifier = Modi
 fun AssistantButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     val label = tr("Asistente")
     Box(
-        modifier.size(48.dp).glass(CircleShape).glowBorder(CircleShape, GlowState.Idle, subtle = true).clip(CircleShape).clickable(onClick = onClick).semantics { contentDescription = label },
+        modifier.size(48.dp).glass(CircleShape).glowBorder(CircleShape, GlowState.Idle, subtle = true).clip(CircleShape).clickable(role = androidx.compose.ui.semantics.Role.Button, onClick = onClick).semantics { contentDescription = label },
         contentAlignment = Alignment.Center,
     ) { ChiaraMonogram(size = 34.dp) }
 }
@@ -230,7 +230,7 @@ fun FieldRow(label: String, value: String, modifier: Modifier = Modifier, link: 
         Text(
             value, fontSize = 17.sp, textAlign = TextAlign.End,
             color = if (link != null) Palette.primary else Palette.text,
-            modifier = if (link != null) Modifier.clickable { runCatching { uri.openUri(link) } } else Modifier,
+            modifier = if (link != null) Modifier.clickable(role = androidx.compose.ui.semantics.Role.Button) { runCatching { uri.openUri(link) } } else Modifier,
         )
     }
 }
@@ -256,7 +256,7 @@ data class MenuOption<T>(val value: T, val label: String)
 fun <T> MenuPicker(title: String, selection: T, options: List<MenuOption<T>>, onSelect: (T) -> Unit, modifier: Modifier = Modifier) {
     var open by remember { mutableStateOf(false) }
     val chosen = options.firstOrNull { it.value == selection }?.label.orEmpty()
-    Row(modifier.fillMaxWidth().clickable { open = true }.padding(horizontal = 16.dp, vertical = 13.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(modifier.fillMaxWidth().clickable(role = androidx.compose.ui.semantics.Role.Button) { open = true }.padding(horizontal = 16.dp, vertical = 13.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(title, fontSize = 16.sp, color = Palette.text, maxLines = 1)
         Spacer(Modifier.weight(1f).size(8.dp))
         Box {
@@ -318,7 +318,7 @@ fun GlassSearchField(text: String, onTextChange: (String) -> Unit, prompt: Strin
             val clear = tr("Borrar búsqueda")
             Icon(
                 Icons.Filled.Cancel, clear, tint = Palette.textFaint,
-                modifier = Modifier.size(22.dp).clickable { onTextChange("") },
+                modifier = Modifier.size(22.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { onTextChange("") },
             )
         }
     }
