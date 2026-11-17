@@ -820,5 +820,83 @@
     "en": "I couldn't use dictation.",
     "de": "Das Diktat konnte nicht verwendet werden.",
     "fr": "Je n'ai pas pu utiliser la dictée."
+  },
+  "Instala el modelo de IA del dispositivo en Ajustes para preguntar por pacientes e informes.": {
+    "es": "Instala el modelo de IA del dispositivo en Ajustes para preguntar por pacientes e informes.",
+    "en": "Install the on-device AI model in Settings to ask about patients and reports.",
+    "de": "Installieren Sie in den Einstellungen das KI-Modell des Geräts, um nach Patienten und Berichten zu fragen.",
+    "fr": "Installez le modèle d'IA de l'appareil dans les Réglages pour interroger patients et comptes rendus."
+  },
+  "La IA del dispositivo ha bloqueado esta respuesta por considerarla sensible. Prueba a preguntarlo de otra forma o consulta la ficha.": {
+    "es": "La IA del dispositivo ha bloqueado esta respuesta por considerarla sensible. Prueba a preguntarlo de otra forma o consulta la ficha.",
+    "en": "The on-device AI blocked this answer as sensitive. Try asking another way or check the record.",
+    "de": "Die KI des Geräts hat diese Antwort als sensibel blockiert. Fragen Sie anders oder sehen Sie in der Akte nach.",
+    "fr": "L'IA de l'appareil a bloqué cette réponse comme sensible. Reformulez ou consultez le dossier."
+  },
+  "IA EN EL DISPOSITIVO": {
+    "es": "IA EN EL DISPOSITIVO",
+    "en": "ON-DEVICE AI",
+    "de": "KI AUF DEM GERÄT",
+    "fr": "IA SUR L'APPAREIL"
+  },
+  "Modelo de lenguaje": {
+    "es": "Modelo de lenguaje",
+    "en": "Language model",
+    "de": "Sprachmodell",
+    "fr": "Modèle de langage"
+  },
+  "Instalado · %d MB": {
+    "es": "Instalado · %d MB",
+    "en": "Installed · %d MB",
+    "de": "Installiert · %d MB",
+    "fr": "Installé · %d Mo"
+  },
+  "No instalado": {
+    "es": "No instalado",
+    "en": "Not installed",
+    "de": "Nicht installiert",
+    "fr": "Non installé"
+  },
+  "Copiando el modelo…": {
+    "es": "Copiando el modelo…",
+    "en": "Copying the model…",
+    "de": "Modell wird kopiert…",
+    "fr": "Copie du modèle…"
+  },
+  "Cambiar el modelo…": {
+    "es": "Cambiar el modelo…",
+    "en": "Change the model…",
+    "de": "Modell ändern…",
+    "fr": "Changer le modèle…"
+  },
+  "Elegir el archivo del modelo…": {
+    "es": "Elegir el archivo del modelo…",
+    "en": "Choose the model file…",
+    "de": "Modelldatei wählen…",
+    "fr": "Choisir le fichier du modèle…"
+  },
+  "Borrar el modelo": {
+    "es": "Borrar el modelo",
+    "en": "Delete the model",
+    "de": "Modell löschen",
+    "fr": "Supprimer le modèle"
+  },
+  "¿Borrar el modelo de IA?": {
+    "es": "¿Borrar el modelo de IA?",
+    "en": "Delete the AI model?",
+    "de": "KI-Modell löschen?",
+    "fr": "Supprimer le modèle d'IA ?"
+  },
+  "No he podido copiar ese archivo.": {
+    "es": "No he podido copiar ese archivo.",
+    "en": "I couldn't copy that file.",
+    "de": "Diese Datei konnte nicht kopiert werden.",
+    "fr": "Je n'ai pas pu copier ce fichier."
+  },
+  "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).": {
+    "es": "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).",
+    "en": "The assistant answers questions about patients and reports with a model that runs on this device (MediaPipe .task or .litertlm format, for example Gemma). Nothing it reads leaves the phone. Without a model, the assistant only understands direct orders (book, move, cancel…).",
+    "de": "Der Assistent beantwortet Fragen zu Patienten und Berichten mit einem Modell, das auf diesem Gerät läuft (MediaPipe-Format .task oder .litertlm, z. B. Gemma). Nichts, was er liest, verlässt das Telefon. Ohne Modell versteht der Assistent nur direkte Befehle (buchen, verschieben, stornieren…).",
+    "fr": "L'assistant répond aux questions sur les patients et les comptes rendus avec un modèle exécuté sur cet appareil (format MediaPipe .task ou .litertlm, par exemple Gemma). Rien de ce qu'il lit ne quitte le téléphone. Sans modèle, l'assistant ne comprend que les ordres directs (prendre, déplacer, annuler un rendez-vous…)."
   }
 }

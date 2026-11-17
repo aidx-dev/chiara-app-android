@@ -104,6 +104,7 @@ fun PatientDetailScreen(app: AppContainer, patientId: String) {
                 p != null -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(top = 8.dp, bottom = 150.dp)) {
                     Header(p)
                     Actions(app, p)
+                    PatientSummaryCard(app, p, Modifier.padding(top = 12.dp))
                     SectionTitle(tr("Próxima cita"), Modifier.padding(top = 28.dp, bottom = 10.dp))
                     NextAppointment(app, p, next, loaded)
                     SectionTitle(tr("Informes"), Modifier.padding(top = 28.dp, bottom = 10.dp))

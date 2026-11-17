@@ -119,6 +119,8 @@ fun SettingsScreen(app: AppContainer) {
 
         GroupedList(Modifier.padding(top = 16.dp)) { row { FieldRow(tr("Versión"), version) } }
 
+        LocalAiSection(app)
+
         ExperimentalSection(app)
 
         Box(

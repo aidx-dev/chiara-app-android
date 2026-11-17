@@ -405,5 +405,18 @@
  "Sin conexión a internet. Hace falta conexión para usar la IA en la nube.": "Pas de connexion internet. Une connexion est nécessaire pour utiliser l'IA cloud.",
  "No he podido completar la operación.": "Je n'ai pas pu terminer l'opération.",
  "Se reintentará sola al abrir la app.": "Une nouvelle tentative aura lieu toute seule à l'ouverture de l'app.",
- "No he podido usar el dictado.": "Je n'ai pas pu utiliser la dictée."
+ "No he podido usar el dictado.": "Je n'ai pas pu utiliser la dictée.",
+ "Instala el modelo de IA del dispositivo en Ajustes para preguntar por pacientes e informes.": "Installez le modèle d'IA de l'appareil dans les Réglages pour interroger patients et comptes rendus.",
+ "La IA del dispositivo ha bloqueado esta respuesta por considerarla sensible. Prueba a preguntarlo de otra forma o consulta la ficha.": "L'IA de l'appareil a bloqué cette réponse comme sensible. Reformulez ou consultez le dossier.",
+ "IA EN EL DISPOSITIVO": "IA SUR L'APPAREIL",
+ "Modelo de lenguaje": "Modèle de langage",
+ "Instalado · %d MB": "Installé · %d Mo",
+ "No instalado": "Non installé",
+ "Copiando el modelo…": "Copie du modèle…",
+ "Cambiar el modelo…": "Changer le modèle…",
+ "Elegir el archivo del modelo…": "Choisir le fichier du modèle…",
+ "Borrar el modelo": "Supprimer le modèle",
+ "¿Borrar el modelo de IA?": "Supprimer le modèle d'IA ?",
+ "No he podido copiar ese archivo.": "Je n'ai pas pu copier ce fichier.",
+ "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).": "L'assistant répond aux questions sur les patients et les comptes rendus avec un modèle exécuté sur cet appareil (format MediaPipe .task ou .litertlm, par exemple Gemma). Rien de ce qu'il lit ne quitte le téléphone. Sans modèle, l'assistant ne comprend que les ordres directs (prendre, déplacer, annuler un rendez-vous…)."
 }

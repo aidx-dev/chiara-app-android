@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.biometric)
+    implementation(libs.mediapipe.genai)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)

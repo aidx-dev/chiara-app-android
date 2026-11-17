@@ -3,6 +3,13 @@ package com.chiarasystems.chiara
 import android.content.Context
 import com.chiarasystems.chiara.data.AppointmentsStore
 import com.chiarasystems.chiara.data.AssistantStore
+import com.chiarasystems.chiara.data.ClinicReader
+import com.chiarasystems.chiara.data.LlmIntentEngine
+import com.chiarasystems.chiara.data.LlmPatientSummarizer
+import com.chiarasystems.chiara.data.ToolCallingAgent
+import com.chiarasystems.chiara.domain.FallbackEngine
+import com.chiarasystems.chiara.ai.LocalModels
+import com.chiarasystems.chiara.ai.MediaPipeLlm
 import com.chiarasystems.chiara.data.DayFormatter
 import com.chiarasystems.chiara.domain.AssistantContext
 import com.chiarasystems.chiara.domain.RuleBasedEngine
@@ -99,8 +106,14 @@ class AppContainer(private val context: Context) {
         override fun dayChip(day: java.time.LocalDate) = calFormat(settings.code).dayChip(day)
         override fun longDay(day: java.time.LocalDate) = calFormat(settings.code).longDay(day)
     }
+    private fun tr(key: String) = translator(settings.code).tr(key)
+    val models = LocalModels(context)
+    /** The on-device language model (MediaPipe); the rules answer commands while it is not installed. */
+    val llm = MediaPipeLlm(context, models, ::tr)
+    val summarizer = LlmPatientSummarizer(llm, ClinicReader(patients, appointments, reports, dayFormatter, ::tr))
     val assistant = AssistantStore(
-        engine = RuleBasedEngine(), agent = null, patients = patients, appointments = appointments, days = dayFormatter,
+        engine = FallbackEngine(LlmIntentEngine(llm), RuleBasedEngine()),
+        agent = ToolCallingAgent(llm, ClinicReader(patients, appointments, reports, dayFormatter, ::tr), dayFormatter), patients = patients, appointments = appointments, days = dayFormatter,
         context = { AssistantContext(java.time.LocalDate.now(), settings.code, Locale.forLanguageTag(settings.code)) },
         tr = { key, args -> translator(settings.code).tr(key, *args.toTypedArray()) },
     )

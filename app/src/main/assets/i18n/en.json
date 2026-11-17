@@ -405,5 +405,18 @@
  "Sin conexión a internet. Hace falta conexión para usar la IA en la nube.": "No internet connection. A connection is needed to use cloud AI.",
  "No he podido completar la operación.": "I couldn't complete the operation.",
  "Se reintentará sola al abrir la app.": "It will be retried by itself when the app is opened.",
- "No he podido usar el dictado.": "I couldn't use dictation."
+ "No he podido usar el dictado.": "I couldn't use dictation.",
+ "Instala el modelo de IA del dispositivo en Ajustes para preguntar por pacientes e informes.": "Install the on-device AI model in Settings to ask about patients and reports.",
+ "La IA del dispositivo ha bloqueado esta respuesta por considerarla sensible. Prueba a preguntarlo de otra forma o consulta la ficha.": "The on-device AI blocked this answer as sensitive. Try asking another way or check the record.",
+ "IA EN EL DISPOSITIVO": "ON-DEVICE AI",
+ "Modelo de lenguaje": "Language model",
+ "Instalado · %d MB": "Installed · %d MB",
+ "No instalado": "Not installed",
+ "Copiando el modelo…": "Copying the model…",
+ "Cambiar el modelo…": "Change the model…",
+ "Elegir el archivo del modelo…": "Choose the model file…",
+ "Borrar el modelo": "Delete the model",
+ "¿Borrar el modelo de IA?": "Delete the AI model?",
+ "No he podido copiar ese archivo.": "I couldn't copy that file.",
+ "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).": "The assistant answers questions about patients and reports with a model that runs on this device (MediaPipe .task or .litertlm format, for example Gemma). Nothing it reads leaves the phone. Without a model, the assistant only understands direct orders (book, move, cancel…)."
 }

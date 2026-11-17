@@ -410,5 +410,18 @@
  "Sin conexión a internet. Hace falta conexión para usar la IA en la nube.": "Sin conexión a internet. Hace falta conexión para usar la IA en la nube.",
  "No he podido completar la operación.": "No he podido completar la operación.",
  "Se reintentará sola al abrir la app.": "Se reintentará sola al abrir la app.",
- "No he podido usar el dictado.": "No he podido usar el dictado."
+ "No he podido usar el dictado.": "No he podido usar el dictado.",
+ "Instala el modelo de IA del dispositivo en Ajustes para preguntar por pacientes e informes.": "Instala el modelo de IA del dispositivo en Ajustes para preguntar por pacientes e informes.",
+ "La IA del dispositivo ha bloqueado esta respuesta por considerarla sensible. Prueba a preguntarlo de otra forma o consulta la ficha.": "La IA del dispositivo ha bloqueado esta respuesta por considerarla sensible. Prueba a preguntarlo de otra forma o consulta la ficha.",
+ "IA EN EL DISPOSITIVO": "IA EN EL DISPOSITIVO",
+ "Modelo de lenguaje": "Modelo de lenguaje",
+ "Instalado · %d MB": "Instalado · %d MB",
+ "No instalado": "No instalado",
+ "Copiando el modelo…": "Copiando el modelo…",
+ "Cambiar el modelo…": "Cambiar el modelo…",
+ "Elegir el archivo del modelo…": "Elegir el archivo del modelo…",
+ "Borrar el modelo": "Borrar el modelo",
+ "¿Borrar el modelo de IA?": "¿Borrar el modelo de IA?",
+ "No he podido copiar ese archivo.": "No he podido copiar ese archivo.",
+ "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).": "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…)."
 }
