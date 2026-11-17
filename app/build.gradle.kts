@@ -22,6 +22,8 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
+        // minSdk 31 devices are 64-bit: drop the 32-bit native libs (MediaPipe) to halve the APK.
+        ndk { abiFilters += listOf("arm64-v8a", "x86_64") }
     }
     buildTypes {
         debug {

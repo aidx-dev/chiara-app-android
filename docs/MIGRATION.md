@@ -77,7 +77,7 @@ Strings: `node scripts/xcstrings-to-json.mjs ../chiara-app-ios/chiara/Localizabl
 ## Riesgos abiertos
 1. Sin tool-calling nativo en Android: protocolo JSON propio; la calidad con un modelo pequeño (Gemma 1–3B) debe medirse con `AssistantBench` antes de fiarse.
 2. Parakeet 0.6B en CPU: lento y pesado en gama media; sin integrar. Mientras tanto, la nube (MAI) es el camino de transcripción.
-3. APK release de ~53 MB por las libs nativas de MediaPipe: valorar ABI splits / app bundle.
+3. APK de ~88 MB (debug) por las libs nativas de MediaPipe, ya limitadas a arm64-v8a y x86_64: valorar app bundle.
 4. Datos clínicos en reposo: caché y secretos cifrados con Keystore; las grabaciones y transcripciones locales están en `noBackupFilesDir` **sin cifrar** (como en iOS, protegidas por el sandbox).
 5. Diarización por trozos sin reconciliar entre peticiones (limitación heredada de iOS).
 6. El backend real no se ha probado: todo el flujo se ha ejecutado contra `DemoBackend`; falta una pasada contra Supabase con RLS.
