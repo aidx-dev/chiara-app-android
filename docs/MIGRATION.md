@@ -67,7 +67,7 @@ Strings: `node scripts/xcstrings-to-json.mjs ../chiara-app-ios/chiara/Localizabl
 - [x] GlowBorder animado (campo del asistente y botón flotante), verificado en emulador
 - [~] LLM local con MediaPipe LLM Inference (`MediaPipeLlm`): compila, R8 ok, instalación del modelo por selector de archivo en Ajustes. **Nunca ejecutado con un modelo real**: calidad del protocolo JSON sin validar
 - [~] ASR en el dispositivo (sherpa-onnx 2.0.1 + Parakeet TDT v3 int8): integrado (`SherpaAsr`, AAR desde GitHub Releases vía repositorio Ivy, troceo a ~25 s por silencios, `TokenSegmenter` con tests) y con selector de carpeta del modelo en Ajustes. **Nunca ejecutado con el modelo real** (~500 MB que aporta quien lo instala); sin modelo lanza `LocalModelUnavailable` y la transcripción usa la nube (MAI)
-- [x] `AssistantBench` (19 casos): harness portado + test con un modelo guionizado (17/19: los 2 seguimientos necesitan la memoria de un modelo real) + pantalla debug en Ajustes para medir el modelo instalado
+- [x] `AssistantBench` (19 casos): harness portado + test con un modelo guionizado (17/19: los 2 seguimientos necesitan la memoria de un modelo real) + pantalla debug en Ajustes para medir el modelo instalado (verificada en emulador: sin modelo, solo con reglas, marca 7/19: esa es la base a superar)
 
 ## Fase 7 – Localización y calidad
 - [x] 426 claves × es/en/de/fr (catálogo iOS + extras Android: grabación, notificaciones, IA); cambio de idioma inmediato; "Face ID" → "biometría"
