@@ -5,7 +5,7 @@ Regla: paridad funcional y visual con iOS. Los tests de iOS (`chiaraTests/*`) so
 
 Leyenda: `[x]` hecho y verificado · `[~]` hecho pero sin verificar en dispositivo/modelo real · `[ ]` pendiente.
 
-Estado de la verificación: **174 tests unitarios en verde** (`./gradlew test`), APK debug y release (R8) compilan, y el flujo
+Estado de la verificación: **~190 tests (JVM + Compose con Robolectric) en verde** (`./gradlew test`), APK debug y release (R8) compilan, y el flujo
 login → agenda → pacientes → ficha → informes/PDF → ajustes → grabar → asistente se ha ejecutado en un emulador con el backend demo.
 
 Compilar con JDK 17+, p. ej. el JBR de Android Studio: `JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"`.
@@ -42,7 +42,7 @@ Strings: `node scripts/xcstrings-to-json.mjs ../chiara-app-ios/chiara/Localizabl
 
 ## Fase 3 – Design system + shell
 - [x] Paleta completa, Surface/Hairline, Avatar, StatusBadge, MenuPicker, GroupedList, FieldRow, OfflineBanner, ErrorNote, GlassSearchField, botones, monograma
-- [x] "Glass" = tinte translúcido + borde fino. [ ] Blur real del contenido de detrás (haze/RenderEffect): pendiente, solo estético
+- [x] "Glass" con blur real del contenido de detrás (haze) en la capa de navegación (barra de pestañas flotante, toast, botón del asistente); los controles que viven dentro del contenido desplazable usan tinte + borde
 - [x] MainShell (4 pestañas, pila por pestaña, toast con "Deshacer", botón asistente), RootScreen, reset de stores al cerrar sesión
 
 ## Fase 4 – Pantallas
@@ -64,15 +64,17 @@ Strings: `node scripts/xcstrings-to-json.mjs ../chiara-app-ios/chiara/Localizabl
 - [x] `ClinicReader` + herramientas + agente por protocolo JSON (`ToolCallingAgent`) + `LlmIntentEngine` + resumidor — 9 tests con un LLM de mentira
 - [x] AssistantSheet (burbujas, tarjetas, dictado con `SpeechRecognizer` y vocabulario de pacientes), botón flotante, deshacer
 - [x] Con el reconocedor por reglas el asistente funciona hoy (verificado: "Show me tomorrow's agenda" abre el día siguiente)
+- [x] GlowBorder animado (campo del asistente y botón flotante), verificado en emulador
 - [~] LLM local con MediaPipe LLM Inference (`MediaPipeLlm`): compila, R8 ok, instalación del modelo por selector de archivo en Ajustes. **Nunca ejecutado con un modelo real**: calidad del protocolo JSON sin validar
-- [ ] ASR en el dispositivo (sherpa-onnx + Parakeet TDT v3): sin integrar (el AAR no está en Maven Central y pesa ~500 MB). `LocalAsr` es la interfaz; hoy lanza `LocalModelUnavailable` y la transcripción usa la nube (MAI)
-- [ ] `AssistantBench` (19 casos) como test instrumentado con un modelo real · [ ] GlowBorder animado del campo del asistente
+- [~] ASR en el dispositivo (sherpa-onnx 2.0.1 + Parakeet TDT v3 int8): integrado (`SherpaAsr`, AAR desde GitHub Releases vía repositorio Ivy, troceo a ~25 s por silencios, `TokenSegmenter` con tests) y con selector de carpeta del modelo en Ajustes. **Nunca ejecutado con el modelo real** (~500 MB que aporta quien lo instala); sin modelo lanza `LocalModelUnavailable` y la transcripción usa la nube (MAI)
+- [x] `AssistantBench` (19 casos): harness portado + test con un modelo guionizado (17/19: los 2 seguimientos necesitan la memoria de un modelo real) + pantalla debug en Ajustes para medir el modelo instalado
 
 ## Fase 7 – Localización y calidad
 - [x] 426 claves × es/en/de/fr (catálogo iOS + extras Android: grabación, notificaciones, IA); cambio de idioma inmediato; "Face ID" → "biometría"
 - [x] Tests: 174 (model 16, domain 37, network 11, data 61, ai 49); R8 ok
-- [ ] Tests instrumentados de Compose y capturas claro/oscuro · [ ] Revisión de accesibilidad con TalkBack · [ ] Tablets/WindowSizeClass
-- [ ] Política Play: declaración de FGS `microphone`/`dataSync`, política de privacidad, firma de release
+- [x] Tests de Compose en JVM (Robolectric): login completo contra el backend demo y componentes · [ ] capturas claro/oscuro automatizadas
+- [~] Accesibilidad: roles `Button` en todo lo pulsable, encabezados y descripciones; **sin revisar con TalkBack** · [~] Tablets: contenido en columna de 640 dp centrada (login 480), sin verificar en un tablet real
+- [x] Documentación de publicación: `docs/PLAY.md` (permisos, FGS, seguridad de datos) y `docs/PRIVACY.md` (borrador) · [x] firma por `keystore.properties` (ignorado) · [ ] cuenta de Play, firma real y revisión legal (tuyo)
 
 ## Riesgos abiertos
 1. Sin tool-calling nativo en Android: protocolo JSON propio; la calidad con un modelo pequeño (Gemma 1–3B) debe medirse con `AssistantBench` antes de fiarse.

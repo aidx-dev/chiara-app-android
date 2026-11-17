@@ -424,5 +424,10 @@
  "Borrar el modelo": "Borrar el modelo",
  "¿Borrar el modelo de IA?": "¿Borrar el modelo de IA?",
  "No he podido copiar ese archivo.": "No he podido copiar ese archivo.",
- "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).": "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…)."
+ "Reconocimiento de voz": "Reconocimiento de voz",
+ "Cambiar la carpeta del modelo…": "Cambiar la carpeta del modelo…",
+ "Elegir la carpeta del modelo…": "Elegir la carpeta del modelo…",
+ "Borrar el modelo de voz": "Borrar el modelo de voz",
+ "Esa carpeta no tiene los archivos del modelo (encoder, decoder, joiner y tokens).": "Esa carpeta no tiene los archivos del modelo (encoder, decoder, joiner y tokens).",
+ "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…). El reconocimiento de voz del dispositivo (sherpa-onnx con Parakeet TDT v3 int8, unos 500 MB) transcribe las consultas sin enviar el audio a ningún servidor.": "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…). El reconocimiento de voz del dispositivo (sherpa-onnx con Parakeet TDT v3 int8, unos 500 MB) transcribe las consultas sin enviar el audio a ningún servidor."
 }

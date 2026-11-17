@@ -10,6 +10,7 @@ import com.chiarasystems.chiara.data.ToolCallingAgent
 import com.chiarasystems.chiara.domain.FallbackEngine
 import com.chiarasystems.chiara.ai.LocalModels
 import com.chiarasystems.chiara.ai.MediaPipeLlm
+import com.chiarasystems.chiara.ai.SherpaAsr
 import com.chiarasystems.chiara.data.DayFormatter
 import com.chiarasystems.chiara.domain.AssistantContext
 import com.chiarasystems.chiara.domain.RuleBasedEngine
@@ -90,7 +91,9 @@ class AppContainer(private val context: Context) {
     suspend fun aiConfig(): UserAIConfig = UserAIConfig.load(client)
     val chat = OpenRouterChat(config = ::aiConfig)
     val cloudTranscriber = CloudTranscriber(key = { aiConfig().apiKey })
-    val transcribers = AppTranscribers(context, cloudTranscriber) { NoLocalAsr }
+    val models = LocalModels(context)
+    private val localAsr = SherpaAsr(models)
+    val transcribers = AppTranscribers(context, cloudTranscriber) { localAsr }
     private val translate = Translate { key, args -> translator(settings.code).tr(key, *args.toTypedArray()) }
     val pipeline = ConsultationPipeline(
         recordings, WorkflowSteps(recordings, transcribers, chat, translate) { settings.code }, appScope,
@@ -107,7 +110,6 @@ class AppContainer(private val context: Context) {
         override fun longDay(day: java.time.LocalDate) = calFormat(settings.code).longDay(day)
     }
     private fun tr(key: String) = translator(settings.code).tr(key)
-    val models = LocalModels(context)
     /** The on-device language model (MediaPipe); the rules answer commands while it is not installed. */
     val llm = MediaPipeLlm(context, models, ::tr)
     val assistantReader = ClinicReader(patients, appointments, reports, dayFormatter, ::tr)

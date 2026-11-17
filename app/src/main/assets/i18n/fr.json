@@ -419,5 +419,10 @@
  "Borrar el modelo": "Supprimer le modèle",
  "¿Borrar el modelo de IA?": "Supprimer le modèle d'IA ?",
  "No he podido copiar ese archivo.": "Je n'ai pas pu copier ce fichier.",
- "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).": "L'assistant répond aux questions sur les patients et les comptes rendus avec un modèle exécuté sur cet appareil (format MediaPipe .task ou .litertlm, par exemple Gemma). Rien de ce qu'il lit ne quitte le téléphone. Sans modèle, l'assistant ne comprend que les ordres directs (prendre, déplacer, annuler un rendez-vous…)."
+ "Reconocimiento de voz": "Reconnaissance vocale",
+ "Cambiar la carpeta del modelo…": "Changer le dossier du modèle…",
+ "Elegir la carpeta del modelo…": "Choisir le dossier du modèle…",
+ "Borrar el modelo de voz": "Supprimer le modèle vocal",
+ "Esa carpeta no tiene los archivos del modelo (encoder, decoder, joiner y tokens).": "Ce dossier ne contient pas les fichiers du modèle (encoder, decoder, joiner et tokens).",
+ "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…). El reconocimiento de voz del dispositivo (sherpa-onnx con Parakeet TDT v3 int8, unos 500 MB) transcribe las consultas sin enviar el audio a ningún servidor.": "L'assistant répond aux questions sur les patients et les comptes rendus avec un modèle exécuté sur cet appareil (format MediaPipe .task ou .litertlm, par exemple Gemma). Rien de ce qu'il lit ne quitte le téléphone. Sans modèle, l'assistant ne comprend que les ordres directs (prendre, déplacer, annuler un rendez-vous…). La reconnaissance vocale sur l'appareil (sherpa-onnx avec Parakeet TDT v3 int8, environ 500 Mo) transcrit les consultations sans envoyer l'audio à un serveur."
 }

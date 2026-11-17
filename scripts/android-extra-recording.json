@@ -893,10 +893,40 @@
     "de": "Diese Datei konnte nicht kopiert werden.",
     "fr": "Je n'ai pas pu copier ce fichier."
   },
-  "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).": {
-    "es": "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).",
-    "en": "The assistant answers questions about patients and reports with a model that runs on this device (MediaPipe .task or .litertlm format, for example Gemma). Nothing it reads leaves the phone. Without a model, the assistant only understands direct orders (book, move, cancel…).",
-    "de": "Der Assistent beantwortet Fragen zu Patienten und Berichten mit einem Modell, das auf diesem Gerät läuft (MediaPipe-Format .task oder .litertlm, z. B. Gemma). Nichts, was er liest, verlässt das Telefon. Ohne Modell versteht der Assistent nur direkte Befehle (buchen, verschieben, stornieren…).",
-    "fr": "L'assistant répond aux questions sur les patients et les comptes rendus avec un modèle exécuté sur cet appareil (format MediaPipe .task ou .litertlm, par exemple Gemma). Rien de ce qu'il lit ne quitte le téléphone. Sans modèle, l'assistant ne comprend que les ordres directs (prendre, déplacer, annuler un rendez-vous…)."
+  "Reconocimiento de voz": {
+    "es": "Reconocimiento de voz",
+    "en": "Speech recognition",
+    "de": "Spracherkennung",
+    "fr": "Reconnaissance vocale"
+  },
+  "Cambiar la carpeta del modelo…": {
+    "es": "Cambiar la carpeta del modelo…",
+    "en": "Change the model folder…",
+    "de": "Modellordner ändern…",
+    "fr": "Changer le dossier du modèle…"
+  },
+  "Elegir la carpeta del modelo…": {
+    "es": "Elegir la carpeta del modelo…",
+    "en": "Choose the model folder…",
+    "de": "Modellordner wählen…",
+    "fr": "Choisir le dossier du modèle…"
+  },
+  "Borrar el modelo de voz": {
+    "es": "Borrar el modelo de voz",
+    "en": "Delete the speech model",
+    "de": "Sprachmodell löschen",
+    "fr": "Supprimer le modèle vocal"
+  },
+  "Esa carpeta no tiene los archivos del modelo (encoder, decoder, joiner y tokens).": {
+    "es": "Esa carpeta no tiene los archivos del modelo (encoder, decoder, joiner y tokens).",
+    "en": "That folder does not have the model files (encoder, decoder, joiner and tokens).",
+    "de": "Dieser Ordner enthält die Modelldateien nicht (Encoder, Decoder, Joiner und Tokens).",
+    "fr": "Ce dossier ne contient pas les fichiers du modèle (encoder, decoder, joiner et tokens)."
+  },
+  "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…). El reconocimiento de voz del dispositivo (sherpa-onnx con Parakeet TDT v3 int8, unos 500 MB) transcribe las consultas sin enviar el audio a ningún servidor.": {
+    "es": "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…). El reconocimiento de voz del dispositivo (sherpa-onnx con Parakeet TDT v3 int8, unos 500 MB) transcribe las consultas sin enviar el audio a ningún servidor.",
+    "en": "The assistant answers questions about patients and reports with a model that runs on this device (MediaPipe .task or .litertlm format, for example Gemma). Nothing it reads leaves the phone. Without a model, the assistant only understands direct orders (book, move, cancel…). On-device speech recognition (sherpa-onnx with Parakeet TDT v3 int8, about 500 MB) transcribes consultations without sending the audio to any server.",
+    "de": "Der Assistent beantwortet Fragen zu Patienten und Berichten mit einem Modell, das auf diesem Gerät läuft (MediaPipe-Format .task oder .litertlm, z. B. Gemma). Nichts, was er liest, verlässt das Telefon. Ohne Modell versteht der Assistent nur direkte Befehle (buchen, verschieben, stornieren…). Die Spracherkennung auf dem Gerät (sherpa-onnx mit Parakeet TDT v3 int8, etwa 500 MB) transkribiert Konsultationen, ohne das Audio an einen Server zu senden.",
+    "fr": "L'assistant répond aux questions sur les patients et les comptes rendus avec un modèle exécuté sur cet appareil (format MediaPipe .task ou .litertlm, par exemple Gemma). Rien de ce qu'il lit ne quitte le téléphone. Sans modèle, l'assistant ne comprend que les ordres directs (prendre, déplacer, annuler un rendez-vous…). La reconnaissance vocale sur l'appareil (sherpa-onnx avec Parakeet TDT v3 int8, environ 500 Mo) transcrit les consultations sans envoyer l'audio à un serveur."
   }
 }

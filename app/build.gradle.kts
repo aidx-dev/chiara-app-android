@@ -26,6 +26,20 @@ android {
         // `-Pabis=x86_64` builds a smaller APK for the emulator.
         ndk { abiFilters += (project.findProperty("abis") as String? ?: "arm64-v8a,x86_64").split(",") }
     }
+    // Release signing: keystore.properties (git-ignored) with storeFile, storePassword, keyAlias, keyPassword.
+    // Without it the release APK is built unsigned (CI, local checks).
+    val keystoreFile = rootProject.file("keystore.properties")
+    val keystoreProps = Properties().apply { if (keystoreFile.exists()) keystoreFile.inputStream().use(::load) }
+    if (keystoreFile.exists()) {
+        signingConfigs {
+            create("release") {
+                storeFile = rootProject.file(keystoreProps.getProperty("storeFile"))
+                storePassword = keystoreProps.getProperty("storePassword")
+                keyAlias = keystoreProps.getProperty("keyAlias")
+                keyPassword = keystoreProps.getProperty("keyPassword")
+            }
+        }
+    }
     buildTypes {
         debug {
             // The Android emulator reaches the host's local Supabase through 10.0.2.2.
@@ -40,6 +54,7 @@ android {
             buildConfigField("String", "SUPABASE_URL", "\"${secret("SUPABASE_URL")}\"")
             buildConfigField("String", "SUPABASE_ANON_KEY", "\"${secret("SUPABASE_ANON_KEY")}\"")
             buildConfigField("boolean", "DEMO_BACKEND", "false")
+            if (keystoreFile.exists()) signingConfig = signingConfigs.getByName("release")
         }
     }
     buildFeatures { compose = true; buildConfig = true }
@@ -56,6 +71,7 @@ dependencies {
     // biometric 1.1 pulls an old fragment whose FragmentActivity rejects the request codes of the Activity Result API.
     implementation(libs.androidx.fragment)
     implementation(libs.mediapipe.genai)
+    implementation("com.k2fsa:sherpa-onnx:2.0.1@aar")
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)

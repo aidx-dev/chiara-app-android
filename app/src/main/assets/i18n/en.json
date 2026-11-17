@@ -419,5 +419,10 @@
  "Borrar el modelo": "Delete the model",
  "¿Borrar el modelo de IA?": "Delete the AI model?",
  "No he podido copiar ese archivo.": "I couldn't copy that file.",
- "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).": "The assistant answers questions about patients and reports with a model that runs on this device (MediaPipe .task or .litertlm format, for example Gemma). Nothing it reads leaves the phone. Without a model, the assistant only understands direct orders (book, move, cancel…)."
+ "Reconocimiento de voz": "Speech recognition",
+ "Cambiar la carpeta del modelo…": "Change the model folder…",
+ "Elegir la carpeta del modelo…": "Choose the model folder…",
+ "Borrar el modelo de voz": "Delete the speech model",
+ "Esa carpeta no tiene los archivos del modelo (encoder, decoder, joiner y tokens).": "That folder does not have the model files (encoder, decoder, joiner and tokens).",
+ "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…). El reconocimiento de voz del dispositivo (sherpa-onnx con Parakeet TDT v3 int8, unos 500 MB) transcribe las consultas sin enviar el audio a ningún servidor.": "The assistant answers questions about patients and reports with a model that runs on this device (MediaPipe .task or .litertlm format, for example Gemma). Nothing it reads leaves the phone. Without a model, the assistant only understands direct orders (book, move, cancel…). On-device speech recognition (sherpa-onnx with Parakeet TDT v3 int8, about 500 MB) transcribes consultations without sending the audio to any server."
 }

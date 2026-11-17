@@ -21,6 +21,7 @@ compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.8.5" }
 haze = { module = "dev.chrisbanes.haze:haze", version = "1.3.1" }
+sherpa-onnx = { module = "com.k2fsa:sherpa-onnx", version = "2.0.1" }
 mediapipe-genai = { module = "com.google.mediapipe:tasks-genai", version = "0.10.24" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version = "2.8.7" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }

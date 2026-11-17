@@ -419,5 +419,10 @@
  "Borrar el modelo": "Modell löschen",
  "¿Borrar el modelo de IA?": "KI-Modell löschen?",
  "No he podido copiar ese archivo.": "Diese Datei konnte nicht kopiert werden.",
- "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…).": "Der Assistent beantwortet Fragen zu Patienten und Berichten mit einem Modell, das auf diesem Gerät läuft (MediaPipe-Format .task oder .litertlm, z. B. Gemma). Nichts, was er liest, verlässt das Telefon. Ohne Modell versteht der Assistent nur direkte Befehle (buchen, verschieben, stornieren…)."
+ "Reconocimiento de voz": "Spracherkennung",
+ "Cambiar la carpeta del modelo…": "Modellordner ändern…",
+ "Elegir la carpeta del modelo…": "Modellordner wählen…",
+ "Borrar el modelo de voz": "Sprachmodell löschen",
+ "Esa carpeta no tiene los archivos del modelo (encoder, decoder, joiner y tokens).": "Dieser Ordner enthält die Modelldateien nicht (Encoder, Decoder, Joiner und Tokens).",
+ "El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…). El reconocimiento de voz del dispositivo (sherpa-onnx con Parakeet TDT v3 int8, unos 500 MB) transcribe las consultas sin enviar el audio a ningún servidor.": "Der Assistent beantwortet Fragen zu Patienten und Berichten mit einem Modell, das auf diesem Gerät läuft (MediaPipe-Format .task oder .litertlm, z. B. Gemma). Nichts, was er liest, verlässt das Telefon. Ohne Modell versteht der Assistent nur direkte Befehle (buchen, verschieben, stornieren…). Die Spracherkennung auf dem Gerät (sherpa-onnx mit Parakeet TDT v3 int8, etwa 500 MB) transkribiert Konsultationen, ohne das Audio an einen Server zu senden."
 }

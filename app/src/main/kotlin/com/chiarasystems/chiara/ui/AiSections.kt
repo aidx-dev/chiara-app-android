@@ -116,6 +116,15 @@ fun LocalAiSection(app: AppContainer) {
     var working by remember { mutableStateOf(false) }
     var failed by remember { mutableStateOf(false) }
     var confirmDelete by remember { mutableStateOf(false) }
+    val asrInstalled by app.models.asrInstalled.collectAsState()
+    var asrFailed by remember { mutableStateOf(false) }
+    val asrPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
+        if (uri != null) scope.launch {
+            working = true; asrFailed = false
+            val ok = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { app.models.importAsrFolder(uri) }
+            asrFailed = !ok; working = false
+        }
+    }
     val picker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri != null) scope.launch {
             working = true; failed = false
@@ -144,9 +153,28 @@ fun LocalAiSection(app: AppContainer) {
                 }
             }
         }
+        GroupedList {
+            row {
+                Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)) {
+                    Text(tr("Reconocimiento de voz"), fontSize = 17.sp, color = Palette.text)
+                    Text(if (asrInstalled) tr("Instalado · %d MB", app.models.asrSizeMb()) else tr("No instalado"), fontSize = 13.sp, color = Palette.textFaint)
+                }
+            }
+            row {
+                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(enabled = !working, role = androidx.compose.ui.semantics.Role.Button) { asrPicker.launch(null) }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
+                    Text(if (asrInstalled) tr("Cambiar la carpeta del modelo…") else tr("Elegir la carpeta del modelo…"), fontSize = 17.sp, color = Palette.primary)
+                }
+            }
+            if (asrInstalled) row {
+                Box(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(role = androidx.compose.ui.semantics.Role.Button) { app.models.deleteAsr() }.padding(horizontal = 16.dp), contentAlignment = Alignment.CenterStart) {
+                    Text(tr("Borrar el modelo de voz"), fontSize = 17.sp, color = Palette.destructive)
+                }
+            }
+        }
+        if (asrFailed) Text(tr("Esa carpeta no tiene los archivos del modelo (encoder, decoder, joiner y tokens)."), Modifier.padding(horizontal = 4.dp), fontSize = 13.sp, color = Palette.destructive)
         if (failed) Text(tr("No he podido copiar ese archivo."), Modifier.padding(horizontal = 4.dp), fontSize = 13.sp, color = Palette.destructive)
         Text(
-            tr("El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…)."),
+            tr("El asistente responde preguntas sobre pacientes e informes con un modelo que se ejecuta en este dispositivo (formato MediaPipe .task o .litertlm, por ejemplo Gemma). Nada de lo que lee sale del teléfono. Sin modelo, el asistente solo entiende órdenes directas (agendar, mover, cancelar…). El reconocimiento de voz del dispositivo (sherpa-onnx con Parakeet TDT v3 int8, unos 500 MB) transcribe las consultas sin enviar el audio a ningún servidor."),
             Modifier.padding(horizontal = 4.dp), fontSize = 13.sp, color = Palette.textFaint,
         )
     }
