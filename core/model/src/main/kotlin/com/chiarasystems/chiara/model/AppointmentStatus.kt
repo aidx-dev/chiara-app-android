@@ -1,6 +1,9 @@
 package com.chiarasystems.chiara.model
 
-/** Port of iOS `AppointmentStatus` (Models/Appointment.swift). Server values are PascalCase. */
+/**
+ * Port of iOS `AppointmentStatus` (Models/Appointment.swift). Server values are PascalCase.
+ * Labels and colours live in the UI layer (string resources / design system).
+ */
 enum class AppointmentStatus(val serverValue: String) {
     Scheduled("Scheduled"), Confirmed("Confirmed"), Completed("Completed"), Canceled("Canceled"), NoShow("NoShow");
 

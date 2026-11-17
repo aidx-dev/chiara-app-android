@@ -11,7 +11,7 @@ Leyenda: `[x]` hecho · `[ ]` pendiente.
 - [x] Módulos iniciales: `app`, `core:model`, `core:domain`, `core:designsystem`
 - [x] BuildConfig `SUPABASE_URL`/`SUPABASE_ANON_KEY` por buildType (desde `local.properties`/`secrets.properties`, no versionados)
 - [x] Manifest con permisos (INTERNET, RECORD_AUDIO, USE_BIOMETRIC, POST_NOTIFICATIONS, FGS microphone/dataSync), `allowBackup=false`
-- [ ] Gradle wrapper (requiere JDK 17 + `gradle wrapper`; el equipo tiene JDK 8 por defecto)
+- [x] Gradle wrapper 8.10.2 (compilar con JDK 17+, p. ej. el JBR de Android Studio: `JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"`)
 - [ ] Hilt, convention plugins (`build-logic`), CI
 - [ ] `network_security_config` (cleartext solo debug, para `10.0.2.2:54321`)
 - [ ] Icono adaptativo (desde `docs/design_handoff_chiara_ios/assets/app-icon.svg`, capa monochrome)
@@ -19,10 +19,10 @@ Leyenda: `[x]` hecho · `[ ]` pendiente.
 
 ## Fase 1 – Dominio puro + tests (copiar casos de `chiaraTests`)
 - [x] `AgendaRules` (+ test) · [x] `UuidV7` (+ test) · [x] `AppointmentStatus.normalize`
-- [ ] `Dates`/`Cal` (ISO lunes, formatos es exactos, `java.time`), `ServerTimestamp`
-- [ ] `Appointment` + notes `Tipo — motivo` (U+2014), `VisitType`, `PatientAppointment`
-- [ ] `Patient` (edad 0–130, `sexLabel`, tint por bytes UUID con wrap a 8 bits), `PatientDraft`
-- [ ] `Report`, `ReportBuilder`, `HtmlText.plain`, `ICD`, `UserProfile`, `ClinicBranding`
+- [x] `Dates` (parseo ISO, lunes, minutos, `ServerTimestamp`) · [ ] formatos de visualización por idioma (capa UI)
+- [x] `Appointment` + notes `Tipo — motivo` (U+2014), `VisitType`, `PatientAppointment`
+- [x] `Patient` (edad 0–130, sexo, tint por bytes UUID), `PatientDraft`
+- [x] `Report`, `ReportBuilder`, `HtmlText.plain`, `IcdCode`, `UserProfile`, `ClinicBranding`
 - [ ] `DayBriefing`, `PatientMatcher`, `ClinicalAdviceGuard`, `GroundingCheck`, `RuleBasedEngine`, `AudioLanguage`
 
 ## Fase 2 – Red / Auth / Datos (`core:network`, `core:data`)
