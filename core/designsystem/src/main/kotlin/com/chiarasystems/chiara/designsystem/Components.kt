@@ -63,6 +63,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chiarasystems.chiara.model.AppointmentStatus
 import com.chiarasystems.chiara.model.Patient
+import dev.chrisbanes.haze.HazeStyle
+import dev.chrisbanes.haze.HazeTint
+import dev.chrisbanes.haze.hazeChild
 
 // --- Surfaces ----------------------------------------------------------------------------------------------------
 
@@ -74,19 +77,25 @@ fun Modifier.surface(radius: Int = Radius.card): Modifier {
         .background(Palette.surface, shape)
 }
 
+/** The blurred backdrop of the navigation layer: the screen content is the haze source, glass elements sample it. */
+val LocalHazeState = androidx.compose.runtime.staticCompositionLocalOf<dev.chrisbanes.haze.HazeState?> { null }
+
 /**
- * "Glass" for the navigation layer (tab bar, toast, search, floating buttons): a translucent tint over the content with
- * a hairline edge. The real background blur needs the content behind it captured, so it is added where it is worth it
- * (see MIGRATION.md, Phase 3 note).
+ * "Glass" for the navigation layer (tab bar, toast, floating buttons): the content behind it, blurred, under a translucent
+ * tint and a hairline edge. Where no [LocalHazeState] is provided (controls inside the scrolling content itself) it is the
+ * tint and the edge alone.
  */
 @Composable
 fun Modifier.glass(shape: Shape = CircleShape): Modifier {
     val p = Palette
-    val tint = if (p.dark) Color(0xFF2A2A2E).copy(alpha = 0.82f) else Color.White.copy(alpha = 0.82f)
+    val haze = LocalHazeState.current
+    val tint = if (p.dark) Color(0xFF2A2A2E) else Color.White
     val edge = if (p.dark) Color.White.copy(alpha = 0.10f) else Color.Black.copy(alpha = 0.06f)
-    return this.shadow(8.dp, shape, clip = false, ambientColor = Color.Black.copy(alpha = 0.10f), spotColor = Color.Black.copy(alpha = 0.12f))
-        .background(tint, shape)
-        .border(BorderStroke(0.5.dp, edge), shape)
+    val base = this.shadow(8.dp, shape, clip = false, ambientColor = Color.Black.copy(alpha = 0.10f), spotColor = Color.Black.copy(alpha = 0.12f))
+    val surface = if (haze != null) {
+        base.clip(shape).hazeChild(haze, HazeStyle(backgroundColor = p.background, tint = HazeTint(tint.copy(alpha = 0.55f)), blurRadius = 24.dp))
+    } else base.background(tint.copy(alpha = 0.82f), shape)
+    return surface.border(BorderStroke(0.5.dp, edge), shape)
 }
 
 @Composable
@@ -204,7 +213,7 @@ fun GlassPillButton(text: String, onClick: () -> Unit, modifier: Modifier = Modi
 fun AssistantButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
     val label = tr("Asistente")
     Box(
-        modifier.size(48.dp).glass(CircleShape).clip(CircleShape).clickable(onClick = onClick).semantics { contentDescription = label },
+        modifier.size(48.dp).glass(CircleShape).glowBorder(CircleShape, GlowState.Idle, subtle = true).clip(CircleShape).clickable(onClick = onClick).semantics { contentDescription = label },
         contentAlignment = Alignment.Center,
     ) { ChiaraMonogram(size = 34.dp) }
 }

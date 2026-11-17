@@ -44,7 +44,11 @@ import com.chiarasystems.chiara.data.AppTab
 import com.chiarasystems.chiara.data.AuthPhase
 import com.chiarasystems.chiara.designsystem.AssistantButton
 import com.chiarasystems.chiara.designsystem.Palette
+import com.chiarasystems.chiara.designsystem.LocalHazeState
 import com.chiarasystems.chiara.designsystem.glass
+import dev.chrisbanes.haze.HazeState
+import dev.chrisbanes.haze.haze
+import androidx.compose.runtime.remember
 import com.chiarasystems.chiara.designsystem.tr
 
 @Composable
@@ -83,13 +87,12 @@ fun MainShell(app: AppContainer) {
         TabItem(AppTab.Settings, tr("Ajustes"), Icons.Outlined.Settings),
     )
 
+    val hazeState = remember { HazeState() }
     Box(Modifier.fillMaxSize().background(Palette.background)) {
-        Column(Modifier.fillMaxSize()) {
-            Box(Modifier.weight(1f).fillMaxWidth()) {
-                TabContent(app, tab)
-            }
-            TabBar(items, tab) { router.select(it) }
-        }
+        // The content runs under the floating tab bar, which blurs it (the glass layer samples this haze source).
+        Box(Modifier.fillMaxSize().haze(hazeState)) { TabContent(app, tab) }
+        androidx.compose.runtime.CompositionLocalProvider(LocalHazeState provides hazeState) {
+        TabBar(items, tab, Modifier.align(Alignment.BottomCenter)) { router.select(it) }
         // Assistant button; adding appointments/patients lives in each screen's top bar.
         AssistantButton(
             onClick = { router.show(com.chiarasystems.chiara.data.ActiveSheet.Assistant) },
@@ -111,15 +114,16 @@ fun MainShell(app: AppContainer) {
                 }
             }
         }
+        }
         Sheets(app)
     }
 }
 
 @Composable
-private fun TabBar(items: List<TabItem>, selected: AppTab, onSelect: (AppTab) -> Unit) {
+private fun TabBar(items: List<TabItem>, selected: AppTab, modifier: Modifier = Modifier, onSelect: (AppTab) -> Unit) {
     Row(
-        Modifier.fillMaxWidth().background(Palette.surface.copy(alpha = 0.94f)).windowInsetsPadding(WindowInsets.navigationBars)
-            .padding(horizontal = 8.dp, vertical = 6.dp),
+        modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.navigationBars).padding(horizontal = 16.dp, vertical = 8.dp)
+            .glass(androidx.compose.foundation.shape.RoundedCornerShape(28.dp)).padding(horizontal = 8.dp, vertical = 6.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
         items.forEach { item ->

@@ -23,7 +23,8 @@ android {
         versionCode = 1
         versionName = "1.0"
         // minSdk 31 devices are 64-bit: drop the 32-bit native libs (MediaPipe) to halve the APK.
-        ndk { abiFilters += listOf("arm64-v8a", "x86_64") }
+        // `-Pabis=x86_64` builds a smaller APK for the emulator.
+        ndk { abiFilters += (project.findProperty("abis") as String? ?: "arm64-v8a,x86_64").split(",") }
     }
     buildTypes {
         debug {
@@ -51,6 +52,8 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.biometric)
+    // biometric 1.1 pulls an old fragment whose FragmentActivity rejects the request codes of the Activity Result API.
+    implementation(libs.androidx.fragment)
     implementation(libs.mediapipe.genai)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.kotlinx.coroutines.android)

@@ -74,7 +74,10 @@ import com.chiarasystems.chiara.designsystem.Palette
 import com.chiarasystems.chiara.designsystem.PrimaryButton
 import com.chiarasystems.chiara.designsystem.SectionLabel
 import com.chiarasystems.chiara.designsystem.calFormat
+import com.chiarasystems.chiara.designsystem.GlowState
 import com.chiarasystems.chiara.designsystem.glass
+import com.chiarasystems.chiara.designsystem.glowBorder
+import androidx.compose.ui.focus.onFocusChanged
 import com.chiarasystems.chiara.designsystem.surface
 import com.chiarasystems.chiara.designsystem.tr
 import com.chiarasystems.chiara.domain.DictationVocabulary
@@ -107,6 +110,7 @@ fun AssistantSheet(app: AppContainer) {
     val dictationError by dictation.error.collectAsState()
     var text by remember { mutableStateOf("") }
     var typedBefore by remember { mutableStateOf("") }
+    var focused by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
     val scroll = rememberScrollState()
     val undoText = tr("Deshacer")
@@ -235,14 +239,19 @@ fun AssistantSheet(app: AppContainer) {
         val hasText = text.trimmed.isNotEmpty()
         val canSend = hasText && !state.isWorking && reason == null
         Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.Bottom, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Row(Modifier.weight(1f).heightIn(min = 48.dp).glass(RoundedCornerShape(24.dp)), verticalAlignment = Alignment.Bottom) {
+            Row(
+                Modifier.weight(1f).heightIn(min = 48.dp).glass(RoundedCornerShape(24.dp))
+                    // The outline only shows while the field is in use.
+                    .glowBorder(RoundedCornerShape(24.dp), if (state.isWorking || listening) GlowState.Active else GlowState.Focused, visible = focused || listening || state.isWorking),
+                verticalAlignment = Alignment.Bottom,
+            ) {
                 Box(Modifier.weight(1f).padding(start = 18.dp, top = 13.dp, bottom = 13.dp)) {
                     if (text.isEmpty()) Text(if (listening) tr("Escuchando…") else tr("Escribe o dicta una petición…"), fontSize = 17.sp, color = Palette.textFaint)
                     BasicTextField(
                         text, { text = it }, enabled = reason == null, maxLines = 4,
                         textStyle = TextStyle(fontSize = 17.sp, color = Palette.text), cursorBrush = SolidColor(Palette.primary),
                         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Send, autoCorrectEnabled = false),
-                        keyboardActions = KeyboardActions(onSend = { submit(text) }), modifier = Modifier.fillMaxWidth(),
+                        keyboardActions = KeyboardActions(onSend = { submit(text) }), modifier = Modifier.fillMaxWidth().onFocusChanged { focused = it.isFocused },
                     )
                 }
                 if (hasText) {
