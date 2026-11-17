@@ -28,10 +28,10 @@ Leyenda: `[x]` hecho · `[ ]` pendiente.
 - [ ] Pendiente de fase 1: `ReportText`, `ReportPrompts`/`ReportTemplates` (se hacen con la Fase 5)
 
 ## Fase 2 – Red / Auth / Datos (`core:network`, `core:data`)
-- [ ] `SupabaseClient`: GoTrue (password, refresh, recover, logout), RPC `POST rest/v1/rpc/{name}`, refresh con `Mutex` (tokens rotan), margen 60 s, reintento tras 401, 400/401/422 ⇒ `invalidCredentials`, offline ⇒ caché
-- [ ] Claims JWT (`app_metadata.clinic_id/clinic_role`)
-- [ ] `DiskCache` cifrada (SHA-256 de `clinic|rpc|body`), limpiar al salir
-- [ ] Secure storage: refresh token + last-email (Keystore)
+- [x] `SupabaseClient` (módulo JVM `core:network`, OkHttp): GoTrue (password, refresh, recover, logout), RPC, refresh con `Mutex` (tokens rotan), margen 60 s, reintento tras 401, 400/401/422 ⇒ `InvalidCredentials`, offline ⇒ caché; 11 tests con MockWebServer
+- [x] Claims JWT (`app_metadata.clinic_id/clinic_role`)
+- [x] `FileResponseCache` (SHA-256 de `clinic|rpc|body`, atómica, limpiar al salir) con `ByteCodec` · [ ] codec AES-GCM con Keystore (capa `app`)
+- [x] Interfaz `SecureStore` · [ ] implementación Keystore/EncryptedSharedPreferences (capa `app`)
 - [ ] RPCs: `list_patients`, `get_patient`, `create_patient`, `update_patient`, `list_appointments_in_range`, `create_appointment_with_patient`, `update_appointment`, `archive_appointment`, `patient_appointment_history`, `list_consultations_with_latest_report`, `get_clinic_branding`, `get_my_ai_config`; REST `profiles`, `clinics`
 - [ ] JSON: snake_case, `explicitNulls=true`, `ignoreUnknownKeys`
 - [ ] Stores: Auth (+biometría), Patients (paginación 100, búsqueda 300 ms), Appointments (`revision`, undo), Reports (concurrencia 6), Settings (DataStore), Router/Toast
